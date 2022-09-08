@@ -26,12 +26,12 @@ public static class SubmissionInfo
 
     // This may be a "working title" to begin with, but ensure it is final by
     // the video milestone deadline (plain text, no more than 50 chars).
-    public static readonly string GameName = "Replace with your game name";
+    public static readonly string GameName = "Isometric Rougelike Game With Combat 9001";
 
     // Write a brief blurb of your game, no more than 200 words. Again, ensure
     // this is final by the video milestone deadline.
     public static readonly string GameBlurb = 
-@"Roguelike game.";
+@"This is a roguelike game with Isometric graphics. There is combat with enemies; enemies are AI controlled.";
     
     // By the gameplay video milestone deadline this should be a direct link
     // to a YouTube video upload containing your video. Ensure "Made for kids"
