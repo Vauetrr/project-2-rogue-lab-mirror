@@ -20,7 +20,7 @@ public static class SubmissionInfo
     {
         new TeamMember("Changmin Lee", "changminl@student.unimelb.edu.au"),
         new TeamMember("Ishaann Cheema", "icheema@student.unimelb.edu.au"),
-        new TeamMember("Student Name 3", "...@student.unimelb.edu.au"),
+        new TeamMember("Shuaixian Li", "shuaixianl@student.unimelb.edu.au"),
         new TeamMember("Student Name 4", "...@student.unimelb.edu.au"), 
     };
 
