@@ -19,7 +19,7 @@ public static class SubmissionInfo
     public static readonly TeamMember[] Team = new[]
     {
         new TeamMember("Changmin Lee", "changminl@student.unimelb.edu.au"),
-        new TeamMember("Student Name 2", "...@student.unimelb.edu.au"),
+        new TeamMember("Ishaann Cheema", "icheema@student.unimelb.edu.au"),
         new TeamMember("Student Name 3", "...@student.unimelb.edu.au"),
         new TeamMember("Student Name 4", "...@student.unimelb.edu.au"), 
     };
@@ -31,10 +31,7 @@ public static class SubmissionInfo
     // Write a brief blurb of your game, no more than 200 words. Again, ensure
     // this is final by the video milestone deadline.
     public static readonly string GameBlurb = 
-@"Write a blurb of your game here in plain text. This is a
-multiline verbatim string,
-so don't worry about keeping it to one line, just be sure not to indent it.
-";
+@"Roguelike game.";
     
     // By the gameplay video milestone deadline this should be a direct link
     // to a YouTube video upload containing your video. Ensure "Made for kids"
