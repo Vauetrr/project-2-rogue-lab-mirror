@@ -21,7 +21,7 @@ public static class SubmissionInfo
         new TeamMember("Changmin Lee", "changminl@student.unimelb.edu.au"),
         new TeamMember("Ishaann Cheema", "icheema@student.unimelb.edu.au"),
         new TeamMember("Shuaixian Li", "shuaixianl@student.unimelb.edu.au"),
-        new TeamMember("Student Name 4", "...@student.unimelb.edu.au"), 
+        new TeamMember("Max Semmler", "msemmler@student.unimelb.edu.au"), 
     };
 
     // This may be a "working title" to begin with, but ensure it is final by
