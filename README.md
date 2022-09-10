@@ -10,8 +10,7 @@
 <!-- Fill this section by Milestone 1 (see specification for details) -->
 
 The general roles are split into two game developers (Max Semmler, Changmin Lee) and two game artists (Ishaann Cheema, Shuaixian Li). 
-Specifically, each of the team members will focus on different aspects of the graphics and interactions. 
-However, team members will try to work together between the different fields for a superior workflow.
+While each of the team members will focus on different aspects of the project, team members will also try to work together in different fields for a flexible workflow.
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
