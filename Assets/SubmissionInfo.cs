@@ -31,7 +31,9 @@ public static class SubmissionInfo
     // Write a brief blurb of your game, no more than 200 words. Again, ensure
     // this is final by the video milestone deadline.
     public static readonly string GameBlurb = 
-@"This is a roguelike game with Isometric graphics. There is combat with enemies; enemies are AI controlled.";
+@"The queen is dead. The kingdom is in ruin, and you've been framed for the murder. 
+Try your hand at escaping the palace dungeon in this isometric roguelite game. Get stronger
+each run as you learn from your predecessor's mistakes.";
     
     // By the gameplay video milestone deadline this should be a direct link
     // to a YouTube video upload containing your video. Ensure "Made for kids"
