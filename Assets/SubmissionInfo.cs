@@ -26,14 +26,14 @@ public static class SubmissionInfo
 
     // This may be a "working title" to begin with, but ensure it is final by
     // the video milestone deadline (plain text, no more than 50 chars).
-    public static readonly string GameName = "Isometric Rougelike Game With Combat 9001";
+    public static readonly string GameName = "Downfall";
 
     // Write a brief blurb of your game, no more than 200 words. Again, ensure
     // this is final by the video milestone deadline.
     public static readonly string GameBlurb = 
 @"The queen is dead. The kingdom is in ruin, and you've been framed for the murder. 
 Try your hand at escaping the palace dungeon in this isometric roguelite game. Get stronger
-each run as you learn from your predecessor's mistakes.";
+each run and gain abilities as you learn from your predecessor's mistakes.";
     
     // By the gameplay video milestone deadline this should be a direct link
     // to a YouTube video upload containing your video. Ensure "Made for kids"
