@@ -7,9 +7,10 @@ public class AiFollow : MonoBehaviour
 {
     public float FollowDist;
     public GameObject EnemyDeath;
-    public GameObject Enemy;
+   // public GameObject Enemy;
     public GameObject Projectile;
-    public Transform Player;
+    //public 
+    private Transform Player;
     public Transform Head;
     public Transform ShootLoc;
     public float ShootCoolDown;
@@ -38,6 +39,7 @@ public class AiFollow : MonoBehaviour
     void Start()
     {
         Agent = this.GetComponent<NavMeshAgent>();
+        Player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -46,15 +48,16 @@ public class AiFollow : MonoBehaviour
         if ((this.transform.position - Player.position).sqrMagnitude < FollowDist)
         {
             Agent.SetDestination(Player.position);
+            time += Time.deltaTime;
+            if (time >= ShootCoolDown) 
+            {
+                GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
+                o.GetComponent<Rigidbody>().velocity = 10.0f * (ShootLoc.position - Head.position);
+                time = 0.0f;
+            }
         }
         else { }
-        time += Time.deltaTime;
-        if (time >= ShootCoolDown) 
-        {
-            GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
-            o.GetComponent<Rigidbody>().velocity = 10.0f * (ShootLoc.position - Head.position);
-            time = 0.0f;
-        }
+       
     }
 
 }

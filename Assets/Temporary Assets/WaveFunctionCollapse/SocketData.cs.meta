@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 4127db9b873c8674aa9535303adc7f36
+guid: a09d660a5a812374ba4511522af5116c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
-  - PickUp: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

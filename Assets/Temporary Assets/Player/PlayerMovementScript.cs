@@ -15,10 +15,10 @@ public class PlayerMovementScript : MonoBehaviour
     //public Transform PlayerTransform;
     public void DecreaseHealth(float damage) 
     {
-        Debug.Log("e");
+        //Debug.Log("e");
         Health -= damage;
         if (Health > MaxHealth) { Health = MaxHealth; }
-        else if (Health < 0) { Debug.Log("Implement Dieing here"); }
+        else if (Health < 0) { Debug.Log("Implement Dying here"); }
         HealthBar.SetHealthBar(Health/MaxHealth);
     }
     // Start is called before the first frame update

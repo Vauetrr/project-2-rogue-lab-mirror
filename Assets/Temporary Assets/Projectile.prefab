@@ -128,9 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f9be67c009c69468913f0c0ab55ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
-  SpawnLoc: {fileID: 0}
-  Player: {fileID: 0}
+  lifeTime: 5
+  damage: 10
 --- !u!1 &7734296527614711587
 GameObject:
   m_ObjectHideFlags: 0
