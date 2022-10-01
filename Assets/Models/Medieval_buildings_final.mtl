@@ -1,0 +1,543 @@
+# Blender MTL File: 'Castle test2.blend'
+# Material Count: 50
+
+newmtl Arrow_loop1
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loops3_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loops3.jpg
+
+newmtl Arrow_loop2
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.145965 0.145965 0.145965
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Arrow_loop3
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loop1_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loop1.jpg
+
+newmtl Door1
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Door1\\Textures\\Door1_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\door1\\Textures\\Door1_albedo.jpg
+
+newmtl Gate1
+Ns 310.266366
+Ka 0.400000 0.400000 0.400000
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Gate1\\Textures\\Gate1_normal.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Gate1\\Textures\\Gate1_Albedo.jpg
+
+newmtl Gate1.001
+Ns 310.266366
+Ka 0.400000 0.400000 0.400000
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Gate1\\Textures\\Gate1_normal.jpg
+map_Kd Z:\\BMS FINAL ASSETS\\BMS CHARACTERS\\CASTLE\\textures\\Gate1_Albedo.jpg
+
+newmtl Gate2
+Ns 257.728073
+Ka 0.259245 0.259245 0.259245
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump -bm 0.500000 C:\\Projects\\BMS\\Photoscans\\Gate2\\textures\\Gate2_NRM_enhanced.jpg
+map_Kd Z:\\BMS FINAL ASSETS\\BMS CHARACTERS\\CASTLE\\textures\\Gate2.jpg
+
+newmtl Gate_fence
+Ns 257.728073
+Ka 0.259245 0.259245 0.259245
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Projects\\BMS\\Photoscans\\Gate2\\textures\\metal_gate.jpg
+
+newmtl Ground
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.332871 0.332871 0.332871
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Material.003
+Ns 1.125918
+Ka 1.000000 1.000000 1.000000
+Kd 0.413323 0.413323 0.413323
+Ks 0.348875 0.348875 0.348875
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -o 15.099999 0.000000 0.000000 -s 3.000000 4.000000 1.000000 Z:\\Sources\\Final_Textures\\Walls_Big\\Wall_Big_8_NRM.jpg
+map_Kd -o 15.099999 0.000000 0.000000 -s 3.000000 4.000000 1.000000 Z:\\Sources\\Final_Textures\\Walls_Big\\Wall_Big_8_1.jpg
+
+newmtl Material.022
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Door1\\Textures\\Door1_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\door1\\Textures\\Door1_albedo.jpg
+
+newmtl Material.037
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Projects\\BMS\\Photoscans\\Door4\\Textures\\Door4_normal.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Door4\\Textures\\Door4_Albedo.jpg
+
+newmtl Material.042
+Ns 310.266366
+Ka 0.339869 0.339869 0.339869
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Door2\\door2_Normal.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Door2\\door2_Albedo.jpg
+
+newmtl Material.045
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loops3_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loops3.jpg
+
+newmtl Material.046
+Ns 257.728073
+Ka 0.259245 0.259245 0.259245
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Projects\\BMS\\Photoscans\\Gate2\\textures\\metal_gate.jpg
+
+newmtl Material.047
+Ns 257.728073
+Ka 0.259245 0.259245 0.259245
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump -bm 0.500000 C:\\Projects\\BMS\\Photoscans\\Gate2\\textures\\Gate2_NRM_enhanced.jpg
+map_Kd Z:\\BMS FINAL ASSETS\\BMS CHARACTERS\\CASTLE\\textures\\Gate2.jpg
+
+newmtl Material.049
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Door1\\Textures\\Door1_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\door1\\Textures\\Door1_albedo.jpg
+
+newmtl Material.051
+Ns 257.728073
+Ka 0.259245 0.259245 0.259245
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Projects\\BMS\\Photoscans\\Gate2\\textures\\metal_gate.jpg
+
+newmtl None.001
+Ns 500.000001
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.800000 0.800000 0.800000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl None.005
+Ns 500.000001
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.800000 0.800000 0.800000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Scaffolding_platform
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.339687 0.339687 0.339687
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Scafollding_wood
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Stairs
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.370320 0.370320 0.370320
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl TopBelt.001
+Ns 99.999988
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Belt\\Topbelt_nmap.jpg
+map_Kd C:\\Belt\\Topbelt_metalness.jpg
+
+newmtl Wall_details
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.039053 0.039053 0.039053
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Wall_details2
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.370320 0.370320 0.370320
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Walls_big
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.222546 0.222546 0.222546
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Walls_huge
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.487804 0.487804 0.487804
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Walls_medium
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.090838 0.090838 0.090838
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Walls_small
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.290974 0.290974 0.290974
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Walls_small.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.290974 0.290974 0.290974
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Window1
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Window1\\window01_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Window1\\window01.jpg
+
+newmtl Windows1
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Window3\\window03_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Window3\\window03.jpg
+
+newmtl Windows2
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Window3\\window03_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Window3\\window03.jpg
+
+newmtl arrow_loop4
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loop1_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Arrow_loop\\Arrow_loop1.jpg
+
+newmtl details
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.145965 0.145965 0.145965
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl details.008
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.145965 0.145965 0.145965
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl details2
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.037006 0.037006 0.037006
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl door4
+Ns 125.808972
+Ka 0.144811 0.144811 0.144811
+Kd 0.413323 0.413323 0.413323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Projects\\BMS\\Photoscans\\Door8\\Textures\\Door8_NRM.jpg
+map_Kd C:\\Projects\\BMS\\Photoscans\\Door8\\Textures\\Door8_Albedo.jpg
+
+newmtl flat_roofs
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl planks
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.339687 0.339687 0.339687
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl roof.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.435143 0.435143 0.435143
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl roof2.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl roofing
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.013635 0.013635 0.013635
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl scaffolding_wood_thick
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.339687 0.339687 0.339687
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl stairs
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.174349 0.174349 0.174349
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl stones
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl walls
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl walls.010
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl wood
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.311512 0.311512 0.311512
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
