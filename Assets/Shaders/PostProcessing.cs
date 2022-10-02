@@ -10,7 +10,8 @@ public class PostProcessing : MonoBehaviour
     {
         var tempText = RenderTexture.GetTemporary(source.width, source.height);
         Graphics.Blit(source, tempText, postprocessMaterial, 0);
-        Graphics.Blit(tempText, destination, postprocessMaterial, 1);
+        Graphics.Blit(tempText, source, postprocessMaterial, 1);
+        Graphics.Blit(source, destination, postprocessMaterial, 2);
         RenderTexture.ReleaseTemporary(tempText);
     }
 }
