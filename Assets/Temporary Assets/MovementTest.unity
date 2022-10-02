@@ -1228,7 +1228,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 945387231}
-  - {fileID: 984319887}
+  - {fileID: 299695046}
   - {fileID: 1274447273}
   - {fileID: 222076455}
   - {fileID: 138587029}
@@ -2020,6 +2020,11 @@ Transform:
   m_Father: {fileID: 216800577}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &299695046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1254913440855495437, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  m_PrefabInstance: {fileID: 6391656993370669383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &361541203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,6 +3842,7 @@ GameObject:
   - component: {fileID: 708064424}
   - component: {fileID: 708064423}
   - component: {fileID: 708064422}
+  - component: {fileID: 708064425}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3910,6 +3916,19 @@ Transform:
   m_Father: {fileID: 168718763}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
+--- !u!114 &708064425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708064421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f571ca7d671b47244a4436a2b0e21554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postprocessMaterial: {fileID: 2100000, guid: 297e54ffda7f19f4c931a517ae426c3c, type: 2}
 --- !u!1 &725049169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,11 +4823,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947156460}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &984319887 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6391656994086553288, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
-  m_PrefabInstance: {fileID: 6391656993370669383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008587826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1409345976141022707, guid: f853cc8cb0a8c98448c082c24b81d752, type: 3}
@@ -7124,7 +7138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ad649a9f343ef4fbfbca3887b1eb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tiles: []
+  SizeX: 0
+  SizeY: 0
+  SizeZ: 0
   surface: {fileID: 1070213786}
+  Error: {fileID: 0}
 --- !u!1 &1532916364
 GameObject:
   m_ObjectHideFlags: 0
@@ -8829,7 +8848,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ad649a9f343ef4fbfbca3887b1eb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tiles: []
+  SizeX: 0
+  SizeY: 0
+  SizeZ: 0
   surface: {fileID: 1867118934}
+  Error: {fileID: 0}
 --- !u!114 &1867118934
 MonoBehaviour:
   m_ObjectHideFlags: 0
