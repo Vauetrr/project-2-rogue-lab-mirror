@@ -6,9 +6,10 @@ Shader "Custom/LowHealth"
         _BlurSize ("Blur Size", Range(0, 0.5)) = 0
         [KeywordEnum(Low, Medium, High)] _Samples ("Sample Amount", Float) = 0
         [PowerSlider(3)] _StdDeviation ("Standard Deviation", Range(0.00, 0.3)) = 0.02
-        _Radius ("Vignette Radius", Range(0, 10)) = 1
+        _Radius ("Vignette Radius", Range(0, 2)) = 1
         _Feather ("Vignette Feather", Range(0, 10)) = 1
         _TintColour ("Vignette Colour", Color) = (0.55, 0.01, 0.01, 1)
+        _Greyscale ("Greyscale Amount", Range(0, 1)) = 0
     }
     SubShader
     {
@@ -44,6 +45,7 @@ Shader "Custom/LowHealth"
         float _Radius;
         float _Feather;
         float4 _TintColour;
+        float _Greyscale;
 
         struct vertIn
         {
@@ -165,6 +167,7 @@ Shader "Custom/LowHealth"
                 float mask = 1 - invMask;
 
                 float3 normalColour = col.rgb * mask;
+                normalColour = lerp(normalColour, dot(normalColour, float3(0.3, 0.59, 0.11)), _Greyscale);
                 float3 vignetteColour = (1 - col.rgb) * invMask * _TintColour;
                 return fixed4(normalColour + vignetteColour, 1);
             }

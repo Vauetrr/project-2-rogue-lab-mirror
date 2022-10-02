@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PostProcessing : MonoBehaviour
 {
-    [SerializeField] private Material postprocessMaterial;
+    [SerializeField] private Material lowHealth;
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         var tempText = RenderTexture.GetTemporary(source.width, source.height);
-        Graphics.Blit(source, tempText, postprocessMaterial, 0);
-        Graphics.Blit(tempText, source, postprocessMaterial, 1);
-        Graphics.Blit(source, destination, postprocessMaterial, 2);
+        Graphics.Blit(source, tempText, lowHealth, 0);
+        Graphics.Blit(tempText, source, lowHealth, 1);
+        Graphics.Blit(source, destination, lowHealth, 2);
         RenderTexture.ReleaseTemporary(tempText);
     }
 }
