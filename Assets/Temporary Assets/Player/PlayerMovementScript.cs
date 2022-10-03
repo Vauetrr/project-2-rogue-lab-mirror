@@ -15,18 +15,30 @@ public class PlayerMovementScript : MonoBehaviour
     //public Transform PlayerTransform;
 
     private double fireDelay = 0;
+    private int curDash = 0;
+    private bool dashStart = false;
+    private float dashHorizontal;
+    private float dashVertical;
+    private float dashTime = 0;
+    // START player state: altered by input and gameplay
     private bool guarding = false;
+    private bool dashing = false;
+
+    // END player state
 
 
     // START Variables: these can be changed mid-game
-
-    public double fireSpeed = 50; // delay between attacks. 
+    public float moveSpeed = 3.5f; // movement speed.
+    public float dashSpeed = 5.0f; // dash speed. 
+                                    // ideally will be faster than moveSpeed.
+    public double fireSpeed = 100; // delay between attacks. 
                                   // lower value = faster attacks
     public float guardSlowdown = 0.35f; // slow% during guard.
                                         // 0 = can't move, 1 = original speed
     public float guardDamageDecrease = 0.2f; // damage decrease% during guard.
                                              // 0 = invincible, 1 = origianl dmg
-
+    public int dashLimit = 1; // how many dashes can be chained.
+                                 // 0 = no dashes allowed.
     // END Variables
 
     public void DecreaseHealth(float damage) 
@@ -58,27 +70,69 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
     void getInput(){
-        if (Input.GetButton("Fire1") && fireDelay <= 0 && !guarding)
+
+        //left mouse, normal attack
+        if (Input.GetButton("Fire1") && fireDelay <= 0 && !guarding) 
         {
              //Instantiate(Projectile, new Vector3(0, 1, 0), Quaternion.identity);
             fireDelay = fireSpeed;
             GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
             o.GetComponent<Rigidbody>().velocity = 10.0f*(ShootLoc.position - Head.position);
-            //Debug.Log(Input.mousePosition);
-            Debug.Log(fireDelay);
+            Debug.Log(Input.mousePosition);
         }
-        Debug.Log(guarding);
-        if (Input.GetButton("Fire2")){
+
+        //right mouse, guard
+        if (Input.GetButton("Fire2")){ 
             guarding = true;
         }
         else {
             guarding = false;
         }
 
+        //spacebar, dash
+        if (Input.GetButtonDown("Jump") && curDash < dashLimit){
+            dashing = true;
+            dashStart = true;
+            curDash++;
+        }
+    }
+
+    void dashPlayer(){
+        if (dashStart){
+            dashHorizontal = Input.GetAxisRaw("Horizontal"); // no momentum
+            dashVertical = Input.GetAxisRaw("Vertical"); // no momentum
+            dashTime = 5.0f;
+            dashStart = false;
+        }
+
+        Vector3 Left = new Vector3( dashSpeed*dashTime, 0.0f, -dashSpeed*dashTime );
+        Vector3 Forward = new Vector3( dashSpeed*dashTime, 0.0f, dashSpeed*dashTime );
+        Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f) + dashHorizontal * Left + dashVertical * Forward;
+        dashTime -= 0.1f;
+        if (dashTime <= 0){
+            dashing = false;
+            curDash = 0;
+        }
+    }
+
+    void movePlayer(){
+        if (dashing){
+            dashPlayer();
+            return;
+        }
+
+        float slowV = guarding?guardSlowdown:1;
+        Vector3 Left = new Vector3( moveSpeed*slowV, 0.0f, -moveSpeed*slowV );
+        Vector3 Forward = new Vector3( moveSpeed*slowV, 0.0f, moveSpeed*slowV );
+
+        // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
+        Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
     }
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("horizontal = " + Input.GetAxis("Horizontal"));
+        Debug.Log("vertical = " + Input.GetAxis("Vertical"));
         updateDelay();
         getInput();
 
@@ -89,15 +143,7 @@ public class PlayerMovementScript : MonoBehaviour
         Vector3 LookLoc = T * ShootLocation.direction + ShootLocation.origin;
 
         Head.LookAt(LookLoc, new Vector3(0.0f,1.0f,0.0f));
-        //Vector3 Left = new Vector3( 5.0f, 0.0f, 0.0f );
-        //Vector3 Forward = new Vector3( 0.0f, 0.0f, 5.0f ); 
-        float slowV = guarding?guardSlowdown:1;
-        Vector3 Left = new Vector3( 5.0f*slowV, 0.0f, -5.0f*slowV );
-        Vector3 Forward = new Vector3( 5.0f*slowV, 0.0f, 5.0f*slowV );
 
-        Debug.Log(slowV);
-        
-        // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
-        Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f)+ Input.GetAxis("Horizontal") * Left + Input.GetAxis("Vertical") * Forward;
+        movePlayer();
     }
 }
