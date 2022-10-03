@@ -14,16 +14,20 @@ public class PlayerMovementScript : MonoBehaviour
     public float MaxHealth = 200.0f;
     //public Transform PlayerTransform;
 
-    private int fireDelay = 0;
-    private int fireSpeed = 100;
-    
+    private double fireDelay = 0;
+    private bool guarding = false;
 
-    // hold right mouse to guard
-    private bool guarding = false; 
-    // while guarding, movement *= this
-    public float guardSlowdown = 0.35f; 
-    // while guarding, decrease damage taken *= this
-    public float guardDamageDecrease = 0.2f;
+
+    // START Variables: these can be changed mid-game
+
+    public double fireSpeed = 50; // delay between attacks. 
+                                  // lower value = faster attacks
+    public float guardSlowdown = 0.35f; // slow% during guard.
+                                        // 0 = can't move, 1 = original speed
+    public float guardDamageDecrease = 0.2f; // damage decrease% during guard.
+                                             // 0 = invincible, 1 = origianl dmg
+
+    // END Variables
 
     public void DecreaseHealth(float damage) 
     {

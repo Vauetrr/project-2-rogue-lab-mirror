@@ -18,11 +18,12 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
-
+            Destroy(gameObject, 0);
         }
         else if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage);
+            Destroy(gameObject, 0);
 
         }
     }
