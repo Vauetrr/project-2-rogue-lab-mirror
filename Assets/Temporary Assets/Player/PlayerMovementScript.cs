@@ -28,8 +28,8 @@ public class PlayerMovementScript : MonoBehaviour
 
 
     // START Variables: these can be changed mid-game
-    public float moveSpeed = 3.5f; // movement speed.
-    public float dashSpeed = 5.0f; // dash speed. 
+    public float moveSpeed = 5.0f; // movement speed.
+    public float dashSpeed = 20.0f; // dash speed. 
                                     // ideally will be faster than moveSpeed.
     public double fireSpeed = 100; // delay between attacks. 
                                   // lower value = faster attacks
@@ -101,14 +101,17 @@ public class PlayerMovementScript : MonoBehaviour
         if (dashStart){
             dashHorizontal = Input.GetAxisRaw("Horizontal"); // no momentum
             dashVertical = Input.GetAxisRaw("Vertical"); // no momentum
-            dashTime = 5.0f;
+            dashTime = 1.0f;
             dashStart = false;
         }
 
-        Vector3 Left = new Vector3( dashSpeed*dashTime, 0.0f, -dashSpeed*dashTime );
-        Vector3 Forward = new Vector3( dashSpeed*dashTime, 0.0f, dashSpeed*dashTime );
-        Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f) + dashHorizontal * Left + dashVertical * Forward;
-        dashTime -= 0.1f;
+        Vector2 Left = new Vector3( 1.0f, -1.0f );
+        Vector2 Forward = new Vector3( 1.0f, 1.0f );
+        Vector2 dir = dashHorizontal * Left + dashVertical * Forward;
+        dir = dir.normalized;
+        Player.velocity = new Vector3(dir.x * dashSpeed * dashTime, Player.velocity.y, dir.y * dashSpeed * dashTime);
+
+        dashTime -= 0.01f;
         if (dashTime <= 0){
             dashing = false;
             curDash = 0;
@@ -120,19 +123,21 @@ public class PlayerMovementScript : MonoBehaviour
             dashPlayer();
             return;
         }
-
-        float slowV = guarding?guardSlowdown:1;
-        Vector3 Left = new Vector3( moveSpeed*slowV, 0.0f, -moveSpeed*slowV );
-        Vector3 Forward = new Vector3( moveSpeed*slowV, 0.0f, moveSpeed*slowV );
-
+        Vector2 Left = new Vector3( 1.0f, -1.0f );
+        Vector2 Forward = new Vector3( 1.0f, 1.0f );
         // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
-        Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
+
+       //Vector3 dir = new Vector2(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
+        Vector2 dir = Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
+        dir = dir.normalized;
+        float slowV = guarding?guardSlowdown:1;
+        Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("horizontal = " + Input.GetAxis("Horizontal"));
-        Debug.Log("vertical = " + Input.GetAxis("Vertical"));
+        Debug.Log(Player.velocity.y);
+        //Debug.Log("vertical = " + Input.GetAxis("Vertical"));
         updateDelay();
         getInput();
 
