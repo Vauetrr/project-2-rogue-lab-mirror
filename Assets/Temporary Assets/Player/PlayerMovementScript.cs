@@ -17,21 +17,32 @@ public class PlayerMovementScript : MonoBehaviour
     private int fireDelay = 0;
     private int fireSpeed = 100;
     
-    private bool guarding = false; // hold right mouse to guard
+
+    // hold right mouse to guard
+    private bool guarding = false; 
+    // while guarding, movement *= this
+    public float guardSlowdown = 0.35f; 
+    // while guarding, decrease damage taken *= this
+    public float guardDamageDecrease = 0.2f;
 
     public void DecreaseHealth(float damage) 
     {
         //Debug.Log("e");
         
-        Health -= damage;
-        if (Health > MaxHealth) { Health = MaxHealth; }
-        else if (Health < 0) { Debug.Log("Implement Dying here"); }
+        Health -= damage * ((guarding && damage > 0)? guardDamageDecrease : 1);
+        if (Health > MaxHealth) { 
+            Health = MaxHealth; 
+        }
+        else if (Health < 0) { 
+            Debug.Log("Implement Dying here"); 
+        }
         HealthBar.SetHealthBar(Health/MaxHealth);
     }
     // Start is called before the first frame update
     void Start()
     {
         Player = this.GetComponent<Rigidbody>();
+        HealthBar.SetHealthBar(Health/MaxHealth);
         //PlayerTransform = this.GetComponent<Transform>();
     }
 
@@ -43,7 +54,7 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
     void getInput(){
-        if (Input.GetButton("Fire1") && fireDelay <= 0)
+        if (Input.GetButton("Fire1") && fireDelay <= 0 && !guarding)
         {
              //Instantiate(Projectile, new Vector3(0, 1, 0), Quaternion.identity);
             fireDelay = fireSpeed;
@@ -76,9 +87,12 @@ public class PlayerMovementScript : MonoBehaviour
         Head.LookAt(LookLoc, new Vector3(0.0f,1.0f,0.0f));
         //Vector3 Left = new Vector3( 5.0f, 0.0f, 0.0f );
         //Vector3 Forward = new Vector3( 0.0f, 0.0f, 5.0f ); 
-        Vector3 Left = guarding?(new Vector3( 1.5f, 0.0f, -1.5f )):(new Vector3( 5.0f, 0.0f, -5.0f ));
-        Vector3 Forward = guarding?(new Vector3( 1.5f, 0.0f, 1.5f )):(new Vector3( 5.0f, 0.0f, 5.0f ));
+        float slowV = guarding?guardSlowdown:1;
+        Vector3 Left = new Vector3( 5.0f*slowV, 0.0f, -5.0f*slowV );
+        Vector3 Forward = new Vector3( 5.0f*slowV, 0.0f, 5.0f*slowV );
 
+        Debug.Log(slowV);
+        
         // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
         Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f)+ Input.GetAxis("Horizontal") * Left + Input.GetAxis("Vertical") * Forward;
     }

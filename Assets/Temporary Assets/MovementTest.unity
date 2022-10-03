@@ -1199,6 +1199,8 @@ MonoBehaviour:
   Head: {fileID: 137385666}
   HealthBar: {fileID: 282376369}
   MaxHealth: 200
+  guardSlowdown: 0.35
+  guardDamageDecrease: 0.2
 --- !u!1 &216800576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1230,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 945387231}
-  - {fileID: 984319887}
+  - {fileID: 1883291102}
   - {fileID: 1274447273}
   - {fileID: 222076455}
   - {fileID: 138587029}
@@ -4804,11 +4806,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947156460}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &984319887 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6391656994086553288, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
-  m_PrefabInstance: {fileID: 6391656993370669383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008587826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1409345976141022707, guid: f853cc8cb0a8c98448c082c24b81d752, type: 3}
@@ -7124,7 +7121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ad649a9f343ef4fbfbca3887b1eb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tiles: []
+  SizeX: 0
+  SizeY: 0
+  SizeZ: 0
   surface: {fileID: 1070213786}
+  Error: {fileID: 0}
 --- !u!1 &1532916364
 GameObject:
   m_ObjectHideFlags: 0
@@ -8829,7 +8831,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ad649a9f343ef4fbfbca3887b1eb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tiles: []
+  SizeX: 0
+  SizeY: 0
+  SizeZ: 0
   surface: {fileID: 1867118934}
+  Error: {fileID: 0}
 --- !u!114 &1867118934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8958,6 +8965,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883157537}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1883291102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1254913440855495437, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  m_PrefabInstance: {fileID: 6391656993370669383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1885059107
 GameObject:
   m_ObjectHideFlags: 0
