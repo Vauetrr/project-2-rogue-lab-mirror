@@ -29,7 +29,6 @@ public class PlayerMovementScript : MonoBehaviour
 
     // START Variables: these can be changed mid-game
     public Weapon currentWeapon = new Gun();
-
     public float moveSpeed = 5.0f; // movement speed.
     public float dashSpeed = 20.0f; // dash speed. 
                                     // ideally will be faster than moveSpeed.
@@ -70,11 +69,19 @@ public class PlayerMovementScript : MonoBehaviour
         currentWeapon.updateDelay();
     }
 
-    void getInput(){
+    void readInput(){
 
         //left mouse, normal attack
+        if (Input.GetButtonDown("Fire1") && !guarding) {
+            currentWeapon.normalDown(this);
+        }
+
+        if (Input.GetButtonUp("Fire1") && !guarding) {
+            currentWeapon.normalUp(this);
+        }
+
         if (Input.GetButton("Fire1") && !guarding) {
-            currentWeapon.normalAttack(this);
+            currentWeapon.normalHold(this);
         }
 
         //right mouse, guard
@@ -123,20 +130,18 @@ public class PlayerMovementScript : MonoBehaviour
         Vector2 Forward = new Vector3( 1.0f, 1.0f );
         // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
 
-       //Vector3 dir = new Vector2(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
+        // Vector3 dir = new Vector2(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
         Vector2 dir = Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
         dir = dir.normalized;
         float slowV = guarding?guardSlowdown:1;
         Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
     }
+
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Player.velocity.y);
-        //Debug.Log("vertical = " + Input.GetAxis("Vertical"));
-        Debug.Log(currentWeapon);
         updateDelay();
-        getInput();
+        readInput();
 
         Ray ShootLocation = PlayerCamera.ScreenPointToRay(Input.mousePosition);
         float al = ShootLocation.direction.y;//Vector3.Dot(ShootLocation.direction, new Vector3(0.0f,1.0f,0.0f));
