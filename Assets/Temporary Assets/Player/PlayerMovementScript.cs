@@ -14,7 +14,7 @@ public class PlayerMovementScript : MonoBehaviour
     public float MaxHealth = 200.0f;
     //public Transform PlayerTransform;
 
-    private double fireDelay = 0;
+    //private double fireDelay = 0;
     private int curDash = 0;
     private bool dashStart = false;
     private float dashHorizontal;
@@ -25,21 +25,25 @@ public class PlayerMovementScript : MonoBehaviour
     private bool dashing = false;
 
     // END player state
-
+    
 
     // START Variables: these can be changed mid-game
+    public Weapon currentWeapon = new Gun();
+
     public float moveSpeed = 5.0f; // movement speed.
     public float dashSpeed = 20.0f; // dash speed. 
                                     // ideally will be faster than moveSpeed.
-    public double fireSpeed = 100; // delay between attacks. 
-                                  // lower value = faster attacks
+    public double attackSpeed = 1; // Multiplier, controls delay between attacks
+                                   // lower value = faster attacks
+                                   // 0 = infinitely fast
     public float guardSlowdown = 0.35f; // slow% during guard.
                                         // 0 = can't move, 1 = original speed
     public float guardDamageDecrease = 0.2f; // damage decrease% during guard.
                                              // 0 = invincible, 1 = origianl dmg
-    public int dashLimit = 1; // how many dashes can be chained.
-                                 // 0 = no dashes allowed.
-    // END Variables
+    public int dashLimit = 2; // how many dashes can be chained.
+                              // 0 = no dashes allowed.
+                              // END Variables
+
 
     public void DecreaseHealth(float damage) 
     {
@@ -63,22 +67,14 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
     void updateDelay(){
-        fireDelay --;
-        if (fireDelay < 0){
-            fireDelay = 0;
-        }
+        currentWeapon.updateDelay();
     }
 
     void getInput(){
 
         //left mouse, normal attack
-        if (Input.GetButton("Fire1") && fireDelay <= 0 && !guarding) 
-        {
-             //Instantiate(Projectile, new Vector3(0, 1, 0), Quaternion.identity);
-            fireDelay = fireSpeed;
-            GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
-            o.GetComponent<Rigidbody>().velocity = 10.0f*(ShootLoc.position - Head.position);
-            Debug.Log(Input.mousePosition);
+        if (Input.GetButton("Fire1") && !guarding) {
+            currentWeapon.normalAttack(this);
         }
 
         //right mouse, guard
@@ -136,8 +132,9 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Player.velocity.y);
+        //Debug.Log(Player.velocity.y);
         //Debug.Log("vertical = " + Input.GetAxis("Vertical"));
+        Debug.Log(currentWeapon);
         updateDelay();
         getInput();
 
