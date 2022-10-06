@@ -263,6 +263,7 @@ MonoBehaviour:
   SymmetricEast: 0
   SymmetricSouth: 0
   SymmetricWest: 0
+  Weight: 1
 --- !u!1 &4800989331946965374
 GameObject:
   m_ObjectHideFlags: 0
