@@ -5,7 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float lifeTime = 10.0f;
-    public float damage = 10.0f;
+    public float damage = 10.0f; 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -13,23 +14,24 @@ public class Projectile : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
-            Destroy(gameObject, 0);
+           
         }
         else if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage);
-            Destroy(gameObject, 0);
-
+           
         }
+        else if (collision.gameObject.tag == "Interactable")
+        {
+            collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(damage);
+            
+        }
+        Destroy(gameObject, 0);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

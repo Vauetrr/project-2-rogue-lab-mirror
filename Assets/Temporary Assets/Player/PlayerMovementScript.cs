@@ -6,7 +6,7 @@ public class PlayerMovementScript : MonoBehaviour
 {
     private Rigidbody Player;
     public Camera PlayerCamera;
-    public GameObject Projectile;
+   // public GameObject Projectile;
     public Transform ShootLoc;
     public Transform Head;
     public HealthBar HealthBar;
@@ -25,14 +25,14 @@ public class PlayerMovementScript : MonoBehaviour
     private bool dashing = false;
 
     // END player state
-    
+
 
     // START Variables: these can be changed mid-game
-    public Weapon currentWeapon = new Gun();
+    public Weapon currentWeapon;// = new Gun();
     public float moveSpeed = 5.0f; // movement speed.
     public float dashSpeed = 20.0f; // dash speed. 
                                     // ideally will be faster than moveSpeed.
-    public double attackSpeed = 1; // Multiplier, controls delay between attacks
+    public float attackSpeed = 1; // Multiplier, controls delay between attacks
                                    // lower value = faster attacks
                                    // 0 = infinitely fast
     public float guardSlowdown = 0.35f; // slow% during guard.

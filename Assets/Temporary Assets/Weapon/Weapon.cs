@@ -5,10 +5,12 @@ using UnityEngine;
 public enum weaponEnum {
     Nothing,
     Gun,
-    Bow
+    Bow,
+    Sword
 };
 
-public class Weapon{
+public class Weapon : MonoBehaviour
+{
 
     // Identifier for weapon type. 
     public weaponEnum weaponType = weaponEnum.Nothing;

@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 25775370}
   m_Layer: 0
   m_Name: Box (7)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,8 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &25775371
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -268,7 +269,7 @@ GameObject:
   - component: {fileID: 42116730}
   m_Layer: 0
   m_Name: Box (39)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,8 +301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &42116731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -397,7 +399,7 @@ GameObject:
   - component: {fileID: 88086394}
   m_Layer: 0
   m_Name: Box (6)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,8 +416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &88086395
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -595,7 +598,7 @@ GameObject:
   - component: {fileID: 131907578}
   m_Layer: 0
   m_Name: Box (36)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,8 +615,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &131907579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -736,8 +740,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 965745617}
   - {fileID: 243597817}
   - {fileID: 866449788}
+  - {fileID: 839252911}
   m_Father: {fileID: 168718763}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -757,7 +763,7 @@ GameObject:
   - component: {fileID: 138587024}
   m_Layer: 0
   m_Name: Box (3)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -774,8 +780,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &138587025
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1194,13 +1201,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 708064423}
-  Projectile: {fileID: 7734296527587268669, guid: 151ad385eaae53946a6f4c0723e90cc4, type: 3}
   ShootLoc: {fileID: 243597817}
   Head: {fileID: 137385666}
   HealthBar: {fileID: 282376369}
   MaxHealth: 200
+  currentWeapon: {fileID: 839252912}
+  moveSpeed: 5
+  dashSpeed: 20
+  attackSpeed: 0.1
   guardSlowdown: 0.35
   guardDamageDecrease: 0.2
+  dashLimit: 2
 --- !u!1 &216800576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1300,7 @@ GameObject:
   - component: {fileID: 217592967}
   m_Layer: 0
   m_Name: Box (8)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1306,8 +1317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &217592968
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1418,7 +1430,7 @@ GameObject:
   - component: {fileID: 222076450}
   m_Layer: 0
   m_Name: Box (2)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1435,8 +1447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &222076451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1676,7 +1689,7 @@ GameObject:
   - component: {fileID: 251203252}
   m_Layer: 0
   m_Name: Box (5)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1693,8 +1706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &251203253
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1909,7 +1923,7 @@ GameObject:
   - component: {fileID: 286896276}
   m_Layer: 0
   m_Name: Box (25)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1926,8 +1940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &286896277
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2234,7 +2249,7 @@ GameObject:
   - component: {fileID: 427014087}
   m_Layer: 0
   m_Name: Box (10)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2251,8 +2266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &427014088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2460,7 +2476,7 @@ GameObject:
   - component: {fileID: 429114678}
   m_Layer: 0
   m_Name: Box (15)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2477,8 +2493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &429114679
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2776,7 +2793,7 @@ GameObject:
   - component: {fileID: 541555624}
   m_Layer: 0
   m_Name: Box (16)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2793,8 +2810,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &541555625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3199,7 +3217,7 @@ GameObject:
   - component: {fileID: 613020157}
   m_Layer: 0
   m_Name: Box (29)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3216,8 +3234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &613020158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3328,7 +3347,7 @@ GameObject:
   - component: {fileID: 613658590}
   m_Layer: 0
   m_Name: Box (19)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3345,8 +3364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &613658591
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3457,7 +3477,7 @@ GameObject:
   - component: {fileID: 641303563}
   m_Layer: 0
   m_Name: Box (28)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3474,8 +3494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &641303564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3586,7 +3607,7 @@ GameObject:
   - component: {fileID: 683465903}
   m_Layer: 0
   m_Name: Box (31)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3603,8 +3624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &683465904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3715,7 +3737,7 @@ GameObject:
   - component: {fileID: 689933358}
   m_Layer: 0
   m_Name: Box (14)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3732,8 +3754,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &689933359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4184,6 +4207,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795096604}
   m_CullTransparentMesh: 1
+--- !u!1 &839252910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 839252911}
+  - component: {fileID: 839252912}
+  - component: {fileID: 839252913}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &839252911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839252910}
+  m_LocalRotation: {x: -0.18737122, y: -0.24962594, z: -0.049298704, w: 0.94876164}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1998973799}
+  m_Father: {fileID: 137385666}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -22.343, y: -29.482, z: 0}
+--- !u!114 &839252912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839252910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b1bb1d29a5b5441b55fa880d3abe02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 3
+  SwordTrigger: {fileID: 1998973798}
+  SwordAnimator: {fileID: 839252913}
+--- !u!95 &839252913
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839252910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e587647957a6e7479d70cc2b2af6e82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &855656075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,6 +4800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 0}
+  health: 1
 --- !u!1 &947156460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,6 +4899,83 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947156460}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &965745616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965745617}
+  - component: {fileID: 965745618}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965745617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965745616}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 137385666}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &965745618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965745616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0392d5b77dd8049289531473d40d0d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 1
+  Projectile: {fileID: 7734296527587268669, guid: 151ad385eaae53946a6f4c0723e90cc4, type: 3}
+--- !u!1 &978115281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978115282}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978115282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978115281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7281678, y: -5.101443, z: 8.0361805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1008587826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1409345976141022707, guid: f853cc8cb0a8c98448c082c24b81d752, type: 3}
@@ -4827,7 +4997,7 @@ GameObject:
   - component: {fileID: 1058765896}
   m_Layer: 0
   m_Name: Box (22)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4844,8 +5014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1058765897
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4956,7 +5127,7 @@ GameObject:
   - component: {fileID: 1063952472}
   m_Layer: 0
   m_Name: Box (33)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4973,8 +5144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1063952473
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5245,7 +5417,7 @@ GameObject:
   - component: {fileID: 1074660941}
   m_Layer: 0
   m_Name: Box (18)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5262,8 +5434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1074660942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5374,7 +5547,7 @@ GameObject:
   - component: {fileID: 1116930259}
   m_Layer: 0
   m_Name: Box (38)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5406,8 +5579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1116930260
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5601,7 +5775,7 @@ GameObject:
   - component: {fileID: 1130907631}
   m_Layer: 0
   m_Name: Box (4)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5618,8 +5792,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1130907632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5828,7 +6003,7 @@ GameObject:
   - component: {fileID: 1264974497}
   m_Layer: 0
   m_Name: Box (12)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5845,8 +6020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1264974498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5957,7 +6133,7 @@ GameObject:
   - component: {fileID: 1273220118}
   m_Layer: 0
   m_Name: Box (20)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5974,8 +6150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1273220119
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6086,7 +6263,7 @@ GameObject:
   - component: {fileID: 1274447268}
   m_Layer: 0
   m_Name: Box (1)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6103,8 +6280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1274447269
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6215,7 +6393,7 @@ GameObject:
   - component: {fileID: 1289233557}
   m_Layer: 0
   m_Name: Box (11)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6232,8 +6410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1289233558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6344,7 +6523,7 @@ GameObject:
   - component: {fileID: 1317771363}
   m_Layer: 0
   m_Name: Box (30)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6361,8 +6540,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1317771364
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6473,7 +6653,7 @@ GameObject:
   - component: {fileID: 1348745545}
   m_Layer: 0
   m_Name: Box (13)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6490,8 +6670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1348745546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6897,7 +7078,7 @@ GameObject:
   - component: {fileID: 1486346460}
   m_Layer: 0
   m_Name: Box (34)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6914,8 +7095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1486346461
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7339,7 +7521,7 @@ GameObject:
   - component: {fileID: 1571550005}
   m_Layer: 0
   m_Name: Box (32)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7356,8 +7538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1571550006
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7664,7 +7847,7 @@ GameObject:
   - component: {fileID: 1618079186}
   m_Layer: 0
   m_Name: Box (23)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7681,8 +7864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1618079187
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7989,7 +8173,7 @@ GameObject:
   - component: {fileID: 1666899488}
   m_Layer: 0
   m_Name: Box (21)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8006,8 +8190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1666899489
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8118,7 +8303,7 @@ GameObject:
   - component: {fileID: 1747743706}
   m_Layer: 0
   m_Name: Box (9)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8135,8 +8320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1747743707
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8247,7 +8433,7 @@ GameObject:
   - component: {fileID: 1747875280}
   m_Layer: 0
   m_Name: Box (27)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8264,8 +8450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1747875281
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8865,7 +9052,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: e37f8dee15c882a49bea59938d4b8e02, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1883157537
 GameObject:
@@ -9053,7 +9240,7 @@ GameObject:
   - component: {fileID: 1885392322}
   m_Layer: 0
   m_Name: Box (37)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9085,8 +9272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1885392323
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9280,7 +9468,7 @@ GameObject:
   - component: {fileID: 1964085877}
   m_Layer: 0
   m_Name: Box (17)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9297,8 +9485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &1964085878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9521,6 +9710,120 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 151ad385eaae53946a6f4c0723e90cc4, type: 3}
+--- !u!1 &1998973798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1998973799}
+  - component: {fileID: 1998973802}
+  - component: {fileID: 1998973801}
+  - component: {fileID: 1998973803}
+  - component: {fileID: 1998973800}
+  m_Layer: 0
+  m_Name: SwordTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1998973799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998973798}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.5, z: 2.56}
+  m_LocalScale: {x: 0.62877, y: 1.1773717, z: 0.62876993}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 839252911}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!136 &1998973800
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998973798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1998973801
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998973798}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1998973802
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998973798}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1998973803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998973798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f47b938ce1436408b152d3f9005cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwingDuration: 0.2
+  Damage: 100
+  SwordAnimator: {fileID: 839252913}
 --- !u!1 &2008090101
 GameObject:
   m_ObjectHideFlags: 0
@@ -9733,7 +10036,7 @@ GameObject:
   - component: {fileID: 2039586426}
   m_Layer: 0
   m_Name: Box (35)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9750,8 +10053,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &2039586427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9862,7 +10166,7 @@ GameObject:
   - component: {fileID: 2062858273}
   m_Layer: 0
   m_Name: Box (26)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9879,8 +10183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &2062858274
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9991,7 +10296,7 @@ GameObject:
   - component: {fileID: 2078965615}
   m_Layer: 0
   m_Name: Box (24)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10008,8 +10313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debris: {fileID: 6391656994086553290, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
+  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1
 --- !u!54 &2078965616
 Rigidbody:
   m_ObjectHideFlags: 0
