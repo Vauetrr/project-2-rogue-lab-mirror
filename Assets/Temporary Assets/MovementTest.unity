@@ -1211,7 +1211,7 @@ MonoBehaviour:
   attackSpeed: 0.1
   guardSlowdown: 0.35
   guardDamageDecrease: 0.2
-  dashLimit: 2
+  dashLimit: 1
 --- !u!1 &216800576
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,12 +7,12 @@ public class Gun:Weapon{
     public GameObject Projectile;
     private float fireDelay = 0;
     //private GameObject Projectile;
-    private float fireSpeed = 100; // delay between attacks. 
-                                    // lower value = faster attacks
-                                    // modified by Player's attackSpeed
+    private float fireSpeed = 3.0f;//100; // delay between attacks. 
+                                   // lower value = faster attacks
+                                   // modified by Player's attackSpeed
 
     public override void updateDelay(){
-        fireDelay --;
+        fireDelay -= Time.deltaTime;
         if (fireDelay < 0){
             fireDelay = 0;
         }
@@ -23,7 +23,7 @@ public class Gun:Weapon{
             //Instantiate(Projectile, new Vector3(0, 1, 0), Quaternion.identity);
             fireDelay = fireSpeed * player.attackSpeed;
             GameObject o = MonoBehaviour.Instantiate(Projectile, player.ShootLoc.position, Quaternion.identity); // change this to GunProjectile
-            o.GetComponent<Rigidbody>().velocity = 10.0f*(player.ShootLoc.position - player.Head.position);
+            o.GetComponent<Rigidbody>().velocity = 30.0f*(player.ShootLoc.position - player.Head.position);
             Debug.Log(Input.mousePosition);
         }
     }
