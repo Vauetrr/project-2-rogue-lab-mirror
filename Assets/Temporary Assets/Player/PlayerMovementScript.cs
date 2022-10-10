@@ -10,8 +10,10 @@ public class PlayerMovementScript : MonoBehaviour
     public Transform ShootLoc;
     public Transform Head;
     public HealthBar HealthBar;
+    public StaminaBar StaminaBar;
     private float Health = 100.0f;
-    public float MaxHealth = 200.0f;
+    private float Stamina = 1.0f;
+    
     //public Transform PlayerTransform;
 
     //private double fireDelay = 0;
@@ -49,6 +51,8 @@ public class PlayerMovementScript : MonoBehaviour
                               // 0 = no dashes allowed.
                               // END Variables
 
+    public float MaxHealth = 200.0f;
+    public float MaxStamina = 200.0f;
 
     public void DecreaseHealth(float damage) 
     {
@@ -71,7 +75,22 @@ public class PlayerMovementScript : MonoBehaviour
     {
         Player = this.GetComponent<Rigidbody>();
         HealthBar.SetHealthBar(Health/MaxHealth);
+        //StaminaBar.SetStaminaBar(Stamina/MaxStamina);
         //PlayerTransform = this.GetComponent<Transform>();
+    }
+
+    void updateStamina(float val){
+        Stamina += val;
+        if (Stamina > MaxStamina){
+            Stamina = MaxStamina;
+        }
+        else if (Stamina < 0){
+            Stamina = 0;
+        }
+        //StaminaBar.SetStaminaBar(Stamina/MaxStamina);
+        Debug.Log(Stamina);
+        Debug.Log("max is" + MaxStamina);
+        return;
     }
 
     void updateDelay(){
@@ -80,6 +99,7 @@ public class PlayerMovementScript : MonoBehaviour
         if (dashCooldown < dashCooldownDefault){
             dashCooldown = 0;
         }
+        updateStamina(Time.deltaTime/3.0f);
     }
 
     void readInput(){
