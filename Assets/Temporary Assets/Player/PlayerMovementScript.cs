@@ -10,6 +10,7 @@ public class PlayerMovementScript : MonoBehaviour
     public Transform ShootLoc;
     public Transform Head;
     public HealthBar HealthBar;
+    Animator anim;
     private float Health=100.0f;
     public float MaxHealth = 200.0f;
     //public Transform PlayerTransform;
@@ -26,6 +27,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         Player = this.GetComponent<Rigidbody>();
         //PlayerTransform = this.GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -55,5 +57,19 @@ public class PlayerMovementScript : MonoBehaviour
 
         // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
         Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f)+Input.GetAxis("Horizontal") * Left + Input.GetAxis("Vertical") * Forward;
+
+        UpdateAnim();
+    }
+
+    void UpdateAnim()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            anim.SetFloat("Speed", -1);
+        }
+        else
+        {
+            anim.SetFloat("Speed", Player.velocity.magnitude);
+        }
     }
 }
