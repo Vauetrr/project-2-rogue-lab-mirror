@@ -12,7 +12,7 @@ public class PlayerMovementScript : MonoBehaviour
     public HealthBar HealthBar;
     public StaminaBar StaminaBar;
     private float Health = 100.0f;
-    private float Stamina = 1.0f;
+    private float Stamina = 100.0f;
     
     //public Transform PlayerTransform;
 
@@ -27,10 +27,16 @@ public class PlayerMovementScript : MonoBehaviour
     private float dashControl = 0.25f; // how much movements impact mid dash direction 
     private float dashCooldown = 0.0f;
     private float dashCooldownDefault = 1.0f; // how long until you can dash again.
+    private float staminaRegeneration = 15.0f; // Time.deltaTime * value
+    private float runningCost = 20.0f; // Time.deltaTime * value
+    private float dashCost = 50.0f;
+
 
     // START player state: altered by input and gameplay
     private bool guarding = false;
     private bool dashing = false;
+    private bool running = false;
+    private bool runningLock = false; // if true, player must let go and repress the run button to run again
     private bool iframed = false;
     // END player state
 
@@ -50,6 +56,9 @@ public class PlayerMovementScript : MonoBehaviour
     public int dashLimit = 1; // how many dashes can be chained.
                               // 0 = no dashes allowed.
                               // END Variables
+
+    public float runningSpeed = 1.5f; // multiplier for running speed
+                                      // 1 = normal speed, higher = faster
 
     public float MaxHealth = 200.0f;
     public float MaxStamina = 200.0f;
@@ -71,11 +80,12 @@ public class PlayerMovementScript : MonoBehaviour
         HealthBar.SetHealthBar(Health/MaxHealth);
     }
     // Start is called before the first frame update
+
     void Start()
     {
         Player = this.GetComponent<Rigidbody>();
         HealthBar.SetHealthBar(Health/MaxHealth);
-        //StaminaBar.SetStaminaBar(Stamina/MaxStamina);
+        StaminaBar.SetStaminaBar(Stamina/MaxStamina);
         //PlayerTransform = this.GetComponent<Transform>();
     }
 
@@ -87,9 +97,7 @@ public class PlayerMovementScript : MonoBehaviour
         else if (Stamina < 0){
             Stamina = 0;
         }
-        //StaminaBar.SetStaminaBar(Stamina/MaxStamina);
-        Debug.Log(Stamina);
-        Debug.Log("max is" + MaxStamina);
+        StaminaBar.SetStaminaBar(Stamina/MaxStamina);
         return;
     }
 
@@ -99,7 +107,14 @@ public class PlayerMovementScript : MonoBehaviour
         if (dashCooldown < dashCooldownDefault){
             dashCooldown = 0;
         }
-        updateStamina(Time.deltaTime/3.0f);
+        if (!dashing && !running){ // if not consuming/recently consumed stamina
+            updateStamina(Time.deltaTime * staminaRegeneration);
+        }
+        
+        if (running == true && Stamina <= (0 + runningCost)){
+            running = false;
+            runningLock = true; //requires repress for running again
+        }
     }
 
     void readInput(){
@@ -126,11 +141,36 @@ public class PlayerMovementScript : MonoBehaviour
         }
 
         //spacebar, dash
-        if (Input.GetButtonDown("Jump") && curDash < dashLimit && dashCooldown <= 0){
+        if (Input.GetButtonDown("Jump") && curDash < dashLimit && dashCooldown <= 0 && dashCost <= Stamina){
             dashing = true;
             dashStart = true;
             dashCooldown = dashCooldownDefault;
             curDash++;
+            updateStamina(-dashCost);
+        }
+        else {
+            Debug.Log(dashCost);
+            Debug.Log(Stamina);
+        }
+
+
+        //left shift, run
+        if (Input.GetButton("Fire3")){
+            if (Stamina > 0 && !runningLock){
+                running = true;
+                updateStamina(-(Time.deltaTime * runningCost));
+            }
+            else{
+                running = false;
+                runningLock = true;
+            }
+        }
+        else {
+            running = false;
+        }
+
+        if (Input.GetButtonUp("Fire3")){
+            runningLock = false;
         }
     }
 

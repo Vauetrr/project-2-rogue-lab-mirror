@@ -1280,7 +1280,7 @@ MonoBehaviour:
   ShootLoc: {fileID: 243597817}
   Head: {fileID: 137385666}
   HealthBar: {fileID: 282376369}
-  StaminaBar: {fileID: 0}
+  StaminaBar: {fileID: 912051938}
   currentWeapon: {fileID: 839252912}
   moveSpeed: 5
   dashSpeed: 20
@@ -1288,8 +1288,9 @@ MonoBehaviour:
   guardSlowdown: 0.35
   guardDamageDecrease: 0.2
   dashLimit: 1
+  runningSpeed: 1.5
   MaxHealth: 200
-  MaxStamina: 2
+  MaxStamina: 200
 --- !u!1 &216800576
 GameObject:
   m_ObjectHideFlags: 0
