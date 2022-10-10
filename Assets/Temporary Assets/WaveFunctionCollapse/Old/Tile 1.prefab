@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 3305770148948636134}
   - component: {fileID: 142883908850976677}
   - component: {fileID: 3585198575165315112}
-  m_Layer: 0
+  - component: {fileID: 353724918342958260}
+  m_Layer: 6
   m_Name: Horizontal_Flooring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3305770148948636134
 Transform:
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &353724918342958260
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416051248028291655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 0.4, z: 20}
+  m_Center: {x: -10, y: 0.2, z: -10}
 --- !u!1 &2456363402748495392
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,12 +108,12 @@ GameObject:
   - component: {fileID: 454027363221737466}
   - component: {fileID: 6421958001802154474}
   - component: {fileID: 8703900332524234347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Horizontal_Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &454027363221737466
 Transform:
@@ -240,12 +254,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6164143807368681500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6164143807368681500
 Transform:
@@ -276,12 +290,12 @@ GameObject:
   - component: {fileID: 3305824991984543068}
   - component: {fileID: 9198412076268851170}
   - component: {fileID: 960465275849817966}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Horizontal_Marble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3305824991984543068
 Transform:
@@ -364,6 +378,10 @@ PrefabInstance:
       propertyPath: Weights.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: Tiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 8751799231860374338, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[2]
       value: 

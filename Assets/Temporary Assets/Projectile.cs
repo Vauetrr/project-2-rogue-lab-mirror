@@ -22,7 +22,9 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage);
+           // collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage);
+            collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage);
+
 
         }
     }
