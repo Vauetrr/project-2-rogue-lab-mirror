@@ -4,12 +4,12 @@ Shader "Custom/Dither"
     {
         [HideInInspector]_MainTex ("Texture", 2D) = "white" {}
         _DitherPattern ("Dithering Pattern", 2D) = "white" {}
-        _Color1 ("Dither Color 1", Color) = (0, 0, 0, 1)
-        _Color2 ("Dither Color 2", Color) = (1, 1, 1, 1)
+        _MinDis ("Minimum Dither Distance", float) = 0.0
+        _MaxDis ("Maximum Dither Distance", float) = 100.0
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque" "Queue"="Geometry" }
         // dithering (https://www.ronja-tutorials.com/post/042-dithering)
         Pass
         {
@@ -27,8 +27,8 @@ Shader "Custom/Dither"
             // dither variables
             float4 _MainTex_ST;
             float4 _DitherPattern_TexelSize;
-            float4 _Color1;
-            float4 _Color2;
+            float _MinDis;
+            float _MaxDis;
 
             struct vertIn
             {
@@ -57,14 +57,17 @@ Shader "Custom/Dither"
             fixed4 frag(vertOut i) : SV_TARGET
             {
                 // calculate normal and dither values
-                fixed4 col = tex2D(_MainTex, i.uv).r;
+                fixed4 col = tex2D(_MainTex, i.uv);
                 float2 screenPos = i.screenPosition.xy / i.screenPosition.w;
                 float2 ditherCoord = screenPos * _ScreenParams.xy * _DitherPattern_TexelSize.xy;
-                float dither = tex2D(_DitherPattern, ditherCoord).r;
+                float dither = tex2D(_DitherPattern, ditherCoord);
 
-                // combine together
-                float dithered = step(dither, col);
-                return lerp(_Color1, _Color2, dithered);
+                // calculate relative distance
+                float relDis = i.screenPosition.w - _MinDis;
+                relDis = relDis / (_MaxDis - _MinDis);
+
+                clip(relDis - dither.r);
+                return col;
             }
             ENDCG
         }
