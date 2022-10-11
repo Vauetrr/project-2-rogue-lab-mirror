@@ -27,7 +27,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         Player = this.GetComponent<Rigidbody>();
         //PlayerTransform = this.GetComponent<Transform>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,18 +58,18 @@ public class PlayerMovementScript : MonoBehaviour
         // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
         Player.velocity = new Vector3(0.0f,Player.velocity.y,0.0f)+Input.GetAxis("Horizontal") * Left + Input.GetAxis("Vertical") * Forward;
 
-        UpdateAnim();
+        //UpdateAnim();
     }
 
     void UpdateAnim()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            anim.SetFloat("Speed", -1);
+            //anim.SetFloat("Speed", -1);
         }
         else
         {
-            anim.SetFloat("Speed", Player.velocity.magnitude);
+            //anim.SetFloat("Speed", Player.velocity.magnitude);
         }
     }
 }
