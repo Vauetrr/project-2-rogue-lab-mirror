@@ -24,6 +24,6 @@ public class RandomAssetGenerator : MonoBehaviour
 
         if (UseRotation) { Instantiate(Tiles[i], this.transform.position, this.transform.rotation); }
         else { Instantiate(Tiles[i], this.transform.position, Quaternion.identity); }
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
