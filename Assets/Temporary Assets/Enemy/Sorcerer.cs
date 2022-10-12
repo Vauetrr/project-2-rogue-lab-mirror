@@ -28,6 +28,7 @@ public class Sorcerer : MonoBehaviour
     {
 
         Health -= damage;
+        HealthBar.SetHealthBar(Health / MaxHealth);
         if (Health < 0.0f)
         {
             //Instantiate(EnemyDeath, this.transform.position, this.transform.rotation);
@@ -55,10 +56,10 @@ public class Sorcerer : MonoBehaviour
     {
         Attacking = true;
         anim.SetFloat("Speed",-1);
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(0.26f); 
         
         GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
-        o.GetComponent<Rigidbody>().velocity = 10.0f * (ShootLoc.position - Head.position);
+        o.GetComponent<Rigidbody>().velocity = 30.0f * (ShootLoc.position - Head.position);
         
         yield return new WaitForSeconds(0.5f);
         anim.SetFloat("Speed", 2);
@@ -68,12 +69,14 @@ public class Sorcerer : MonoBehaviour
 
     }
 
-
+    bool Stopped = false;
     IEnumerator StopNav() 
     {
+        Stopped = true;
         Agent.Stop();
         yield return new WaitForSeconds(1);
         Agent.Resume();
+        Stopped = false;
     }
     // Update is called once per frame
     void Update()
@@ -87,7 +90,10 @@ public class Sorcerer : MonoBehaviour
                 Agent.SetDestination(Player.position);
                
             }
-            else { StartCoroutine(StopNav());  }
+            else {
+                if (Stopped) { this.transform.LookAt(Player, Vector3.up); } else 
+                { StartCoroutine(StopNav()); }
+                 }
             if (!Attacking) 
             {
                 StartCoroutine(FireBallCooldown());
