@@ -38,7 +38,7 @@ public class Sword : Weapon
 
    
 
-    public override void altAttack(){
+    public override void altAttack(PlayerMovementScript player){
         
     }
 }

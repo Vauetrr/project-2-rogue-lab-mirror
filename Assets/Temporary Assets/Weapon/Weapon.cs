@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour
     }
 
     // Action for alt attacks.
-    public virtual void altAttack(){
+    public virtual void altAttack(PlayerMovementScript player){
     }
 }
 

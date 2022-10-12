@@ -27,17 +27,17 @@ public class PlayerMovementScript : MonoBehaviour
     private float dashControl = 0.25f; // how much movements impact mid dash direction 
     private float dashCooldown = 0.0f;
     private float dashCooldownDefault = 1.0f; // how long until you can dash again.
-    private float staminaRegeneration = 15.0f; // Time.deltaTime * value
+    private float staminaRegeneration = 30.0f; // Time.deltaTime * value
     private float runningCost = 20.0f; // Time.deltaTime * value
     private float dashCost = 50.0f;
-
+    private bool runButtonHeld = false;
 
     // START player state: altered by input and gameplay
     private bool guarding = false;
     private bool dashing = false;
     private bool running = false;
-    private bool runningLock = false; // if true, player must let go and repress the run button to run again
     private bool iframed = false;
+    private bool defaultState = true;
     // END player state
 
 
@@ -57,7 +57,7 @@ public class PlayerMovementScript : MonoBehaviour
                               // 0 = no dashes allowed.
                               // END Variables
 
-    public float runningSpeed = 1.5f; // multiplier for running speed
+    public float runSpeed = 1.5f; // multiplier for running speed
                                       // 1 = normal speed, higher = faster
 
     public float MaxHealth = 200.0f;
@@ -71,6 +71,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
 
         Health -= damage * ((guarding && damage > 0)? guardDamageDecrease : 1);
+        Debug.Log(guarding);
         if (Health > MaxHealth) { 
             Health = MaxHealth; 
         }
@@ -111,36 +112,48 @@ public class PlayerMovementScript : MonoBehaviour
             updateStamina(Time.deltaTime * staminaRegeneration);
         }
         
-        if (running == true && Stamina <= (0 + runningCost)){
+        if (running == true && Stamina <= 0){ // Stamina CAN go below zero! But barely.
             running = false;
-            runningLock = true; //requires repress for running again
         }
     }
 
     void readInput(){
 
+        defaultState = (!guarding && !dashing);
+
         //left mouse, normal attack
-        if (Input.GetButtonDown("Fire1") && !guarding) {
+        if (Input.GetButtonDown("Fire1") && defaultState) {
             currentWeapon.normalDown(this);
+            running = false;
         }
 
-        if (Input.GetButtonUp("Fire1") && !guarding) {
+        if (Input.GetButtonUp("Fire1") && defaultState) {
             currentWeapon.normalUp(this);
+            running = false;
         }
 
-        if (Input.GetButton("Fire1") && !guarding) {
+        if (Input.GetButton("Fire1") && defaultState) {
             currentWeapon.normalHold(this);
+            running = false;
         }
 
-        //right mouse, guard
-        if (Input.GetButton("Fire2")){ 
+        // right mouse, alt fire 
+        if (Input.GetButton("Fire2") && defaultState){
+            Debug.Log("Using alt fire!");
+            currentWeapon.altAttack(this);
+            running = false;
+        }
+
+        // hold shift to guard
+        if (Input.GetButton("Fire3") && !dashing){ 
             guarding = true;
+            running = false; //can't dash and guard at the same time
         }
         else {
             guarding = false;
         }
 
-        //spacebar, dash
+        //spacebar, dash; hold post-dash to run until spacebar let go
         if (Input.GetButtonDown("Jump") && curDash < dashLimit && dashCooldown <= 0 && dashCost <= Stamina){
             dashing = true;
             dashStart = true;
@@ -148,29 +161,17 @@ public class PlayerMovementScript : MonoBehaviour
             curDash++;
             updateStamina(-dashCost);
         }
-        else {
-            Debug.Log(dashCost);
-            Debug.Log(Stamina);
-        }
 
-
-        //left shift, run
-        if (Input.GetButton("Fire3")){
-            if (Stamina > 0 && !runningLock){
-                running = true;
+        if (Input.GetButton("Jump")){
+            if (running) { // held dash button long enough to trigger running
                 updateStamina(-(Time.deltaTime * runningCost));
-            }
-            else{
-                running = false;
-                runningLock = true;
-            }
+            } 
+            
+            runButtonHeld = true;
         }
         else {
+            runButtonHeld = false;
             running = false;
-        }
-
-        if (Input.GetButtonUp("Fire3")){
-            runningLock = false;
         }
     }
 
@@ -203,6 +204,10 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (dashTime < iframedDefault){
             iframed = false;
+            if (runButtonHeld){
+                running = true;
+                dashTime = 0; //end the dash early
+            }
         }
 
         if (dashTime <= 0){
@@ -223,15 +228,15 @@ public class PlayerMovementScript : MonoBehaviour
         // Vector3 dir = new Vector2(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
         Vector2 dir = Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
         dir = dir.normalized;
-        float slowV = guarding?guardSlowdown:1;
+        float slowV = running?runSpeed:(guarding?guardSlowdown:1);
         Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateDelay();
         readInput();
+        updateDelay();
 
         Ray ShootLocation = PlayerCamera.ScreenPointToRay(Input.mousePosition);
         float al = ShootLocation.direction.y;//Vector3.Dot(ShootLocation.direction, new Vector3(0.0f,1.0f,0.0f));

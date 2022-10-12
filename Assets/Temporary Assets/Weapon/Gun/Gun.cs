@@ -28,7 +28,7 @@ public class Gun:Weapon{
         }
     }
 
-    public override void altAttack(){
+    public override void altAttack(PlayerMovementScript player){
         
     }
 }
