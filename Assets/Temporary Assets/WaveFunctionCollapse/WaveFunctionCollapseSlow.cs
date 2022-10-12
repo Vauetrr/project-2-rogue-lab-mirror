@@ -378,12 +378,20 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
         }
         int StartI = 5, StartX = 10, StartY = 4, StartZ = 10;
         
-        //SetTile(StartX, StartY, StartZ, StartI);
+        SetTile(StartX, StartY, StartZ, StartI);
         //for (int x = 0; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
         //for (int x = 0; x < SizeX; x++) { SetTile(x, 0, SizeZ-1, 1); }
         //for (int z = 1; z < SizeZ-1; z++) { SetTile(0, 0, z, 1); }
         //for (int z = 1; z < SizeZ-1; z++) { SetTile(SizeX-1, 0, z, 1); }   
-        
+        //SetTile(3, 4, 0, 2);
+        SetTile(0, 0, 0, 1);
+        SetTile(1, 0, 0, 1);
+        for (int x = 5; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
+        for (int x = 0; x < SizeX; x++) { SetTile(x, 0, SizeZ - 1, 1); }
+        for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
+        for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
+
+        SetTile(3, 4, 0, 2);
         for (int TileIndex = 0; TileIndex < SizeX * SizeY * SizeZ - UsedTiles; TileIndex++)
         //for (int TileIndex = 0; TileIndex < 20; TileIndex++)
         {

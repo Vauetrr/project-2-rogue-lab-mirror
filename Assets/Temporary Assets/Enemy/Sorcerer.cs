@@ -55,14 +55,14 @@ public class Sorcerer : MonoBehaviour
     IEnumerator FireBallCooldown() 
     {
         Attacking = true;
-        anim.SetFloat("Speed",-1);
+        anim.SetBool("Attack", true);
         yield return new WaitForSeconds(0.26f); 
         
         GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
         o.GetComponent<Rigidbody>().velocity = 30.0f * (ShootLoc.position - Head.position);
         
         yield return new WaitForSeconds(0.5f);
-        anim.SetFloat("Speed", 2);
+        anim.SetBool("Attack", false);
         yield return new WaitForSeconds(ShootCoolDown);
 
         Attacking = false;
@@ -85,6 +85,8 @@ public class Sorcerer : MonoBehaviour
         float Dist2 = (this.transform.position - Player.position).sqrMagnitude;
         if (Dist2< FollowDist)
         {
+            //anim.SetInt("MoveState",1);
+            anim.SetInteger("MoveState", 1);
             if (Dist2 > FireDistance)
             {
                 Agent.SetDestination(Player.position);
@@ -99,13 +101,6 @@ public class Sorcerer : MonoBehaviour
                 StartCoroutine(FireBallCooldown());
             }
            
-            /*time += Time.deltaTime;
-            if (time >= ShootCoolDown)
-            {
-                GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
-                o.GetComponent<Rigidbody>().velocity = 10.0f * (ShootLoc.position - Head.position);
-                time = 0.0f;
-            }*/
         }
         else { }
 

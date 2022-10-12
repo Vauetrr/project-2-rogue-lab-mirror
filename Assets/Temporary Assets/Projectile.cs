@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, lifeTime);
-        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -22,10 +21,8 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-           // collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage);
-            collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage);
-
-
+            if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage); }
+            else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage); }
         }
     }
     // Update is called once per frame

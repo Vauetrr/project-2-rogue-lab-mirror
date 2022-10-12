@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6772431161270865218}
   m_Layer: 0
   m_Name: Wall x (1)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 8326137142397013590}
   m_Layer: 0
   m_Name: Wall z (1)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 4627910404999303766}
   m_Layer: 0
   m_Name: Ground (4)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
