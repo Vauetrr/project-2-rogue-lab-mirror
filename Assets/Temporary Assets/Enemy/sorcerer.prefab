@@ -1811,7 +1811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6579819169776199689}
-  - component: {fileID: 6546521396478534147}
+  - component: {fileID: 7338424234577577226}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -1838,7 +1838,7 @@ Transform:
   m_Father: {fileID: 8751799231875894998}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6546521396478534147
+--- !u!95 &7338424234577577226
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1848,7 +1848,7 @@ Animator:
   m_GameObject: {fileID: 5772460239213343411}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd4c416b709796a45bb1df1903457a7d, type: 3}
-  m_Controller: {fileID: 9100000, guid: b34d26f567f6d114ea6f8029a8643a30, type: 2}
+  m_Controller: {fileID: 9100000, guid: 91a34365e6ff3594d859e358a0a55e6f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3754,7 +3754,7 @@ MonoBehaviour:
   MaxHealth: 100
   FireDistance: 100
   model: {fileID: 5772460239213343411}
-  anim: {fileID: 6546521396478534147}
+  anim: {fileID: 7338424234577577226}
 --- !u!1 &8751799232006203400
 GameObject:
   m_ObjectHideFlags: 0
