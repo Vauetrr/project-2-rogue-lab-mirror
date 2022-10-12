@@ -10,10 +10,10 @@ public class PlayerMovementScript : MonoBehaviour
     public Transform ShootLoc;
     public Transform Head;
     public HealthBar HealthBar;
-    public StaminaBar StaminaBar;
+    public HealthBar StaminaBar;
     private float Health = 100.0f;
     private float Stamina = 100.0f;
-    
+
     //public Transform PlayerTransform;
 
     //private double fireDelay = 0;
@@ -91,7 +91,8 @@ public class PlayerMovementScript : MonoBehaviour
     {
         Player = this.GetComponent<Rigidbody>();
         HealthBar.SetHealthBar(Health/MaxHealth);
-        StaminaBar.SetStaminaBar(Stamina/MaxStamina);
+        StaminaBar.SetHealthBar(Stamina/MaxStamina);
+
         //PlayerTransform = this.GetComponent<Transform>();
     }
 
@@ -103,7 +104,7 @@ public class PlayerMovementScript : MonoBehaviour
         else if (Stamina < 0){
             Stamina = 0;
         }
-        StaminaBar.SetStaminaBar(Stamina/MaxStamina);
+        StaminaBar.SetHealthBar(Stamina/MaxStamina);
         return;
     }
 
@@ -256,14 +257,10 @@ public class PlayerMovementScript : MonoBehaviour
         float val = Head.position.y - ShootLocation.origin.y;//(PlayerTransform.position - PlayerCamera.transform.position).y; //(center - .Origin).Dot(normal);
         float T = (val / al);
         Vector3 LookLoc = T * ShootLocation.direction + ShootLocation.origin;
-        
+
         if (!attacking || ((currentWeapon.attacking() && !currentWeapon.lockDirectionDuringAttack)
             || (altWeapon.attacking() && !altWeapon.lockDirectionDuringAttack))){
-            Debug.Log("Hey");
             Head.LookAt(LookLoc, new Vector3(0.0f,1.0f,0.0f));
-        }
-        else {
-            Debug.Log("YOOOOOOOOOOO");
         }
 
 
