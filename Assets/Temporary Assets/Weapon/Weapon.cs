@@ -11,11 +11,11 @@ public enum weaponEnum {
 
 public class Weapon : MonoBehaviour
 {
-
     // Identifier for weapon type. 
-    public weaponEnum weaponType = weaponEnum.Nothing;
+    //public weaponEnum weaponType = weaponEnum.Nothing;
 
-
+    // if true, locks player view direction during attack
+    public bool lockDirectionDuringAttack = false;
     // Refresh weapon attack delay, if applicable
     public virtual void updateDelay() {
     }
@@ -37,6 +37,13 @@ public class Weapon : MonoBehaviour
 
     // Action for alt attacks.
     public virtual void altAttack(PlayerMovementScript player){
+    }
+
+    public virtual bool attacking(){
+        return false; // you can't attack in this state
+    }
+
+    public virtual void getDirection(PlayerMovementScript player){
     }
 }
 

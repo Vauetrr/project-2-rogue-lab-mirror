@@ -7,12 +7,16 @@ public class Sword : Weapon
     //public new weaponEnum weaponType = weaponEnum.Sword;
     private float AttackDelay = 0;
     //private GameObject Projectile;
-    private float AttackSpeed = 2; // delay between attacks. 
+    private float AttackSpeed = 2.9f; // delay between attacks. 
                                      // lower value = faster attacks
                                      // modified by Player's attackSpeed
     public GameObject SwordTrigger;
     public Animator SwordAnimator;
     private bool CanAttack = true;
+
+    public Sword(){
+        lockDirectionDuringAttack = true;
+    }
     IEnumerator UpdateDelay()
     {
         yield return new WaitForSeconds(AttackDelay);
@@ -40,6 +44,10 @@ public class Sword : Weapon
 
     public override void altAttack(PlayerMovementScript player){
         
+    }
+
+    public override bool attacking(){
+        return !CanAttack;
     }
 }
 
