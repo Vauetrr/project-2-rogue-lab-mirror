@@ -38,6 +38,7 @@ public class AiFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HealthBar.SetHealthBar(Health / MaxHealth);
         Agent = this.GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
     }
