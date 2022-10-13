@@ -1277,6 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 708064423}
+  LowHealth: {fileID: 2100000, guid: 297e54ffda7f19f4c931a517ae426c3c, type: 2}
   ShootLoc: {fileID: 243597817}
   Head: {fileID: 137385666}
   HealthBar: {fileID: 282376369}
@@ -4019,6 +4020,7 @@ GameObject:
   - component: {fileID: 708064424}
   - component: {fileID: 708064423}
   - component: {fileID: 708064422}
+  - component: {fileID: 708064425}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -27820,7 +27822,7 @@ Transform:
   - {fileID: 1294049533}
   - {fileID: 1491794502}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1747743705
 GameObject:
