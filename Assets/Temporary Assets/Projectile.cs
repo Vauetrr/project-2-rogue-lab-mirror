@@ -26,6 +26,11 @@ public class Projectile : MonoBehaviour
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(damage); }
 
         }
+        else if (collision.gameObject.tag == "Interactable")
+        {
+            if (collision.gameObject.GetComponent<BreakBox>()) { collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(damage); }
+
+        }
     }
     // Update is called once per frame
     void Update()

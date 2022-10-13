@@ -92,13 +92,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593912737359441232}
-  - component: {fileID: 593912737359441233}
   - component: {fileID: 593912737359441234}
   - component: {fileID: 593912737359441235}
   - component: {fileID: 593912737359441236}
   m_Layer: 0
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,20 +118,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &593912737359441233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593912737359441237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4127db9b873c8674aa9535303adc7f36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
-  PickUp: {fileID: 0}
 --- !u!65 &593912737359441234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -176,3 +161,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7338390310411031644, guid: 9cfb601107ac5b742b86c92d05a8ea1b, type: 3}
+  health: 1

@@ -6,7 +6,9 @@ public class PlayerMovementScript : MonoBehaviour
 {
     private Rigidbody Player;
     public Camera PlayerCamera;
-   // public GameObject Projectile;
+    // public GameObject Projectile;
+    public Material LowHealth;
+
     public Transform ShootLoc;
     public Transform Head;
     public HealthBar HealthBar;
@@ -83,12 +85,27 @@ public class PlayerMovementScript : MonoBehaviour
         else if (Health < 0) { 
             Debug.Log("Implement Dying here"); 
         }
-        HealthBar.SetHealthBar(Health/MaxHealth);
+        float HeathPercentage = Health / MaxHealth;
+        HealthBar.SetHealthBar(HeathPercentage);
+
+        LowHealth.SetFloat("_BlurSize", Mathf.Pow(1.0f- HeathPercentage,10));
+        LowHealth.SetFloat("_Greyscale", (1.0f-HeathPercentage)  );
+        LowHealth.SetFloat("_Radius", 2.0f*(HeathPercentage));
+        //_StdDeviation
+        //_Radius
+        //_Feather
+
     }
     // Start is called before the first frame update
 
     void Start()
     {
+        Health = MaxHealth;
+        LowHealth.SetFloat("_BlurSize", 0.0f);
+        LowHealth.SetFloat("_Greyscale", 0.0f);
+        LowHealth.SetFloat("_Radius", 2.0f);
+
+        Stamina = MaxStamina;
         Player = this.GetComponent<Rigidbody>();
         HealthBar.SetHealthBar(Health/MaxHealth);
         StaminaBar.SetHealthBar(Stamina/MaxStamina);
