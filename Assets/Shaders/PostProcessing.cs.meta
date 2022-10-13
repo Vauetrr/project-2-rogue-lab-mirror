@@ -3,7 +3,9 @@ guid: f571ca7d671b47244a4436a2b0e21554
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lowHealth: {fileID: 2100000, guid: 297e54ffda7f19f4c931a517ae426c3c, type: 2}
+  - dither: {fileID: 2100000, guid: eebdd45b9b553854e85879be6f0bd6b9, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
