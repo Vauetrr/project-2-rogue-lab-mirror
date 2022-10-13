@@ -13,7 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
     public Transform Head;
     public HealthBar HealthBar;
     public HealthBar StaminaBar;
-    private float Health = 100.0f;
+    private float Health = 200.0f;
     private float Stamina = 100.0f;
 
     //public Transform PlayerTransform;
@@ -64,12 +64,19 @@ public class PlayerMovementScript : MonoBehaviour
                               // 0 = no dashes allowed.
                               // END Variables
 
-    public float sprintSpeed = 1.5f; // multiplier for sprinting speed
+    public float sprintSpeed = 1.75f; // multiplier for sprinting speed
                                       // 1 = normal speed, higher = faster
 
     public float MaxHealth = 200.0f;
     public float MaxStamina = 200.0f;
 
+    public void SetHealthBlur(){
+        float visualHealth = (Health / MaxHealth) > 0.5f? 1: (Health/MaxHealth)*2;
+        LowHealth.SetFloat("_BlurSize", Mathf.Pow(1.0f - visualHealth,100));
+        LowHealth.SetFloat("_Greyscale", (1.0f-visualHealth) );
+        LowHealth.SetFloat("_Radius", 2.0f*visualHealth);
+    }
+    
     public void DecreaseHealth(float damage) 
     {
         //Debug.Log("e");
@@ -85,12 +92,9 @@ public class PlayerMovementScript : MonoBehaviour
         else if (Health < 0) { 
             Debug.Log("Implement Dying here"); 
         }
-        float HeathPercentage = Health / MaxHealth;
-        HealthBar.SetHealthBar(HeathPercentage);
 
-        LowHealth.SetFloat("_BlurSize", Mathf.Pow(1.0f- HeathPercentage,10));
-        LowHealth.SetFloat("_Greyscale", (1.0f-HeathPercentage)  );
-        LowHealth.SetFloat("_Radius", 2.0f*(HeathPercentage));
+        HealthBar.SetHealthBar(Health / MaxHealth);
+        SetHealthBlur();
         //_StdDeviation
         //_Radius
         //_Feather
@@ -100,7 +104,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     void Start()
     {
-        Health = MaxHealth;
+        //sHealth = MaxHealth;
         LowHealth.SetFloat("_BlurSize", 0.0f);
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
@@ -109,6 +113,8 @@ public class PlayerMovementScript : MonoBehaviour
         Player = this.GetComponent<Rigidbody>();
         HealthBar.SetHealthBar(Health/MaxHealth);
         StaminaBar.SetHealthBar(Stamina/MaxStamina);
+
+        SetHealthBlur();
 
         //PlayerTransform = this.GetComponent<Transform>();
     }

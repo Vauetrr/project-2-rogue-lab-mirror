@@ -1291,7 +1291,7 @@ MonoBehaviour:
   attackSlowdown: 0.5
   guardDamageDecrease: 0.2
   dashLimit: 1
-  sprintSpeed: 1.5
+  sprintSpeed: 1.75
   MaxHealth: 200
   MaxStamina: 200
 --- !u!1 &216800576
