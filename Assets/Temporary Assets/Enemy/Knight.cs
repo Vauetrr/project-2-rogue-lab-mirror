@@ -2,25 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-
-public class Sorcerer : MonoBehaviour
+public class Knight : MonoBehaviour
 {
     public float FollowDist;
-    public GameObject EnemyDeath;
-    // public GameObject Enemy;
-    public GameObject Projectile;
-    //public 
     private Transform Player;
-    public Transform Head;
-    public Transform ShootLoc;
-    public float ShootCoolDown;
+    public GameObject Sword;
+    public float AttackCoolDown;
     NavMeshAgent Agent;
     private float time = 0.0f;
     public HealthBar HealthBar;
     private float Health = 100.0f;
     public float MaxHealth = 200.0f;
-    public float FireDistance = 100.0f;
+    public float AttackDistance = 100.0f;
 
     public GameObject model;
     public Animator anim;
@@ -32,8 +25,7 @@ public class Sorcerer : MonoBehaviour
         if (Health < 0.0f)
         {
             //Instantiate(EnemyDeath, this.transform.position, this.transform.rotation);
-            
-            anim.enabled=false;
+            anim.enabled = false;
             model.transform.parent = null;
             Destroy(transform.parent.gameObject);
             //Destroy(Enemy);
@@ -52,32 +44,29 @@ public class Sorcerer : MonoBehaviour
     }
 
     bool Attacking = false;
-    IEnumerator FireBallCooldown() 
+    IEnumerator FireBallCooldown()
     {
         Attacking = true;
+        Sword.SetActive(true);
         anim.SetBool("Attack", true);
-        yield return new WaitForSeconds(0.45f); 
-        
-        GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
-        o.GetComponent<Rigidbody>().velocity = 30.0f * (ShootLoc.position - Head.position);
-        
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         anim.SetBool("Attack", false);
-        yield return new WaitForSeconds(ShootCoolDown);
+        Sword.SetActive(false);
+        yield return new WaitForSeconds(AttackCoolDown);
 
         Attacking = false;
 
     }
 
     bool Stopped = false;
-    IEnumerator StopNav() 
+    IEnumerator StopNav()
     {
         anim.SetInteger("MoveState", 0);
         Stopped = true;
         Agent.Stop();
         yield return new WaitForSeconds(1);
         Agent.Resume();
-        Stopped = false; 
+        Stopped = false;
         //anim.SetInteger("MoveState", 1);
     }
     // Update is called once per frame
@@ -85,28 +74,29 @@ public class Sorcerer : MonoBehaviour
     {
 
         float Dist2 = (this.transform.position - Player.position).sqrMagnitude;
-        if (Dist2< FollowDist)
+        if (Dist2 < FollowDist)
         {
             //anim.SetInt("MoveState",1);
-           
-            if (Dist2 > FireDistance)
+
+            if (Dist2 > AttackDistance)
             {
                 Agent.SetDestination(Player.position);
                 anim.SetInteger("MoveState", 1);
             }
-            else {
-                if (Stopped) { this.transform.LookAt(Player, Vector3.up); } else 
+            else
+            {
+                if (Stopped) { this.transform.LookAt(Player, Vector3.up); }
+                else
                 { StartCoroutine(StopNav()); }
-                 }
-            if (!Attacking) 
+            }
+            if (!Attacking)
             {
                 StartCoroutine(FireBallCooldown());
             }
-           
+
         }
         else { }
 
     }
 
 }
-

@@ -646,7 +646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1662778129212125232}
-  - component: {fileID: 1196240730631742855}
+  - component: {fileID: 511400667105436066}
   m_Layer: 0
   m_Name: Golumbits5b
   m_TagString: Untagged
@@ -684,7 +684,7 @@ Transform:
   m_Father: {fileID: 9058238710746454286}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!95 &1196240730631742855
+--- !u!95 &511400667105436066
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -694,7 +694,7 @@ Animator:
   m_GameObject: {fileID: 2042539981306227338}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 855714ceb51978f43b7381c7fd25ada5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6ad683f5f410def4e872e469dd489e0a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -23,6 +23,8 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage); }
+            else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(damage); }
+
         }
     }
     // Update is called once per frame
