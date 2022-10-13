@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    public Animator anim;
     private Rigidbody Player;
     public Camera PlayerCamera;
     // public GameObject Projectile;
@@ -141,16 +142,53 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
+
+
+    //private bool Attacking = false;
+    public int AttackChainCounter = 0;
+    /*IEnumerator AnimationChain() 
+    {
+        Attacking = true;
+        anim.SetInteger("AttackChain", 1);
+        yield return new WaitForSeconds(0.5f);
+        if (AttackChainCounter > 1)
+        {
+            anim.SetInteger("AttackChain", 2);
+            yield return new WaitForSeconds(0.5f);
+            if (AttackChainCounter > 2)
+            {
+                anim.SetInteger("AttackChain", 3);
+                yield return new WaitForSeconds(0.5f);
+                if (AttackChainCounter > 3)
+                {
+                    anim.SetInteger("AttackChain", 4);
+                }
+            }
+        }
+        anim.SetInteger("AttackChain", 0);
+        AttackChainCounter = 0;
+        Attacking = false;
+    }*/
+    
     void readInput(){
 
         defaultState = (!guarding && !dashing);
         attacking = currentWeapon.attacking() || altWeapon.attacking();
 
-        if (!attacking) {
+        if (Input.GetButtonDown("Fire1") && defaultState)
+        { 
+            AttackChainCounter++;
+        }
+
+        if (!attacking)
+        {
 
             //left mouse, normal attack
             if (Input.GetButtonDown("Fire1") && defaultState)
             {
+                
+                //if (!Attacking) { StartCoroutine(AnimationChain()); }
+
                 currentWeapon.normalDown(this);
                 sprinting = false;
             }
@@ -163,6 +201,7 @@ public class PlayerMovementScript : MonoBehaviour
 
             if (Input.GetButton("Fire1") && defaultState)
             {
+
                 currentWeapon.normalHold(this);
                 sprinting = false;
             }
@@ -175,6 +214,7 @@ public class PlayerMovementScript : MonoBehaviour
                 sprinting = false;
             }
         }
+
 
         // hold shift to guard
         if (Input.GetButton("Fire3") && !dashing){ 

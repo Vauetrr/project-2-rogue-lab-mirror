@@ -5,17 +5,17 @@ using UnityEngine;
 public class SwordHit : MonoBehaviour
 {
 
-    public float SwingDuration=1.0f;
+   // public float SwingDuration=1.0f;
     public float Damage = 20.0f;
-    public Animator SwordAnimator;
+   // public Animator SwordAnimator;
     // Start is called before the first frame update
-    void OnEnable()
+    /*void OnEnable()
     {
         //PlayAnimation();
         StartCoroutine(Swing());
-    }
+    }*/
 
-    IEnumerator Swing()
+    /*IEnumerator Swing()
     { 
         yield return new WaitForSeconds(SwingDuration);
         //this.enabled = false;
@@ -23,7 +23,7 @@ public class SwordHit : MonoBehaviour
         SwordAnimator.SetBool("SwingSword", false);
         this.gameObject.SetActive(false);
        
-    }
+    }*/
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -35,7 +35,11 @@ public class SwordHit : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage);
+            if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage); }
+            else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage); }
+            else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage); }
+
+            // collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage);
             //Destroy(gameObject, 0);
         }
         else if (collision.gameObject.tag == "Interactable")

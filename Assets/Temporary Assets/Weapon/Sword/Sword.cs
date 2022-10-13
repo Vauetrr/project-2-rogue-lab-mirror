@@ -11,8 +11,33 @@ public class Sword : Weapon
                                      // lower value = faster attacks
                                      // modified by Player's attackSpeed
     public GameObject SwordTrigger;
-    public Animator SwordAnimator;
+    //public Animator SwordAnimator;
+    public Animator anim;
+    public PlayerMovementScript Player;
     private bool CanAttack = true;
+    IEnumerator AnimationChain()
+    {
+        anim.SetInteger("AttackChain", 1);
+        yield return new WaitForSeconds(0.5f);
+        if (Player.AttackChainCounter > 1)
+        {
+            anim.SetInteger("AttackChain", 2);
+            yield return new WaitForSeconds(0.5f);
+            if (Player.AttackChainCounter > 2)
+            {
+                anim.SetInteger("AttackChain", 3);
+                yield return new WaitForSeconds(0.5f);
+                if (Player.AttackChainCounter > 3)
+                {
+                    anim.SetInteger("AttackChain", 4);
+                }
+            }
+        }
+        anim.SetInteger("AttackChain", 0);
+        Player.AttackChainCounter = 0;
+        SwordTrigger.SetActive(false);
+        CanAttack = true;
+    }
 
     public Sword(){
         lockDirectionDuringAttack = true;
@@ -34,9 +59,11 @@ public class Sword : Weapon
         if (CanAttack) { 
             AttackDelay = AttackSpeed * player.attackSpeed;
             CanAttack = false;
-            StartCoroutine(UpdateDelay());
-            SwordAnimator.SetBool("SwingSword",true);
+            //StartCoroutine(UpdateDelay());
+            //SwordAnimator.SetBool("SwingSword",true);
             SwordTrigger.SetActive(true);
+            StartCoroutine(AnimationChain());
+           
         }
     }
 
