@@ -4092,8 +4092,6 @@ Transform:
   m_Father: {fileID: 168718763}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!114 &708064425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4107,7 +4105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowHealth: {fileID: 2100000, guid: 297e54ffda7f19f4c931a517ae426c3c, type: 2}
->>>>>>> shaderTest
 --- !u!1 &725049169
 GameObject:
   m_ObjectHideFlags: 0
