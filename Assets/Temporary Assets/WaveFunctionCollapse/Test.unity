@@ -2279,6 +2279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 5168960037890019138, guid: 4fcf4911dc66dfb4496e33fc733eadd4, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5168960037890019139, guid: 4fcf4911dc66dfb4496e33fc733eadd4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3115,6 +3119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sorcerer
       objectReference: {fileID: 0}
+    - target: {fileID: 8751799231860374338, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8751799231860374339, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3163,6 +3171,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1030883130}
+    - target: {fileID: 8751799231875894999, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 7182838915401135287, guid: a8991fce123c4c843b5062816d830be8, type: 3}
     m_RemovedComponents:
     - {fileID: 7338424234577577226, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
     m_AddedGameObjects: []
@@ -7505,6 +7517,14 @@ PrefabInstance:
     - target: {fileID: 5407139353842344659, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407139355371117340, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 7355547410817782026, guid: 57b8d9c6dd77b7a40a72f628223eae38, type: 3}
+    - target: {fileID: 5407139355371117340, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+      propertyPath: velocityMultiplier
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

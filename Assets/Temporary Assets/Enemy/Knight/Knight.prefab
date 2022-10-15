@@ -3794,7 +3794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowDist: 500
-  Sword: {fileID: 248246019107663476}
+  Sword: {fileID: 1443709328852749566}
   AttackCoolDown: 1
   HealthBar: {fileID: 5168960038303767562}
   MaxHealth: 100
@@ -6607,9 +6607,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
---- !u!1 &248246019107663476 stripped
+--- !u!1 &1443709328852749566 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1005602180849792463, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1913038456445359941, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
   m_PrefabInstance: {fileID: 1046365270529661883}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8093015164330646358 stripped
