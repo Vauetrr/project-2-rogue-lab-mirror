@@ -3746,7 +3746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowDist: 500
   EnemyDeath: {fileID: 4849677446812404666, guid: b641f8887550a794180ce4699f397361, type: 3}
-  Projectile: {fileID: 7182838915401135287, guid: a8991fce123c4c843b5062816d830be8, type: 3}
+  Projectile: {fileID: 7355547410817782026, guid: 57b8d9c6dd77b7a40a72f628223eae38, type: 3}
   Head: {fileID: 8751799231365429396}
   ShootLoc: {fileID: 8751799230663978367}
   ShootCoolDown: 2

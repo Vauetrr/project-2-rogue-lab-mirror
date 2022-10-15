@@ -6,7 +6,7 @@ public class GunProjectile : MonoBehaviour
 {
     public float lifeTime = 10.0f;  
     public float damage = 100.0f;
-
+    public GameObject Explosion;
     void Start() 
     {
         Destroy(gameObject, lifeTime);
@@ -22,12 +22,14 @@ public class GunProjectile : MonoBehaviour
             if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(damage); }
-            Destroy(gameObject, 0);
+           
         }
         else if (collision.gameObject.tag == "Interactable")
         {
             if (collision.gameObject.GetComponent<BreakBox>()) { collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(damage); }
-            Destroy(gameObject, 0);
+            
         }
+        Instantiate(Explosion,this.transform.position, Quaternion.identity);
+        Destroy(gameObject, 0);
     }
 }

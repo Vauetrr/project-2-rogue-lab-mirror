@@ -2544,7 +2544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9058238710536246337
 Transform:
   m_ObjectHideFlags: 0
@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowDist: 300
   EnemyDeath: {fileID: 2273065408672305745, guid: 99b172ace855d9e4196e90894e1426b9, type: 3}
-  Projectile: {fileID: 7734296527587268669, guid: 151ad385eaae53946a6f4c0723e90cc4, type: 3}
+  Projectile: {fileID: 7355547410817782026, guid: 57b8d9c6dd77b7a40a72f628223eae38, type: 3}
   Head: {fileID: 9058238709131858764}
   ShootLoc: {fileID: 9058238711005374747}
   ShootCoolDown: 0.5

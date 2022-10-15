@@ -18,15 +18,15 @@ public class Sword : Weapon
     IEnumerator AnimationChain()
     {
         anim.SetInteger("AttackChain", 1);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         if (Player.AttackChainCounter > 1)
         {
             anim.SetInteger("AttackChain", 2);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
             if (Player.AttackChainCounter > 2)
             {
                 anim.SetInteger("AttackChain", 3);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1.0f);
                 if (Player.AttackChainCounter > 3)
                 {
                     anim.SetInteger("AttackChain", 4);
