@@ -12,9 +12,11 @@ public class PostProcessing : MonoBehaviour
 
     void Update()
     {
-        int layerMask = 1 << 8; // only check for collisions with "dither"
-        var dir = transform.parent.position - transform.position;
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, ditherCatchRadius, dir, dir.magnitude, layerMask);
+        int layerMask = (1 << 6) | (1 << 8); // only check for collisions with "walkable" or "dither"
+        var dir = (transform.parent.position + new Vector3(0, 5.0f, 0)) - transform.position;
+        var halfExtents = new Vector3(4.0f, 5.0f, 0.5f);
+        RaycastHit[] hits = Physics.BoxCastAll(
+            transform.position, halfExtents, dir, Quaternion.identity, dir.magnitude, layerMask);
         Dictionary<Transform, Shader> newOccluders = new Dictionary<Transform, Shader>();
 
         // fade out each occluder

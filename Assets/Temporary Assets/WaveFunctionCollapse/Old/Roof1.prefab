@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4280610028916644568}
   - component: {fileID: 7454202833826639545}
   - component: {fileID: 4354202478914375074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Lintle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6802874250041006952}
   - component: {fileID: 6089894178210487724}
   - component: {fileID: 8585329966444404296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 3774023961759773147}
   - component: {fileID: 6855045172594593634}
   - component: {fileID: 2280616168637066951}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 3725608209852429682}
   - component: {fileID: 5291175221595554298}
   - component: {fileID: 7255327818563572761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Small_Lintle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7722104800987451607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 3400323967344657551}
   - component: {fileID: 7437024792143766545}
   - component: {fileID: 3012135884613896017}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 9213274833840087026}
   - component: {fileID: 6531815087800458904}
   - component: {fileID: 3527371335264284206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,8 +687,16 @@ PrefabInstance:
       value: roof1 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b1c66f5942cb60a47821ad82281685db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1c66f5942cb60a47821ad82281685db, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b1c66f5942cb60a47821ad82281685db, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: b1c66f5942cb60a47821ad82281685db, type: 3}
       propertyPath: m_StaticEditorFlags

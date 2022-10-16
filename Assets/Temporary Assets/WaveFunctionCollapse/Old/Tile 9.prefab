@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5912315181956637027}
   - component: {fileID: 1876098140159820285}
   - component: {fileID: 6120922220989620925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4184986106907328110}
   - component: {fileID: 9201714491576986733}
   - component: {fileID: 2512044718634059071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Fabric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1591686651548923195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 3697269223500514333}
   - component: {fileID: 6310813655579926651}
   - component: {fileID: 8964999452556768810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 5658956658663461022}
   - component: {fileID: 3770256296380638230}
   - component: {fileID: 1841050587676946933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Small_Lintle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 5286281724995507255}
   - component: {fileID: 2458579156338616974}
   - component: {fileID: 7105206483198937899}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 2545670559583665796}
   - component: {fileID: 3008129166194997312}
   - component: {fileID: 1436088746808384385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 367378002525870854}
   - component: {fileID: 6133773965206051000}
   - component: {fileID: 1509330417520394615}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 5069764350893555508}
   - component: {fileID: 1895459154790550357}
   - component: {fileID: 4706718876403951694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical_Lintle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
