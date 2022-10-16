@@ -6,6 +6,7 @@ Shader "Custom/Dither"
         _DitherPattern ("Dithering Pattern", 2D) = "white" {}
         _MinDis ("Minimum Dither Distance", float) = 0.0
         _MaxDis ("Maximum Dither Distance", float) = 100.0
+        _Alpha ("Alpha", float) = 1.0
     }
     SubShader
     {
@@ -29,6 +30,7 @@ Shader "Custom/Dither"
             float4 _DitherPattern_TexelSize;
             float _MinDis;
             float _MaxDis;
+            float _Alpha;
 
             struct vertIn
             {
@@ -58,15 +60,22 @@ Shader "Custom/Dither"
             {
                 // calculate normal and dither values
                 fixed4 col = tex2D(_MainTex, i.uv);
-                float2 screenPos = i.screenPosition.xy / i.screenPosition.w;
-                float2 ditherCoord = screenPos * _ScreenParams.xy * _DitherPattern_TexelSize.xy;
-                float dither = tex2D(_DitherPattern, ditherCoord);
+                // float2 screenPos = i.screenPosition.xy / i.screenPosition.w;
+                // float2 ditherCoord = screenPos * _ScreenParams.xy * _DitherPattern_TexelSize.xy;
+                // float dither = tex2D(_DitherPattern, ditherCoord);
 
-                // calculate relative distance
-                float relDis = i.screenPosition.w - _MinDis;
-                relDis = relDis / (_MaxDis - _MinDis);
+                // // calculate relative distance
+                // float relDis = i.screenPosition.w - _MinDis;
+                // relDis = relDis / (_MaxDis - _MinDis);
 
-                clip(relDis - dither.r);
+                // clip(relDis - dither.r);
+                float4x4 thresholdMatrix = {
+                    1.0 / 17.0,  9.0 / 17.0,  3.0 / 17.0, 11.0 / 17.0,
+                    13.0 / 17.0,  5.0 / 17.0, 15.0 / 17.0,  7.0 / 17.0,
+                    4.0 / 17.0, 12.0 / 17.0,  2.0 / 17.0, 10.0 / 17.0,
+                    16.0 / 17.0,  8.0 / 17.0, 14.0 / 17.0,  6.0 / 17.0
+                };
+                clip(_Alpha - thresholdMatrix[i.position.x % 4][i.position.y % 4]);
                 return col;
             }
             ENDCG
