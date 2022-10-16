@@ -6,7 +6,7 @@ Shader "Custom/Dither"
         _DitherPattern ("Dithering Pattern", 2D) = "white" {}
         _MinDis ("Minimum Dither Distance", float) = 0.0
         _MaxDis ("Maximum Dither Distance", float) = 100.0
-        _Alpha ("Alpha", float) = 1.0
+        _Alpha ("Alpha", float) = 0.5
     }
     SubShader
     {

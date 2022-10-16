@@ -58,7 +58,8 @@ public class Sorcerer : MonoBehaviour
         anim.SetBool("Attack", true);
         yield return new WaitForSeconds(0.45f); 
         
-        GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
+        var rot = this.transform.rotation * Quaternion.Euler(0, 180f, 0);
+        GameObject o = Instantiate(Projectile, ShootLoc.position, rot);
         o.GetComponent<Rigidbody>().velocity = 30.0f * (ShootLoc.position - Head.position);
         
         yield return new WaitForSeconds(0.5f);

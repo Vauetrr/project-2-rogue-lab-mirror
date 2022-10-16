@@ -298,7 +298,7 @@ MonoBehaviour:
   SymmetricEast: 1
   SymmetricSouth: 0
   SymmetricWest: 1
-  Weight: 1
+  Weight: 250
 --- !u!1001 &4433082161488720160
 PrefabInstance:
   m_ObjectHideFlags: 0

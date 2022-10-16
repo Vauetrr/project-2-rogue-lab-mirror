@@ -52,7 +52,8 @@ public class AiFollow : MonoBehaviour
             time += Time.deltaTime;
             if (time >= ShootCoolDown) 
             {
-                GameObject o = Instantiate(Projectile, ShootLoc.position, Quaternion.identity);
+                var rot = this.transform.rotation * Quaternion.Euler(0, 180f, 0);
+                GameObject o = Instantiate(Projectile, ShootLoc.position, rot);
                 o.GetComponent<Rigidbody>().velocity = 10.0f * (ShootLoc.position - Head.position);
                 time = 0.0f;
             }

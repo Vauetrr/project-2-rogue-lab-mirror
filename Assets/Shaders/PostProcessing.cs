@@ -6,14 +6,15 @@ public class PostProcessing : MonoBehaviour
 {
     [SerializeField] private Material lowHealth;
     [SerializeField] private Texture2D ditherTex;
-    [SerializeField] private float ditherAlpha;
+    [SerializeField] private float ditherAlpha = 0.1f;
+    [SerializeField] private float ditherCatchRadius = 1.0f;
     private Dictionary<Transform, Shader> occluders = new Dictionary<Transform, Shader>();
 
     void Update()
     {
-        int layerMask = (1 << 6) | (1 << 8); // only check for collisions with "walkable" or "dither"
+        int layerMask = 1 << 8; // only check for collisions with "dither"
         var dir = transform.parent.position - transform.position;
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, dir, dir.magnitude, layerMask);
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, ditherCatchRadius, dir, dir.magnitude, layerMask);
         Dictionary<Transform, Shader> newOccluders = new Dictionary<Transform, Shader>();
 
         // fade out each occluder
@@ -72,7 +73,7 @@ public class PostProcessing : MonoBehaviour
         {
             var mat = rend.material;
             var alpha = mat.GetFloat("_Alpha");
-            for (float a = alpha; a < 1.0; a += Time.deltaTime)
+            for (float a = alpha; a < 0.5; a += Time.deltaTime)
             {
                 mat.SetFloat("_Alpha", a);
                 yield return null;
