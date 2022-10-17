@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5076215431367029394}
   - component: {fileID: 4167488673595238807}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs2 above
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,4 +62,4 @@ MonoBehaviour:
   SymmetricEast: 1
   SymmetricSouth: 1
   SymmetricWest: 1
-  Weight: 1
+  Weight: 250

@@ -5696,10 +5696,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowDist: 500
   Sword: {fileID: 248246019107663476}
-  AttackCoolDown: 1
+  AttackCoolDown: 2
   HealthBar: {fileID: 5168960038303767562}
   MaxHealth: 100
-  AttackDistance: 2
+  AttackDistance: 25
   model: {fileID: 3606854562420891789}
   anim: {fileID: 552894679649683514}
 --- !u!1 &5168960038303767560
