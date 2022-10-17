@@ -15,7 +15,7 @@ public class GunProjectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player") {
-            // Do nothing, it's the player's projectile
+            collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
         }
         else if (collision.gameObject.tag == "Enemy")
         {
