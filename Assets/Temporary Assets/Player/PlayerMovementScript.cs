@@ -39,7 +39,7 @@ public class PlayerMovementScript : MonoBehaviour
     private bool guarding = false;
     private bool dashing = false;
     private bool sprinting = false;
-    private bool iframed = false;
+    public bool iframed = false;
     private bool defaultState = true;
     private bool attacking = false;
     // END player state
@@ -148,33 +148,8 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
-
-
-    //private bool Attacking = false;
     public int AttackChainCounter = 0;
-    /*IEnumerator AnimationChain() 
-    {
-        Attacking = true;
-        anim.SetInteger("AttackChain", 1);
-        yield return new WaitForSeconds(0.5f);
-        if (AttackChainCounter > 1)
-        {
-            anim.SetInteger("AttackChain", 2);
-            yield return new WaitForSeconds(0.5f);
-            if (AttackChainCounter > 2)
-            {
-                anim.SetInteger("AttackChain", 3);
-                yield return new WaitForSeconds(0.5f);
-                if (AttackChainCounter > 3)
-                {
-                    anim.SetInteger("AttackChain", 4);
-                }
-            }
-        }
-        anim.SetInteger("AttackChain", 0);
-        AttackChainCounter = 0;
-        Attacking = false;
-    }*/
+
     
     void readInput(){
 

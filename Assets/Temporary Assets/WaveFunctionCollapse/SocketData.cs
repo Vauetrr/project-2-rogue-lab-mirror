@@ -32,15 +32,11 @@ public class SocketData : MonoBehaviour
     public bool SymmetricWest;
 
     public int Weight=1;
-    // Start is called before the first frame update
-    /* void Start()
-     {
 
-     }
-
-     // Update is called once per frame
-     void Update()
-     {
-
-     }*/
+   /* public bool WalkableUp;
+    public bool WalkableDown;
+    public bool WalkableNorth;
+    public bool WalkableSouth;
+    public bool WalkableEast;
+    public bool WalkableWest;*/
 }

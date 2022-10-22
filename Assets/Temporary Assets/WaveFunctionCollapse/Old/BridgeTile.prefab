@@ -134,7 +134,7 @@ MonoBehaviour:
   UpAjacentType: 0
   DownAjacentType: 4
   RightZAjacentType: 1
-  LeftZAjacentType: 11
+  LeftZAjacentType: 13
   RightXAjacentType: 4
   LeftXAjacentType: 4
   UpRotation: 0

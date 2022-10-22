@@ -85,7 +85,7 @@ public class Knight : MonoBehaviour
             }
             else
             {
-                if (Stopped) { this.transform.LookAt(Player, Vector3.up); }
+                if (Stopped) { this.transform.LookAt(new Vector3(Player.position.x,this.transform.position.y, Player.position.z), Vector3.up); }
                 else
                 { StartCoroutine(StopNav()); }
             }

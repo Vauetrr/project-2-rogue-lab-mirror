@@ -13,6 +13,8 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
 
     public GameObject Error;
 
+    public Walkable walk;
+
     int[] RotationSocketOffset = { 0, 100000, 200000, 300000 };
  
     int[] TileWeights;
@@ -22,6 +24,38 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
     int[,,,] AvailableTiles;
     int TotalTiles;
     int UsedTiles =0;
+
+    bool[,,] CheckedTiles;
+    void WalkTile(int X, int Y, int Z) 
+    {
+        if ( (X <= SizeX) && (X >= 0) && (Y < SizeY) && (Y >= 0) && (Z<= SizeZ) && (Z >= 0)&&!CheckedTiles[X, Y, Z])
+        {
+
+            //Debug.Log(X +", "+ Y + "," + Z);
+            CheckedTiles[X, Y, Z] = true;
+            int Tile = Sockets[0, TileMap[X, Y, Z]] % 100000;
+            for (int i = 0; i < walk.ID_Up.Length; i++)
+            { if (walk.ID_Up[i] == Tile && walk.WalkableUp[i]) { WalkTile(X, Y + 1, Z); } }
+
+            Tile = Sockets[1, TileMap[X, Y, Z]] % 100000;
+            for (int i = 0; i < walk.ID_Down.Length; i++)
+            { if (walk.ID_Down[i] == Tile && walk.WalkableDown[i]) { WalkTile(X, Y - 1, Z); } }
+
+            Tile = Sockets[2, TileMap[X, Y, Z]] % 100000;
+            for (int i = 0; i < walk.ID_Other.Length; i++)
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X, Y, Z + 1); } }
+            Tile = Sockets[3, TileMap[X, Y, Z]] % 100000;
+            for (int i = 0; i < walk.ID_Other.Length; i++)
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X, Y, Z - 1); } }
+
+            Tile = Sockets[4, TileMap[X, Y, Z]] % 100000;
+            for (int i = 0; i < walk.ID_Other.Length; i++)
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X + 1, Y, Z); } }
+            Tile = Sockets[5, TileMap[X, Y, Z]] % 100000;
+            for (int i = 0; i < walk.ID_Other.Length; i++)
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X - 1, Y, Z); } }
+        }
+    }
     void UpdateTile(int X, int Y, int Z, int I) 
     {
         
@@ -378,13 +412,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
         }
         int StartI = 5, StartX = 10, StartY = 4, StartZ = 10;
         
-        SetTile(StartX, StartY, StartZ, StartI);
-        //for (int x = 0; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
-        //for (int x = 0; x < SizeX; x++) { SetTile(x, 0, SizeZ-1, 1); }
-        //for (int z = 1; z < SizeZ-1; z++) { SetTile(0, 0, z, 1); }
-        //for (int z = 1; z < SizeZ-1; z++) { SetTile(SizeX-1, 0, z, 1); }   
-        //SetTile(3, 4, 0, 2);
-       
+       // SetTile(StartX, StartY, StartZ, StartI);       
         
         SetTile(0, 0, 0, 1);
         SetTile(1, 0, 0, 1);
@@ -393,7 +421,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
         for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
         for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
         SetTile(3, 4, 0, 2);
-
+        
         for (int TileIndex = 0; TileIndex < SizeX * SizeY * SizeZ - UsedTiles; TileIndex++)
         //for (int TileIndex = 0; TileIndex < 20; TileIndex++)
         {
@@ -531,8 +559,19 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                 }
             }
         }
-     
 
+        CheckedTiles = new bool[SizeX,SizeY,SizeZ];
+        for (int x = 0; x < SizeX; x++)
+        {
+            for (int y = 0; y < SizeY; y++)
+            {
+                for (int z = 0; z < SizeZ; z++)
+                {
+                    CheckedTiles[x, y, z] = false;
+                }
+            }
+        }
+        WalkTile(3, 4, 0);
         for (int x = 0; x < SizeX; x++)
         {
             for (int y = 0; y < SizeY; y++)
@@ -540,6 +579,8 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                 for (int z = 0; z < SizeZ; z++)
                 {
 
+                    if (CheckedTiles[x, y, z]) {
+                        Instantiate(Error, this.transform.position + new Vector3(x * 20.0f, y * 20.0f+15.0f, z * 20.0f), Quaternion.identity); }
                     if (TileMap[x, y, z]< TotalTiles-2)
                     {
                         SocketData data;
@@ -555,6 +596,8 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                         else {
                             data = Instantiate(Tiles[TileMap[x, y, z] - 3 * Tiles.Length], this.transform.position + new Vector3(x * 20.0f, y * 20.0f, z * 20.0f), Quaternion.AngleAxis(270, new Vector3(0, 1, 0))).GetComponent<SocketData>();
                         }
+
+
                         //Optional
                         //data.UpAjacentType = Sockets[0, TileMap[x, y, z]];
                         //data.DownAjacentType = Sockets[1, TileMap[x, y, z]];

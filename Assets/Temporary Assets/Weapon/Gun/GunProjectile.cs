@@ -15,21 +15,27 @@ public class GunProjectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player") {
-            collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
+            if (!collision.gameObject.GetComponent<PlayerMovementScript>().iframed)
+            { collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
+                Instantiate(Explosion, this.transform.position, Quaternion.identity);
+                Destroy(gameObject, 0);
+            }
+       
         }
         else if (collision.gameObject.tag == "Enemy")
         {
             if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(damage); }
-           
+            Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            Destroy(gameObject, 0);
         }
         else if (collision.gameObject.tag == "Interactable")
         {
             if (collision.gameObject.GetComponent<BreakBox>()) { collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(damage); }
-            
+            Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            Destroy(gameObject, 0);
         }
-        Instantiate(Explosion,this.transform.position, Quaternion.identity);
-        Destroy(gameObject, 0);
+        
     }
 }
