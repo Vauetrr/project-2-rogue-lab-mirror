@@ -13,13 +13,13 @@ public class GamePlayManager : MonoBehaviour
        
         musicManager.SwitchTrack(1);
         EnemiesEngaged += 1;
-        if (EnemiesEngaged == 1) { musicManager.SwitchTrack(1); }
+        if (EnemiesEngaged == 1) { musicManager.FadeTrack(1, 1.0f); }//musicManager.SwitchTrack(1); }
     }
     public void EnemyKilled() 
     { 
         EnemiesKilled += 1; 
         EnemiesEngaged -= 1;
-        if (EnemiesEngaged == 0) { musicManager.SwitchTrack(0); } 
+        if (EnemiesEngaged == 0) { musicManager.FadeTrack(0, 5.0f); }//musicManager.SwitchTrack(0); } 
     }
     void Start()
     {

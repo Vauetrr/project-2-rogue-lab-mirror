@@ -511,7 +511,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.00000000273576, y: 0.2557435, z: 0.00000011920929}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -5183,10 +5183,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2634432
-  m_Height: 1.3172159
+  m_Radius: 0.082281
+  m_Height: 0.411405
   m_Direction: 1
-  m_Center: {x: 0, y: 0.65860796, z: 0}
+  m_Center: {x: 0, y: 0.2057025, z: 0}
 --- !u!54 &8959068976845527739
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9928,8 +9928,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4310636233222244990, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
 --- !u!1 &248246019107663476 stripped

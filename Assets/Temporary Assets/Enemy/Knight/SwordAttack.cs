@@ -31,7 +31,9 @@ public class SwordAttack : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage);
+            //if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage); }
+            //else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage); }
+            //else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage); }
             //Destroy(gameObject, 0);
         }
         else if (collision.gameObject.tag == "Interactable")

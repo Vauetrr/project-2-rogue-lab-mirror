@@ -25,37 +25,64 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
     int TotalTiles;
     int UsedTiles =0;
 
-    bool[,,] CheckedTiles;
-    void WalkTile(int X, int Y, int Z) 
+    int[,,] CheckedTiles;
+
+    Stack<int[]> WalkStack = new Stack<int[]>();
+    Stack<int[]> TempStack = new Stack<int[]>();
+    void BFS_WalkTile(int X, int Y, int Z, int Searched)
     {
-        if ( (X <= SizeX) && (X >= 0) && (Y < SizeY) && (Y >= 0) && (Z<= SizeZ) && (Z >= 0)&&!CheckedTiles[X, Y, Z])
+        if ((X <= SizeX) && (X >= 0) && (Y < SizeY) && (Y >= 0) && (Z <= SizeZ) && (Z >= 0) && CheckedTiles[X, Y, Z] == 0)
         {
 
             //Debug.Log(X +", "+ Y + "," + Z);
-            CheckedTiles[X, Y, Z] = true;
+            CheckedTiles[X, Y, Z] = Searched;
             int Tile = Sockets[0, TileMap[X, Y, Z]] % 100000;
             for (int i = 0; i < walk.ID_Up.Length; i++)
-            { if (walk.ID_Up[i] == Tile && walk.WalkableUp[i]) { WalkTile(X, Y + 1, Z); } }
+            { if (walk.ID_Up[i] == Tile && walk.WalkableUp[i]) { WalkStack.Push(new int[] { X, Y + 1, Z }); } }
 
             Tile = Sockets[1, TileMap[X, Y, Z]] % 100000;
             for (int i = 0; i < walk.ID_Down.Length; i++)
-            { if (walk.ID_Down[i] == Tile && walk.WalkableDown[i]) { WalkTile(X, Y - 1, Z); } }
+            { if (walk.ID_Down[i] == Tile && walk.WalkableDown[i]) { WalkStack.Push(new int[] { X, Y - 1, Z }); } }
 
             Tile = Sockets[2, TileMap[X, Y, Z]] % 100000;
             for (int i = 0; i < walk.ID_Other.Length; i++)
-            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X, Y, Z + 1); } }
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkStack.Push(new int[] { X, Y, Z + 1 }); } }
             Tile = Sockets[3, TileMap[X, Y, Z]] % 100000;
             for (int i = 0; i < walk.ID_Other.Length; i++)
-            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X, Y, Z - 1); } }
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkStack.Push(new int[] { X, Y, Z - 1 }); } }
 
             Tile = Sockets[4, TileMap[X, Y, Z]] % 100000;
             for (int i = 0; i < walk.ID_Other.Length; i++)
-            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X + 1, Y, Z); } }
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkStack.Push(new int[] { X + 1, Y, Z }); } }
             Tile = Sockets[5, TileMap[X, Y, Z]] % 100000;
             for (int i = 0; i < walk.ID_Other.Length; i++)
-            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkTile(X - 1, Y, Z); } }
+            { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkStack.Push(new int[] { X - 1, Y, Z }); } }
+
         }
+       
     }
+    int[] BFS() 
+    {
+
+        int[] pos = null;
+        int Searched = 1;
+        while (WalkStack.Count != 0)
+        {
+            while (WalkStack.Count != 0)
+            {
+                TempStack.Push(WalkStack.Pop());
+            }
+            Searched += 1;
+            while (TempStack.Count != 0)
+            {
+                pos = TempStack.Pop();
+                BFS_WalkTile(pos[0], pos[1], pos[2], Searched);
+            }
+        }
+        return pos;
+    }
+
+  
     void UpdateTile(int X, int Y, int Z, int I) 
     {
         
@@ -256,8 +283,25 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             }
         }
     }
-    
 
+    void Remove3x3(int x, int y, int z) 
+    {
+        for (int X = x - 1; X <= x + 1; X++)
+        {
+            for (int Y = y - 1; Y <= y + 1; Y++)
+            {
+                for (int Z = z - 1; Z <= z + 1; Z++)
+                {
+                    TileMap[X,Y,Z]=Tiles.Length * 4;
+                    Entropy[X, Y, Z] = TotalTiles;
+                    for (int Tile = 0; Tile < TotalTiles; Tile++)
+                    {
+                        AvailableTiles[X, Y, Z, Tile] = 1;
+                    }
+                }
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -560,18 +604,23 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             }
         }
 
-        CheckedTiles = new bool[SizeX,SizeY,SizeZ];
+        CheckedTiles = new int[SizeX,SizeY,SizeZ];
         for (int x = 0; x < SizeX; x++)
         {
             for (int y = 0; y < SizeY; y++)
             {
                 for (int z = 0; z < SizeZ; z++)
                 {
-                    CheckedTiles[x, y, z] = false;
+                    CheckedTiles[x, y, z] = 0;
                 }
             }
         }
-        WalkTile(3, 4, 0);
+        
+        BFS_WalkTile(3, 4, 0, 1);
+        BFS();
+
+
+
         for (int x = 0; x < SizeX; x++)
         {
             for (int y = 0; y < SizeY; y++)
@@ -579,8 +628,8 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                 for (int z = 0; z < SizeZ; z++)
                 {
 
-                    if (CheckedTiles[x, y, z]) {
-                        Instantiate(Error, this.transform.position + new Vector3(x * 20.0f, y * 20.0f+15.0f, z * 20.0f), Quaternion.identity); }
+                    if (CheckedTiles[x, y, z]!=0) {
+                        Instantiate(Error, this.transform.position + new Vector3(x * 20.0f, y * 20.0f+15.0f+ CheckedTiles[x, y, z], z * 20.0f), Quaternion.identity); }
                     if (TileMap[x, y, z]< TotalTiles-2)
                     {
                         SocketData data;

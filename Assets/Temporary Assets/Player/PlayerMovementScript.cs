@@ -12,6 +12,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public Transform ShootLoc;
     public Transform Head;
+    public Transform hand;
     public HealthBar HealthBar;
     public HealthBar StaminaBar;
     private float Health = 200.0f;
@@ -282,11 +283,15 @@ public class PlayerMovementScript : MonoBehaviour
         dir = dir.normalized;
         float slowV = sprinting?sprintSpeed:(guarding?guardSlowdown:(attacking?attackSlowdown:1));
         Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (Player.velocity.sqrMagnitude > 1.0f) { anim.SetInteger("MoveSpeed", 1); }
+        else { anim.SetInteger("MoveSpeed", 1); }
         readInput();
         updateDelay();
 
