@@ -17,6 +17,9 @@ public class Knight : MonoBehaviour
 
     public GameObject model;
     public Animator anim;
+
+    public GamePlayManager manager;
+    private bool EnemyEngaged=false;
     public void DecreaseHealth(float damage)
     {
 
@@ -27,6 +30,7 @@ public class Knight : MonoBehaviour
             //Instantiate(EnemyDeath, this.transform.position, this.transform.rotation);
             anim.enabled = false;
             model.transform.parent = null;
+            manager.EnemyKilled();
             Destroy(transform.parent.gameObject);
             //Destroy(Enemy);
         }
@@ -77,7 +81,7 @@ public class Knight : MonoBehaviour
         if (Dist2 < FollowDist)
         {
             //anim.SetInt("MoveState",1);
-
+            if (!EnemyEngaged) { EnemyEngaged = true; manager.EnemyEngaged(); }
             if (Dist2 > AttackDistance)
             {
                 Agent.SetDestination(Player.position);

@@ -24,6 +24,9 @@ public class Sorcerer : MonoBehaviour
 
     public GameObject model;
     public Animator anim;
+
+    public GamePlayManager manager;
+    private bool EnemyEngaged = false;
     public void DecreaseHealth(float damage)
     {
 
@@ -35,6 +38,7 @@ public class Sorcerer : MonoBehaviour
             
             anim.enabled=false;
             model.transform.parent = null;
+            manager.EnemyKilled();
             Destroy(transform.parent.gameObject);
             //Destroy(Enemy);
         }
@@ -84,12 +88,14 @@ public class Sorcerer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         float Dist2 = (this.transform.position - Player.position).sqrMagnitude;
-        if (Dist2< FollowDist)
+        if ( Dist2< FollowDist)
         {
             //anim.SetInt("MoveState",1);
-           
+            if (!EnemyEngaged) { EnemyEngaged = true; manager.EnemyEngaged(); }
+
+
             if (Dist2 > FireDistance)
             {
                 Agent.SetDestination(Player.position);
