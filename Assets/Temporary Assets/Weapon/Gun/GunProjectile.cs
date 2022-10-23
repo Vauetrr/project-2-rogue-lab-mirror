@@ -14,13 +14,15 @@ public class GunProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.tag == "Player")
+        {
             if (!collision.gameObject.GetComponent<PlayerMovementScript>().iframed)
-            { collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
+            {
+                collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
                 Instantiate(Explosion, this.transform.position, Quaternion.identity);
                 Destroy(gameObject, 0);
             }
-       
+
         }
         else if (collision.gameObject.tag == "Enemy")
         {
@@ -33,6 +35,11 @@ public class GunProjectile : MonoBehaviour
         else if (collision.gameObject.tag == "Interactable")
         {
             if (collision.gameObject.GetComponent<BreakBox>()) { collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(damage); }
+            Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            Destroy(gameObject, 0);
+        }
+        else 
+        {
             Instantiate(Explosion, this.transform.position, Quaternion.identity);
             Destroy(gameObject, 0);
         }
