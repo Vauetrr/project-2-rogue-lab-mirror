@@ -180,7 +180,7 @@ MonoBehaviour:
   Clip:
   - {fileID: 8300000, guid: 31d6a487cf177d5409004e625cddd76f, type: 3}
   - {fileID: 8300000, guid: 12a4899d30bd6ca449818abe1db128e0, type: 3}
-  Volume: 0.1
+  Volume: 1.32
 --- !u!1 &3982217452089224328
 GameObject:
   m_ObjectHideFlags: 0
