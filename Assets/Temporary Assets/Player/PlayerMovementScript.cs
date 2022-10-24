@@ -13,6 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
     public Transform ShootLoc;
     public Transform Head;
     public Transform hand;
+    public Transform PlayerModel;
     public HealthBar HealthBar;
     public HealthBar StaminaBar;
     private float Health = 200.0f;
@@ -26,7 +27,7 @@ public class PlayerMovementScript : MonoBehaviour
     private float dashHorizontal;
     private float dashVertical;
     private float dashTime = 0;
-    private float dashTimeDefault = 1.0f;
+    private float dashTimeDefault = 3.0f;//1.0f;
     private float iframedDefault = 0.5f;
     private float dashControl = 0.25f; // how much movements impact mid dash direction 
     private float dashCooldown = 0.0f;
@@ -92,7 +93,8 @@ public class PlayerMovementScript : MonoBehaviour
             Health = MaxHealth; 
         }
         else if (Health < 0) { 
-            Debug.Log("Implement Dying here"); 
+            Debug.Log("Implement Dying here");
+            anim.SetBool("Dead",true);
         }
 
         HealthBar.SetHealthBar(Health / MaxHealth);
@@ -210,6 +212,7 @@ public class PlayerMovementScript : MonoBehaviour
         //spacebar, dash; hold post-dash to run until spacebar let go
         if (Input.GetButtonDown("Jump") && curDash < dashLimit && dashCooldown <= 0 && dashCost <= Stamina){
             dashing = true;
+            anim.SetBool("Roll", true);
             dashStart = true;
             dashCooldown = dashCooldownDefault;
             curDash++;
@@ -266,6 +269,7 @@ public class PlayerMovementScript : MonoBehaviour
         if (dashTime <= 0){
             dashing = false;
             curDash = 0;
+            anim.SetBool("Roll",false);
         }
     }
 
@@ -281,17 +285,23 @@ public class PlayerMovementScript : MonoBehaviour
         // Vector3 dir = new Vector2(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
         Vector2 dir = Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
         dir = dir.normalized;
+
+        //PlayerModel.LookAt(new Vector3(PlayerModel.position.x+dir.x, PlayerModel.position.y, PlayerModel.position.z + dir.y),Vector3.up);
+        if (dir.x!=0 ||dir.y!=0) PlayerModel.rotation = Quaternion.RotateTowards(PlayerModel.rotation,Quaternion.LookRotation(new Vector3(dir.x,0.0f,dir.y)), 500.0f*Time.deltaTime);
         float slowV = sprinting?sprintSpeed:(guarding?guardSlowdown:(attacking?attackSlowdown:1));
         Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
-       
+        
+        
+        if (dir.sqrMagnitude > 0.1f) { if (sprinting) { anim.SetInteger("MoveSpeed", 2); } else { anim.SetInteger("MoveSpeed", 1); } }
+        else { anim.SetInteger("MoveSpeed", 0); }
+        if (Player.velocity.y < -5.0f) { anim.SetBool("Falling", true); } else { anim.SetBool("Falling", false); }
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Player.velocity.sqrMagnitude > 1.0f) { anim.SetInteger("MoveSpeed", 1); }
-        else { anim.SetInteger("MoveSpeed", 1); }
+        
         readInput();
         updateDelay();
 
