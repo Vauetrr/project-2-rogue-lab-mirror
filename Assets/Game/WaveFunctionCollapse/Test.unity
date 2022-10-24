@@ -2021,6 +2021,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 866172720469820058, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+      propertyPath: ditherCatchRadius
+      value: 2.26
+      objectReference: {fileID: 0}
     - target: {fileID: 866172722204726357, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

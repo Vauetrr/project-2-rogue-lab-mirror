@@ -25,6 +25,7 @@ Shader "Custom/Dither"
         float4 _DitherPattern_TexelSize;
         float _MinDis;
         float _MaxDis;
+        float _Alpha;
 
         struct Input 
         {
@@ -48,7 +49,7 @@ Shader "Custom/Dither"
             float relDis = i.screenPos.w - _MinDis;
             relDis = relDis / (_MaxDis - _MinDis);
 
-            clip(relDis - dither.r);
+            clip(_Alpha - dither.r);
         }
 
         // struct vertIn
