@@ -287,9 +287,19 @@ public class PlayerMovementScript : MonoBehaviour
         dir = dir.normalized;
 
         //PlayerModel.LookAt(new Vector3(PlayerModel.position.x+dir.x, PlayerModel.position.y, PlayerModel.position.z + dir.y),Vector3.up);
-        if (dir.x!=0 ||dir.y!=0) PlayerModel.rotation = Quaternion.RotateTowards(PlayerModel.rotation,Quaternion.LookRotation(new Vector3(dir.x,0.0f,dir.y)), 500.0f*Time.deltaTime);
+        if ((dir.x != 0 || dir.y != 0)
+            && (!attacking || ((currentWeapon.attacking() && !currentWeapon.lockDirectionDuringAttack)
+            || (altWeapon.attacking() && !altWeapon.lockDirectionDuringAttack)))
+        )
+        { PlayerModel.rotation = Quaternion.RotateTowards(PlayerModel.rotation, Quaternion.LookRotation(new Vector3(dir.x, 0.0f, dir.y)), 500.0f * Time.deltaTime); }
+        
+        
         float slowV = sprinting?sprintSpeed:(guarding?guardSlowdown:(attacking?attackSlowdown:1));
-        Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
+        //Debug
+        if (!((currentWeapon.attacking() && currentWeapon.lockMovementDuringAttack)
+              || (altWeapon.attacking() && altWeapon.lockMovementDuringAttack)))
+        { Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV); }
+        else { Player.velocity = new Vector3(0.0f, Player.velocity.y, 0.0f); }
         
         
         if (dir.sqrMagnitude > 0.1f) { if (sprinting) { anim.SetInteger("MoveSpeed", 2); } else { anim.SetInteger("MoveSpeed", 1); } }
@@ -313,6 +323,8 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (!attacking || ((currentWeapon.attacking() && !currentWeapon.lockDirectionDuringAttack)
             || (altWeapon.attacking() && !altWeapon.lockDirectionDuringAttack))){
+
+
             Head.LookAt(LookLoc, new Vector3(0.0f,1.0f,0.0f));
         }
 

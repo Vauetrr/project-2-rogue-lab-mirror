@@ -1251,6 +1251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866172720678447103}
+  - component: {fileID: 6432293976729021469}
   m_Layer: 0
   m_Name: mixamorig:RightLeg
   m_TagString: Untagged
@@ -1274,6 +1275,20 @@ Transform:
   m_Father: {fileID: 866172721590777615}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6432293976729021469
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866172720678447102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.08
+  m_Height: 0.58798814
+  m_Direction: 1
+  m_Center: {x: -0.00000008555671, y: 0.21544082, z: -0.0000000066512884}
 --- !u!1 &866172720785633401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +1877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866172721047521378}
+  - component: {fileID: 4809070138691837754}
   m_Layer: 0
   m_Name: mixamorig:LeftLeg
   m_TagString: Untagged
@@ -1885,6 +1901,20 @@ Transform:
   m_Father: {fileID: 866172722202902135}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4809070138691837754
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866172721047521381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.08
+  m_Height: 0.58798814
+  m_Direction: 1
+  m_Center: {x: -0.00000008555671, y: 0.21544082, z: -0.0000000066512884}
 --- !u!1 &866172721066329873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,7 +2835,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 866172721590777614}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.08
   m_Height: 0.5
   m_Direction: 1
@@ -4365,8 +4395,8 @@ Cloth:
   - {fileID: 866172721252254294}
   - {fileID: 866172721224384233}
   - {fileID: 866172722016980455}
-  - {fileID: 6198813842471879669}
-  - {fileID: 9015600413811373023}
+  - {fileID: 4809070138691837754}
+  - {fileID: 6432293976729021469}
   - {fileID: 5651087194676219424}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0
@@ -4764,9 +4794,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
-  m_Height: 0.80171615
+  m_Height: 0.853319
   m_Direction: 1
-  m_Center: {x: 2.882422e-10, y: 0.045813467, z: -9.426751e-11}
+  m_Center: {x: 9.989166e-11, y: 0.020012021, z: -5.8949894e-11}
 --- !u!1 &866172722039704009
 GameObject:
   m_ObjectHideFlags: 0
@@ -5584,7 +5614,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 866172722202902134}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.08
   m_Height: 0.5
   m_Direction: 1

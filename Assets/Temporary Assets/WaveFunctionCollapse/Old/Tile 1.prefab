@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 454027363221737466}
   - component: {fileID: 6421958001802154474}
   - component: {fileID: 8703900332524234347}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Horizontal_Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 3305824991984543068}
   - component: {fileID: 9198412076268851170}
   - component: {fileID: 960465275849817966}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Horizontal_Marble
   m_TagString: Untagged
   m_Icon: {fileID: 0}

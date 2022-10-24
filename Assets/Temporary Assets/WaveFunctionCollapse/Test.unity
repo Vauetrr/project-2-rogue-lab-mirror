@@ -1591,7 +1591,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -3419837584824245273, guid: 84a82c2d47e33854388ee08a9e7adec1, type: 3}
   m_PrefabInstance: {fileID: 948786338976765135}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1508448108}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0eac01e319eb6dc47b63e87f03fae5ee, type: 3}
@@ -5439,6 +5439,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504479777}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1508448108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6409033223646713834, guid: 84a82c2d47e33854388ee08a9e7adec1, type: 3}
+  m_PrefabInstance: {fileID: 948786338976765135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1508448110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508448108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce87f553ff72024eb96ad44586024de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CloakMat: {fileID: 2100000, guid: 093ef0733dab886409ef368f4e50d9ec, type: 2}
+  color: {r: 1, g: 0.7826087, b: 0, a: 0}
 --- !u!1001 &1602328869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8040,6 +8059,10 @@ PrefabInstance:
     - target: {fileID: 5328336679304499011, guid: 6303d71e63f27484783b0dae26f598ff, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328336679373094849, guid: 6303d71e63f27484783b0dae26f598ff, type: 3}
+      propertyPath: lockMovementDuringAttack
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7793151958250595974, guid: 6303d71e63f27484783b0dae26f598ff, type: 3}
       propertyPath: m_IsTrigger
