@@ -83,7 +83,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StdDeviation: 0.04
+    - _StdDeviation: 0.014
     - _UVSec: 0
     - _VignetteRadius: 0.83
     - _ZWrite: 1
