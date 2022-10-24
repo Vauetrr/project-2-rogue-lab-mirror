@@ -9,7 +9,6 @@ public class StartMenu : MonoBehaviour
     public void OnClickPlay()
     {
         SceneManager.LoadScene("Test");
-
         // other way:
         // SceneManager.LoadScene(1); // file ->buildscene to see numbers; but numbers suck dont do this
 
