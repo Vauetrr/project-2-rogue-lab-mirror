@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eac01e319eb6dc47b63e87f03fae5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemiesKilled: 0
+  EnemiesKilled: 31
   musicManager: {fileID: 2003127706859838520, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class NoWepon : Weapon
 {
-   
+
+    public NoWepon()
+    {
+        lockDirectionDuringAttack = true;
+        lockMovementDuringAttack = true;
+    }
     public override void updateDelay()
     {
 

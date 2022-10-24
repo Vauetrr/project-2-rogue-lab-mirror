@@ -26,9 +26,11 @@ public class LavaDeath : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("LaveDeath");
-        cam = GameObject.FindGameObjectWithTag("MainCamera");
-        cam.transform.parent = null;
-        Instantiate(fire, collider.transform.position, Quaternion.identity);
+        if (collider.tag == "Player")
+        {
+            cam = GameObject.FindGameObjectWithTag("MainCamera");
+            cam.transform.parent = null;
+            Instantiate(fire, collider.transform.position, Quaternion.identity);
+        }
     }
 }

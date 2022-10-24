@@ -82,6 +82,7 @@ public class Knight : MonoBehaviour
         {
             //anim.SetInt("MoveState",1);
             if (!EnemyEngaged) { EnemyEngaged = true; manager.EnemyEngaged(); }
+            
             if (Dist2 > AttackDistance)
             {
                 Agent.SetDestination(Player.position);

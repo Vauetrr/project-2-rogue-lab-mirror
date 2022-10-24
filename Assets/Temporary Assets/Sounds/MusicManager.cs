@@ -17,10 +17,13 @@ public class MusicManager : MonoBehaviour
 
         Track1.clip = StartClip;
         Track2.clip = Clip[1];
-        Track1.Play();
-        Track2.Stop();
+        
+        //Track2.Stop();
         Track1.volume = Volume;
-        Track2.volume = Volume;
+        Track2.volume = 0.0f;
+        
+        Track1.Play();
+        Track2.Play();
     }
 
     public void SwitchTrack(int ClipNumber) 
@@ -51,8 +54,8 @@ public class MusicManager : MonoBehaviour
             if (fadeTime <= 0.0f)
             {
                 fade = false;
-                if (TrackPlaying == false) { Track1.Stop();  TrackPlaying = true; }
-                else {  Track2.Stop(); TrackPlaying = false; }
+                if (TrackPlaying == false) { /*Track1.Stop();*/  TrackPlaying = true; }
+                else {  /*Track2.Stop();*/ TrackPlaying = false; }
             }
             else
             {

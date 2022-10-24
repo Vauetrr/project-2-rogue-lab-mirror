@@ -77,7 +77,7 @@ PrefabInstance:
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[0]
       value: 
-      objectReference: {fileID: 2885866593557710922, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
+      objectReference: {fileID: 8751799231860374338, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Weights.Array.data[0]
       value: 1
@@ -345,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 4730778816264711600, guid: e5647048a2e49544985b7b6333f2147c, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730778816264711600, guid: e5647048a2e49544985b7b6333f2147c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4730778816264711600, guid: e5647048a2e49544985b7b6333f2147c, type: 3}
       propertyPath: m_StaticEditorFlags

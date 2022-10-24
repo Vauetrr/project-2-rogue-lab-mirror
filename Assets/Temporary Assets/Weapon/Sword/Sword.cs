@@ -41,6 +41,7 @@ public class Sword : Weapon
 
     public Sword(){
         lockDirectionDuringAttack = true;
+        lockMovementDuringAttack = true;
     }
     IEnumerator UpdateDelay()
     {
