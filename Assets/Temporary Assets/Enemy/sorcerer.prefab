@@ -3557,7 +3557,7 @@ GameObject:
   - component: {fileID: 8751799231867502338}
   m_Layer: 5
   m_Name: EnemyGUI
-  m_TagString: Untagged
+  m_TagString: EnemyUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3755,7 +3755,6 @@ MonoBehaviour:
   FireDistance: 100
   model: {fileID: 5772460239213343411}
   anim: {fileID: 7338424234577577226}
-  manager: {fileID: -3419837584824245273, guid: 84a82c2d47e33854388ee08a9e7adec1, type: 3}
 --- !u!1 &8751799232006203400
 GameObject:
   m_ObjectHideFlags: 0

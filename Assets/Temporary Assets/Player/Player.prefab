@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockDirectionDuringAttack: 0
+  lockMovementDuringAttack: 0
   Projectile: {fileID: 7355547410817782026, guid: 57b8d9c6dd77b7a40a72f628223eae38, type: 3}
   velocityMultiplier: 10
 --- !u!1 &866172720462422476
@@ -1285,10 +1286,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.08
-  m_Height: 0.58798814
+  m_Radius: 0.09090164
+  m_Height: 0.5879881
   m_Direction: 1
-  m_Center: {x: -0.00000008555671, y: 0.21544082, z: -0.0000000066512884}
+  m_Center: {x: -0.00000010730825, y: 0.21544082, z: -0.010901673}
 --- !u!1 &866172720785633401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,10 +1912,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.08
-  m_Height: 0.58798814
+  m_Radius: 0.09090164
+  m_Height: 0.5879881
   m_Direction: 1
-  m_Center: {x: -0.00000008555671, y: 0.21544082, z: -0.0000000066512884}
+  m_Center: {x: -0.00000010730825, y: 0.21544082, z: -0.010901673}
 --- !u!1 &866172721066329873
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,10 +4794,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 0.853319
+  m_Radius: 0.18018302
+  m_Height: 0.7489669
   m_Direction: 1
-  m_Center: {x: 9.989166e-11, y: 0.020012021, z: -5.8949894e-11}
+  m_Center: {x: -5.557156e-11, y: -0.032164063, z: 0.019816991}
 --- !u!1 &866172722039704009
 GameObject:
   m_ObjectHideFlags: 0
@@ -5795,11 +5796,12 @@ MonoBehaviour:
   guardSlowdown: 0.35
   attackSlowdown: 0.75
   guardDamageDecrease: 0.2
-  dashLimit: 1
+  dashLimit: 3
   sprintSpeed: 1.5
   MaxHealth: 200
   MaxStamina: 200
   AttackChainCounter: 0
+  Target: {fileID: 0}
 --- !u!1 &866172722214703820
 GameObject:
   m_ObjectHideFlags: 0
