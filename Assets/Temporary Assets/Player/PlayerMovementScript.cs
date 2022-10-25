@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    
+
     public Animator anim;
     private Rigidbody Player;
     public Camera PlayerCamera;
@@ -27,7 +29,7 @@ public class PlayerMovementScript : MonoBehaviour
     private float dashHorizontal;
     private float dashVertical;
     private float dashTime = 0;
-    private float dashTimeDefault = 3.0f;//1.0f;
+    private float dashTimeDefault = 2.3f;//1.0f;
     private float iframedDefault = 0.5f;
     private float dashControl = 0.25f; // how much movements impact mid dash direction 
     private float dashCooldown = 0.0f;
@@ -152,50 +154,146 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
     public int AttackChainCounter = 0;
-
     
-    void readInput(){
+    private int preMove =0;
+    private float[] RollDir = { 0.0f, 0.0f };
 
+    public GameObject Target;
+    private GameObject CurrentTarget;
+    //private Vector2 RollDir = new Vector2(0.0f,0.0f);
+    void PreMove() 
+    {
         defaultState = (!guarding && !dashing);
         attacking = currentWeapon.attacking() || altWeapon.attacking();
+        if (dashTime <= 0)
+        {
+            dashing = false;
+            curDash = 0;
+            anim.SetBool("Roll", false);
 
-        if (Input.GetButtonDown("Fire1") && defaultState)
-        { 
-            AttackChainCounter++;
+        }
+
+        switch (preMove) 
+        {
+        case 0:
+
+            break;
+        case 1:
+            if (dashing&&!iframed) 
+            {
+                dashTime = 0; //end the dash early
+                AttackChainCounter =1;
+                currentWeapon.normalDown(this);anim.SetBool("Roll", false);
+                preMove = 0;
+               // currentWeapon.normalUp(this);
+               // currentWeapon.normalHold(this);
+
+                //sprinting = false;
+                
+                
+            }
+            break;
+        case 4:
+            if (!attacking) 
+            {
+                dashing = true;
+                anim.SetBool("Roll", true);
+                anim.SetInteger("AttackChain", 0);
+                
+                dashCooldown = dashCooldownDefault;
+                curDash++;
+                runButtonHeld = true;
+                updateStamina(-dashCost);
+                dashHorizontal = RollDir[0]; // no momentum
+                dashVertical = RollDir[1]; // no momentum
+                
+                dashTime = dashTimeDefault;
+                dashStart = false;
+                iframed = true;
+                preMove = 0;
+            }
+            break;
+           
+        
+        }
+        
+    }
+    void readInput(){
+
+       /* if (Input.GetKeyDown(KeyCode.Q)) 
+        {
+            GameObject[] EnemyList = GameObject.FindGameObjectsWithTag("EnemyUI");
+            //Vector3 ClosestEnemy = new Vector3(0.0f,0.0f,0.0f);
+            Transform ClosestEnemy = EnemyList[0].GetComponent<Transform>();
+            float EnemyDist = (this.transform.position -ClosestEnemy.position).magnitude;
+            for (int i = 1; i < EnemyList.Length; i++) 
+            {
+                Transform Enemyi = EnemyList[i].GetComponent<Transform>();
+                float EnemyiDist = (this.transform.position - Enemyi.position).magnitude;
+                if (EnemyDist > EnemyiDist) { EnemyDist = EnemyiDist; ClosestEnemy = Enemyi; }
+            }
+            Destroy(CurrentTarget);
+            CurrentTarget = Instantiate(Target, ClosestEnemy.position,Quaternion.identity);
+            CurrentTarget.transform.parent = ClosestEnemy;
+        }*/
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+
+            if (preMove==0 && defaultState) {
+                AttackChainCounter++; 
+            }
+            if (dashing) { preMove =1; }
         }
 
         if (!attacking)
         {
 
+            anim.SetInteger("AttackChain", 0);
             //left mouse, normal attack
             if (Input.GetButtonDown("Fire1") && defaultState)
             {
+                if (dashing) {preMove = 1;
+                }
+                else
+                {
+                    //anim.SetBool("Roll", false);
+                    currentWeapon.normalDown(this);
+                    sprinting = false;
+                }
                 
-                //if (!Attacking) { StartCoroutine(AnimationChain()); }
-
-                currentWeapon.normalDown(this);
-                sprinting = false;
             }
 
             if (Input.GetButtonUp("Fire1") && defaultState)
             {
-                currentWeapon.normalUp(this);
-                sprinting = false;
+                if (dashing) { preMove = 1; }
+                else 
+                {
+                    currentWeapon.normalUp(this);
+                    sprinting = false;
+                }
             }
 
             if (Input.GetButton("Fire1") && defaultState)
             {
-
-                currentWeapon.normalHold(this);
-                sprinting = false;
+                if (dashing) { preMove = 1; }
+                else
+                {
+                    currentWeapon.normalHold(this);
+                    sprinting = false;
+                }
             }
 
             // right mouse, alt fire 
             if (Input.GetButton("Fire2") && defaultState)
             {
-                Debug.Log("Using alt fire!");
-                altWeapon.normalHold(this);
-                sprinting = false;
+                if (dashing) { preMove = 2; }
+                else
+                {
+                    Debug.Log("Using alt fire!");
+                    altWeapon.normalHold(this);
+                    sprinting = false;
+                }
             }
         }
 
@@ -211,13 +309,23 @@ public class PlayerMovementScript : MonoBehaviour
 
         //spacebar, dash; hold post-dash to run until spacebar let go
         if (Input.GetButtonDown("Jump") && curDash < dashLimit && dashCooldown <= 0 && dashCost <= Stamina){
-            dashing = true;
-            anim.SetBool("Roll", true);
-            dashStart = true;
-            dashCooldown = dashCooldownDefault;
-            curDash++;
-            runButtonHeld = true;
-            updateStamina(-dashCost);
+            if (attacking) 
+            {
+              
+                preMove = 4;
+                RollDir[0] = Input.GetAxisRaw("Horizontal"); 
+                RollDir[1] = Input.GetAxisRaw("Vertical");
+            }
+            else
+            {
+                dashing = true;
+                anim.SetBool("Roll", true);
+                dashStart = true;
+                dashCooldown = dashCooldownDefault;
+                curDash++;
+                runButtonHeld = true;
+                updateStamina(-dashCost);
+            }
         }
 
         if (Input.GetButton("Jump")){
@@ -252,8 +360,10 @@ public class PlayerMovementScript : MonoBehaviour
                     + (((1-dashControl) * dashVertical) + (dashControl * duringDashV)) * Forward;
                     
         dir = dir.normalized;
+        PlayerModel.rotation = Quaternion.RotateTowards(PlayerModel.rotation, Quaternion.LookRotation(new Vector3(dir.x, 0.0f, dir.y)), 500.0f * Time.deltaTime);
 
         float dashMod = (dashTime < dashTimeDefault/2.0f) ? dashTime : 1.0f;
+        if (dashMod < (moveSpeed/ dashSpeed )) { dashMod = (moveSpeed / dashSpeed); }
         Player.velocity = new Vector3(dir.x * dashSpeed * dashMod, Player.velocity.y, dir.y * dashSpeed * dashMod);
 
         dashTime -= Time.deltaTime*3.0f;
@@ -263,23 +373,21 @@ public class PlayerMovementScript : MonoBehaviour
             if (runButtonHeld){
                 sprinting = true;
                 dashTime = 0; //end the dash early
+                anim.SetBool("Roll", false);
+                preMove = 0;
             }
         }
 
-        if (dashTime <= 0){
-            dashing = false;
-            curDash = 0;
-            anim.SetBool("Roll",false);
-        }
+        
     }
 
-    void movePlayer(){
-        if (dashing){
+    void movePlayer() {
+        if (dashing) {
             dashPlayer();
             return;
         }
-        Vector2 Left = new Vector3( 1.0f, -1.0f );
-        Vector2 Forward = new Vector3( 1.0f, 1.0f );
+        Vector2 Left = new Vector3(1.0f, -1.0f);
+        Vector2 Forward = new Vector3(1.0f, 1.0f);
         // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
 
         // Vector3 dir = new Vector2(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
@@ -311,9 +419,10 @@ public class PlayerMovementScript : MonoBehaviour
     void Update()
     {
 
-        
+        PreMove();
         readInput();
         updateDelay();
+        
 
         Ray ShootLocation = PlayerCamera.ScreenPointToRay(Input.mousePosition);
         float al = ShootLocation.direction.y;//Vector3.Dot(ShootLocation.direction, new Vector3(0.0f,1.0f,0.0f));

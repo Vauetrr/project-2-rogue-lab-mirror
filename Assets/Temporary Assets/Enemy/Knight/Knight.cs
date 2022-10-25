@@ -18,7 +18,7 @@ public class Knight : MonoBehaviour
     public GameObject model;
     public Animator anim;
 
-    public GamePlayManager manager;
+    private GamePlayManager manager;
     private bool EnemyEngaged=false;
     public void DecreaseHealth(float damage)
     {
@@ -45,6 +45,7 @@ public class Knight : MonoBehaviour
     {
         Agent = this.GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
+        manager = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GamePlayManager>();
     }
 
     bool Attacking = false;

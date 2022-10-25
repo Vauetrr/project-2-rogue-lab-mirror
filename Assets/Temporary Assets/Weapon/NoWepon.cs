@@ -28,7 +28,7 @@ public class NoWepon : Weapon
 
     public override bool attacking()
     {
-        return true;
+        return false;
     }
 }
 

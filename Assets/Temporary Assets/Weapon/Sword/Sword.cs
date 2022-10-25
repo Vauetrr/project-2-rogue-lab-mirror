@@ -17,8 +17,8 @@ public class Sword : Weapon
     private bool CanAttack = true;
     IEnumerator AnimationChain()
     {
-        anim.SetInteger("AttackChain", 1);
-        yield return new WaitForSeconds(1.0f);
+        
+        yield return new WaitForSeconds(0.8f);
         if (Player.AttackChainCounter > 1)
         {
             anim.SetInteger("AttackChain", 2);
@@ -30,10 +30,11 @@ public class Sword : Weapon
                 if (Player.AttackChainCounter > 3)
                 {
                     anim.SetInteger("AttackChain", 4);
+                    yield return new WaitForSeconds(1.0f);
                 }
             }
         }
-        anim.SetInteger("AttackChain", 0);
+        //anim.SetInteger("AttackChain", 0);
         Player.AttackChainCounter = 0;
         SwordTrigger.SetActive(false);
         CanAttack = true;
@@ -53,9 +54,9 @@ public class Sword : Weapon
     public override void updateDelay(){
         
     }
-    public override void normalHold(PlayerMovementScript player)
-    {
 
+    public override void normalDown(PlayerMovementScript player)
+    {
         //if (AttackDelay <= 0){
         if (CanAttack) { 
             AttackDelay = AttackSpeed * player.attackSpeed;
@@ -63,9 +64,16 @@ public class Sword : Weapon
             //StartCoroutine(UpdateDelay());
             //SwordAnimator.SetBool("SwingSword",true);
             SwordTrigger.SetActive(true);
+            anim.SetInteger("AttackChain", 1);
             StartCoroutine(AnimationChain());
            
         }
+    }
+
+    public override void normalHold(PlayerMovementScript player)
+    {
+
+        
     }
 
    
