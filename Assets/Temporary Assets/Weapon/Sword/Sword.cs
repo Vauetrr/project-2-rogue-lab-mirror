@@ -53,7 +53,7 @@ public class Sword : Weapon
     public override void updateDelay(){
         
     }
-    public override void normalHold(PlayerMovementScript player)
+    public override void normalDown(PlayerMovementScript player)
     {
 
         //if (AttackDelay <= 0){

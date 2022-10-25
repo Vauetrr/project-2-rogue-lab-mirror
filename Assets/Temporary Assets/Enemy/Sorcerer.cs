@@ -31,7 +31,7 @@ public class Sorcerer : MonoBehaviour
     {
 
         Health -= damage;
-        HealthBar.SetHealthBar(Health / MaxHealth);
+        HealthBar.SetHealthBar(Health/MaxHealth);
         if (Health < 0.0f)
         {
             //Instantiate(EnemyDeath, this.transform.position, this.transform.rotation);
@@ -44,7 +44,7 @@ public class Sorcerer : MonoBehaviour
         }
         else
         {
-            HealthBar.SetHealthBar(Health / MaxHealth);
+            HealthBar.SetHealthBar(Health/MaxHealth);
         }
     }
 
