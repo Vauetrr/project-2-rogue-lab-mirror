@@ -28,7 +28,6 @@ public class FootSteps : MonoBehaviour
 
     public void Step()
     {
-        //AudioClip clip = GetRandomClip();
         RaycastHit hitInfo;
         Physics.Raycast(Ground.position, Vector3.down, out hitInfo, 0.5f);
         if (hitInfo.collider.tag == "WoodFloor")
@@ -51,15 +50,9 @@ public class FootSteps : MonoBehaviour
     //private bool Attacking = false;
     public void attack() 
     {
-        Debug.Log("Attack");
-        Debug.Log(Trigger);
-
-       // Attacking = !Attacking;
-        //if (Attacking)
-        //{
+       
         audioSource.PlayOneShot(Attackclip);
         Trigger.SetActive(true);
-        //}
     }
     
     /*private AudioClip GetRandomClip()

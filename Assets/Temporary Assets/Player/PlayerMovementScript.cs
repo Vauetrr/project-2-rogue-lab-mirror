@@ -124,7 +124,8 @@ public class PlayerMovementScript : MonoBehaviour
     public void DecreaseMana(float value){
         Mana -= value;
         if (Mana > MaxMana) { 
-            Health = MaxMana; 
+            //Health = MaxMana; //?
+            Mana = MaxMana; 
         }
         else if (Mana < 0){
             Mana = 0;

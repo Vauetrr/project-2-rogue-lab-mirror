@@ -27,6 +27,7 @@ public class SpellPickUp : MonoBehaviour
                 player.altWeapon = weapon.GetComponent<Weapon>();
                 Gun spell = weapon.GetComponent<Gun>();
                 spell.Projectile = Projectile;
+                player.DecreaseMana(-player.MaxMana);
                 Destroy(Instantiate(Equip), 2.0f);
                 Destroy(this.transform.parent.gameObject);
             }

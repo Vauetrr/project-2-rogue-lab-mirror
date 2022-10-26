@@ -11,8 +11,6 @@ public class SwordHit : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-
-        Debug.Log("Swing");
         //PlayAnimation();
         StartCoroutine(Swing());
     }
@@ -20,7 +18,6 @@ public class SwordHit : MonoBehaviour
     IEnumerator Swing()
     { 
         yield return new WaitForSeconds(0.2f);
-        Debug.Log("Shive");
         this.gameObject.SetActive(false);
        
     }

@@ -35,7 +35,7 @@ public class Sword : Weapon
                 }
             }
         }
-        //anim.SetInteger("AttackChain", 0);
+        anim.SetInteger("AttackChain", 0);
         Player.AttackChainCounter = 0;
         SwordModel.SetActive(false);
         CanAttack = true;
