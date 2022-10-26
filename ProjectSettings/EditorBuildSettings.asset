@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Temporary Assets/WaveFunctionCollapse/Test.unity
     guid: 0fd9ad578d85bff4b8ddb77f9cc2e3bd
+  - enabled: 1
+    path: Assets/Game/tutorial.unity
+    guid: d350503e64832f44d84e9e78eeb0720c
   m_configObjects: {}
