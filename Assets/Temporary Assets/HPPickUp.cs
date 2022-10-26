@@ -9,7 +9,7 @@ public class HPPickUp : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("increase HP");
+            Debug.Log("increase HP");
             collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(-HP);
             Destroy(this.gameObject);
         }

@@ -6,6 +6,7 @@ public class ItemPickUp : MonoBehaviour
 {
     public GameObject weapon;
     public GameObject TextPrompt;
+    public GameObject Equip;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -17,7 +18,7 @@ public class ItemPickUp : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-               PlayerMovementScript player = other.GetComponent<PlayerMovementScript>();
+                PlayerMovementScript player = other.GetComponent<PlayerMovementScript>();
 
                 player.currentWeapon = weapon.GetComponent<Weapon>();
 
@@ -27,8 +28,13 @@ public class ItemPickUp : MonoBehaviour
                 Sword sword = weapon.GetComponent<Sword>();
                 sword.Player = player;
                 sword.anim = player.anim;
-                Debug.Log("Item Equiped");
+                player.Model.GetComponent<FootSteps>().Trigger = sword.SwordTrigger;
+                sword.SwordTrigger.SetActive(false);
+                //weapon.GetComponentInChildren<GameObject>().SetActive(false);
+                
 
+                Debug.Log("Item Equiped");
+                Destroy(Instantiate(Equip),2.0f);
                 Destroy(this.transform.parent.gameObject);
             }
         }    

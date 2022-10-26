@@ -9,21 +9,18 @@ public class SwordHit : MonoBehaviour
     public float Damage = 20.0f;
    // public Animator SwordAnimator;
     // Start is called before the first frame update
-    /*void OnEnable()
+    void OnEnable()
     {
         //PlayAnimation();
         StartCoroutine(Swing());
-    }*/
-
-    /*IEnumerator Swing()
+    }
+    
+    IEnumerator Swing()
     { 
-        yield return new WaitForSeconds(SwingDuration);
-        //this.enabled = false;
-        //yield break;
-        SwordAnimator.SetBool("SwingSword", false);
+        yield return new WaitForSeconds(0.2f);
         this.gameObject.SetActive(false);
        
-    }*/
+    }
 
     private void OnTriggerEnter(Collider collision)
     {

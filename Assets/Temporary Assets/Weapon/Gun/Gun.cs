@@ -29,6 +29,7 @@ public class Gun:Weapon{
             fireDelay = fireSpeed * player.attackSpeed;
             var rot = player.Head.rotation * Quaternion.Euler(0, 180f, 0);
             GameObject o = MonoBehaviour.Instantiate(Projectile, player.ShootLoc.position, rot);
+            o.SetActive(true);
             o.GetComponent<Rigidbody>().velocity = velocityMultiplier*(player.ShootLoc.position - player.Head.position);
             //Debug.Log(Input.mousePosition);
         }

@@ -19,7 +19,8 @@ public class GunProjectile : MonoBehaviour
             if (!collision.gameObject.GetComponent<PlayerMovementScript>().iframed)
             {
                 collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(damage);
-                Instantiate(Explosion, this.transform.position, Quaternion.identity);
+                GameObject o = Instantiate(Explosion, this.transform.position, Quaternion.identity);
+                o.SetActive(true);
                 Destroy(gameObject, 0);
             }
 
@@ -29,18 +30,21 @@ public class GunProjectile : MonoBehaviour
             if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(damage); }
-            Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            GameObject o = Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            o.SetActive(true);
             Destroy(gameObject, 0);
         }
         else if (collision.gameObject.tag == "Interactable")
         {
             if (collision.gameObject.GetComponent<BreakBox>()) { collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(damage); }
-            Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            GameObject o = Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            o.SetActive(true);
             Destroy(gameObject, 0);
         }
         else 
         {
-            Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            GameObject o = Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            o.SetActive(true);
             Destroy(gameObject, 0);
         }
         

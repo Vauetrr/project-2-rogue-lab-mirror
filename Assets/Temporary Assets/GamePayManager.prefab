@@ -16,7 +16,7 @@ GameObject:
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &196479543784577450
 Transform:
@@ -70,6 +70,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 196479543784577450}
     m_Modifications:
+    - target: {fileID: 1620237577812481726, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003127706859838520, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2003127706859838521, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -117,6 +125,14 @@ PrefabInstance:
     - target: {fileID: 2003127706859838522, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
       propertyPath: m_Name
       value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003127706859838522, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982217452089224328, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

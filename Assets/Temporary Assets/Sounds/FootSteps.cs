@@ -13,9 +13,11 @@ public class FootSteps : MonoBehaviour
     [SerializeField]
     private AudioClip Dodgeclip; 
     [SerializeField]
-    private AudioClip Deathclip;
+    private AudioClip Deathclip;  
+    [SerializeField]
+    private AudioClip Attackclip;
 
-
+    public GameObject Trigger;
     public Transform Ground;
     private AudioSource audioSource;
 
@@ -26,7 +28,6 @@ public class FootSteps : MonoBehaviour
 
     public void Step()
     {
-        //AudioClip clip = GetRandomClip();
         RaycastHit hitInfo;
         Physics.Raycast(Ground.position, Vector3.down, out hitInfo, 0.5f);
         if (hitInfo.collider.tag == "WoodFloor")
@@ -46,9 +47,12 @@ public class FootSteps : MonoBehaviour
         audioSource.PlayOneShot(Deathclip);
     }
 
+    //private bool Attacking = false;
     public void attack() 
     {
-    
+       
+        audioSource.PlayOneShot(Attackclip);
+        Trigger.SetActive(true);
     }
     
     /*private AudioClip GetRandomClip()

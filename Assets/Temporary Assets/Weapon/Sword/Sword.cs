@@ -10,6 +10,7 @@ public class Sword : Weapon
     private float AttackSpeed = 0.7f; // delay between attacks. 
                                      // lower value = faster attacks
                                      // modified by Player's attackSpeed
+    public GameObject SwordModel;
     public GameObject SwordTrigger;
     //public Animator SwordAnimator;
     public Animator anim;
@@ -30,7 +31,6 @@ public class Sword : Weapon
             anim.SetInteger("AttackChain", currentCombo);
             text.SetText(this.currentCombo.ToString());
         }
-
         CanAttack = true;
     }
 
