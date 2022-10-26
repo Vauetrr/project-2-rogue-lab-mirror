@@ -5,8 +5,6 @@ using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-
-    public TMP_Text testAtt;
     public Animator anim;
     public GameObject Model;
     private Rigidbody Player;
@@ -45,7 +43,6 @@ public class PlayerMovementScript : MonoBehaviour
 
     // START player state: altered by input and gameplay
     private bool guarding = false;
-    private bool walking = false;
     private bool dashing = false;
     private bool sprinting = false;
     public bool iframed = false;
@@ -124,8 +121,7 @@ public class PlayerMovementScript : MonoBehaviour
     
     public void DecreaseMana(float value){
         Mana -= value;
-        if (Mana > MaxMana) { 
-            //Health = MaxMana; //?
+        if (Mana >= MaxMana) { 
             Mana = MaxMana; 
         }
         else if (Mana < 0){
@@ -219,7 +215,7 @@ public class PlayerMovementScript : MonoBehaviour
             // right mouse, alt fire 
             if (Input.GetButtonDown("Fire2") && defaultState)
             {
-                if (Mana > altWeapon.normalDownCost){
+                if (Mana >= altWeapon.normalDownCost){
                     altWeapon.normalDown(this);
                     DecreaseMana(altWeapon.normalDownCost);
                     sprinting = false;
@@ -346,9 +342,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (dir.sqrMagnitude > 0.1f) { if (sprinting) { anim.SetInteger("MoveSpeed", 2); } else { anim.SetInteger("MoveSpeed", 1); } }
         else { anim.SetInteger("MoveSpeed", 0); }
-
-        walking = (dir.sqrMagnitude > 0.1f);
-
         //Debug
         // if (!((currentWeapon.attacking() && currentWeapon.lockMovementDuringAttack)
         //       || (altWeapon.attacking() && altWeapon.lockMovementDuringAttack)))
@@ -366,14 +359,15 @@ public class PlayerMovementScript : MonoBehaviour
         anim.SetBool("Alive", alive);
         anim.SetBool("Guarding", guarding);
         anim.SetBool("Default", defaultState);
-        anim.SetBool("Walking", walking);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!alive){
+            return;
+        }
         
         readInput();
         updateDelay();

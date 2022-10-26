@@ -16,7 +16,6 @@ public class Sword : Weapon
     public Animator anim;
     public PlayerMovementScript Player;
     private bool CanAttack = true;
-    private bool CanBuffer = true;
     private int currentCombo = 0;
     private float comboRefresh = 0.5f;
 
@@ -31,6 +30,8 @@ public class Sword : Weapon
             anim.SetInteger("AttackChain", currentCombo);
             text.SetText(this.currentCombo.ToString());
         }
+
+        SwordTrigger.SetActive(false);
         CanAttack = true;
     }
 
@@ -50,7 +51,6 @@ public class Sword : Weapon
             anim.SetInteger("AttackChain", currentCombo);
             text.SetText(this.currentCombo.ToString());
         }
-        Debug.Log("starting:" + startingCombo + ", current:" + currentCombo);
     }
 
    
@@ -74,12 +74,10 @@ public class Sword : Weapon
         
         text.SetText(this.currentCombo.ToString());
         CanAttack = false;
-        SwordTrigger.SetActive(false);
         anim.SetInteger("AttackChain", currentCombo);
 
 
         StartCoroutine(UpdateDelay());
-
         StartCoroutine(AnimationChain());
 
     }

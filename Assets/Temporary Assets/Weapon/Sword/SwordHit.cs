@@ -7,19 +7,21 @@ public class SwordHit : MonoBehaviour
 
    // public float SwingDuration=1.0f;
     public float Damage = 20.0f;
-   // public Animator SwordAnimator;
+    public PlayerMovementScript Player;
+    private float manaRecharge = 10.0f;
+    // public Animator SwordAnimator;
     // Start is called before the first frame update
     void OnEnable()
     {
         //PlayAnimation();
         StartCoroutine(Swing());
     }
-    
+
     IEnumerator Swing()
     { 
         yield return new WaitForSeconds(0.2f);
         this.gameObject.SetActive(false);
-       
+
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -32,6 +34,7 @@ public class SwordHit : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy")
         {
+            Player.DecreaseMana(-manaRecharge);
             if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage); }
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage); }
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage); }
@@ -41,6 +44,7 @@ public class SwordHit : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Interactable")
         {
+            Player.DecreaseMana(-manaRecharge);
             collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(Damage);
             //Destroy(gameObject, 0);
         }
