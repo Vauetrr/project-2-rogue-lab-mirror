@@ -17,6 +17,10 @@ public class Weapon : MonoBehaviour
     // if true, locks player view direction during attack
     public bool lockDirectionDuringAttack = false;
     public bool lockMovementDuringAttack = false;
+
+    public float normalDownCost = 0.0f;
+    public float normalUpCost = 0.0f;
+    public float normalHoldCost = 0.0f;
     // Refresh weapon attack delay, if applicable
     public virtual void updateDelay() {
     }

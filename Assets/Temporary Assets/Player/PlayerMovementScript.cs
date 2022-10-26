@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -18,7 +19,9 @@ public class PlayerMovementScript : MonoBehaviour
     public Transform PlayerModel;
     public HealthBar HealthBar;
     public HealthBar StaminaBar;
+    public HealthBar ManaBar;
     private float Health = 200.0f;
+    private float Mana = 200.0f;
     private float Stamina = 100.0f;
 
     //public Transform PlayerTransform;
@@ -46,6 +49,7 @@ public class PlayerMovementScript : MonoBehaviour
     public bool iframed = false;
     private bool defaultState = true;
     private bool attacking = false;
+    private bool alive = true;
     // END player state
 
 
@@ -61,7 +65,7 @@ public class PlayerMovementScript : MonoBehaviour
     public float guardSlowdown = 0.35f; // slow% during guard.
                                         // 0 = can't move, 1 = original speed
 
-    public float attackSlowdown = 0.75f; // slow% during attack.
+    public float attackSlowdown = 0.75f; // slow% during attack. //original = 0.75
                                         // 0 = can't move, 1 = original speed
     public float guardDamageDecrease = 0.2f; // damage decrease% during guard.
                                              // 0 = invincible, 1 = origianl dmg
@@ -74,6 +78,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public float MaxHealth = 200.0f;
     public float MaxStamina = 200.0f;
+    public float MaxMana = 200.0f;
 
     public void SetHealthBlur(){
         float visualHealth = (Health / MaxHealth) > 0.5f? 1: (Health/MaxHealth)*2;
@@ -82,6 +87,11 @@ public class PlayerMovementScript : MonoBehaviour
         LowHealth.SetFloat("_Radius", 2.0f*visualHealth);
     }
     
+    public void restartLevel(){
+
+        //restart the scene
+    }
+
     public void DecreaseHealth(float damage) 
     {
         //Debug.Log("e");
@@ -94,19 +104,32 @@ public class PlayerMovementScript : MonoBehaviour
         if (Health > MaxHealth) { 
             Health = MaxHealth; 
         }
-        else if (Health < 0) { 
-            Debug.Log("Implement Dying here");
+        else if (Health < 0) {
+            // Debug.Log("Implement Dying here");
+            Health = 0;
+            alive = false;
+            restartLevel();
             anim.SetBool("Dead",true);
         }
 
-        HealthBar.SetHealthBar(Health / MaxHealth);
+        HealthBar.SetHealthBar(Health, MaxHealth);
         SetHealthBlur();
         //_StdDeviation
         //_Radius
         //_Feather
 
     }
-    // Start is called before the first frame update
+    
+    public void DecreaseMana(float value){
+        Mana -= value;
+        if (Mana > MaxMana) { 
+            Health = MaxMana; 
+        }
+        else if (Mana < 0){
+            Mana = 0;
+        }
+        ManaBar.SetHealthBar(Mana, MaxMana);
+    }
 
     void Start()
     {
@@ -117,7 +140,8 @@ public class PlayerMovementScript : MonoBehaviour
 
         Stamina = MaxStamina;
         Player = this.GetComponent<Rigidbody>();
-        HealthBar.SetHealthBar(Health/MaxHealth);
+        HealthBar.SetHealthBar(Health, MaxHealth);
+        ManaBar.SetHealthBar(Mana, MaxMana);
         StaminaBar.SetHealthBar(Stamina/MaxStamina);
 
         SetHealthBlur();
@@ -289,18 +313,31 @@ public class PlayerMovementScript : MonoBehaviour
             }
 
             // right mouse, alt fire 
+            if (Input.GetButtonDown("Fire2") && defaultState)
+            {
+                if (Mana > altWeapon.normalDownCost){
+                    altWeapon.normalDown(this);
+                    DecreaseMana(altWeapon.normalDownCost);
+                    sprinting = false;
+                }
+            }
+
+            if (Input.GetButtonUp("Fire2") && defaultState)
+            {
+                altWeapon.normalUp(this);
+                sprinting = false;
+            }
+
             if (Input.GetButton("Fire2") && defaultState)
             {
                 if (dashing) { preMove = 2; }
                 else
                 {
-                    Debug.Log("Using alt fire!");
                     altWeapon.normalHold(this);
                     sprinting = false;
                 }
             }
         }
-
 
         // hold shift to guard
         if (Input.GetButton("Fire3") && !dashing){ 
@@ -399,19 +436,28 @@ public class PlayerMovementScript : MonoBehaviour
         dir = dir.normalized;
 
         //PlayerModel.LookAt(new Vector3(PlayerModel.position.x+dir.x, PlayerModel.position.y, PlayerModel.position.z + dir.y),Vector3.up);
-        if ((dir.x != 0 || dir.y != 0)
-            && (!attacking || ((currentWeapon.attacking() && !currentWeapon.lockDirectionDuringAttack)
-            || (altWeapon.attacking() && !altWeapon.lockDirectionDuringAttack)))
-        )
-        { PlayerModel.rotation = Quaternion.RotateTowards(PlayerModel.rotation, Quaternion.LookRotation(new Vector3(dir.x, 0.0f, dir.y)), 500.0f * Time.deltaTime); }
+
+        if (dir.x != 0 || dir.y != 0)
+        {
+            PlayerModel.rotation = Quaternion.RotateTowards(PlayerModel.rotation, Quaternion.LookRotation(new Vector3(dir.x, 0.0f, dir.y)), 500.0f * Time.deltaTime);
+        }
+
+        // if ((dir.x != 0 || dir.y != 0)
+        //     && (!attacking || ((currentWeapon.attacking() && !currentWeapon.lockDirectionDuringAttack)
+        //     || (altWeapon.attacking() && !altWeapon.lockDirectionDuringAttack)))
+        // )
+        // { PlayerModel.rotation = Quaternion.RotateTowards(PlayerModel.rotation, Quaternion.LookRotation(new Vector3(dir.x, 0.0f, dir.y)), 500.0f * Time.deltaTime); }
         
         
         float slowV = sprinting?sprintSpeed:(guarding?guardSlowdown:(attacking?attackSlowdown:1));
+        //testSpeed.SetText(slowV.ToString());
+        Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
+
         //Debug
-        if (!((currentWeapon.attacking() && currentWeapon.lockMovementDuringAttack)
-              || (altWeapon.attacking() && altWeapon.lockMovementDuringAttack)))
-        { Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV); }
-        else { Player.velocity = new Vector3(0.0f, Player.velocity.y, 0.0f); }
+        // if (!((currentWeapon.attacking() && currentWeapon.lockMovementDuringAttack)
+        //       || (altWeapon.attacking() && altWeapon.lockMovementDuringAttack)))
+        // { Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV); }
+        // else { Player.velocity = new Vector3(0.0f, Player.velocity.y, 0.0f); }
         
         
         if (dir.sqrMagnitude > 0.1f) { if (sprinting) { anim.SetInteger("MoveSpeed", 2); } else { anim.SetInteger("MoveSpeed", 1); } }
@@ -441,6 +487,9 @@ public class PlayerMovementScript : MonoBehaviour
             Head.LookAt(LookLoc, new Vector3(0.0f,1.0f,0.0f));
         }
 
+        // testAtt.SetText(this.attacking.ToString());
+        // testCur.SetText(this.currentWeapon.attacking().ToString());
+        // testAlt.SetText(this.altWeapon.attacking().ToString());
 
         movePlayer();
     }
