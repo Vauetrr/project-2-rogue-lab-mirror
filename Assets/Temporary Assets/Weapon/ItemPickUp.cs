@@ -13,24 +13,25 @@ public class ItemPickUp : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player") 
+        if (other.gameObject.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.E)) 
+            if (Input.GetKey(KeyCode.E))
             {
-                PlayerMovementScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>();
-                    
+               PlayerMovementScript player = other.GetComponent<PlayerMovementScript>();
+
                 player.currentWeapon = weapon.GetComponent<Weapon>();
 
                 weapon.transform.parent = player.hand;
-                weapon.transform.localPosition = new Vector3(0.0f,0.0f,0.0f);
+                weapon.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                 weapon.transform.localRotation = Quaternion.identity;
                 Sword sword = weapon.GetComponent<Sword>();
                 sword.Player = player;
                 sword.anim = player.anim;
-                Debug.Log("Item Equiped"); 
-            
+                Debug.Log("Item Equiped");
+
+                Destroy(this.transform.parent.gameObject);
             }
-        }
+        }    
     }
     private void OnTriggerExit(Collider other)
     {

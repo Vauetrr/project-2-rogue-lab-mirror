@@ -181,12 +181,16 @@ public class PlayerMovementScript : MonoBehaviour
         case 1:
             if (dashing&&!iframed) 
             {
-                dashTime = 0; //end the dash early
+                    // dashTime = 0; //end the dash early
+                    //Debug.Log("Hello");
+                    
                 AttackChainCounter =1;
-                currentWeapon.normalDown(this);anim.SetBool("Roll", false);
-                preMove = 0;
-               // currentWeapon.normalUp(this);
-               // currentWeapon.normalHold(this);
+                //anim.SetInteger("AttackChain", 1); //anim.SetBool("Roll", false);
+                    currentWeapon.normalDown(this); 
+                    sprinting = false;
+                //preMove = 0;
+                //currentWeapon.normalUp(this);
+                //currentWeapon.normalHold(this);
 
                 //sprinting = false;
                 

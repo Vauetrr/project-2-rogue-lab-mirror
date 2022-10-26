@@ -58,13 +58,14 @@ public class Sword : Weapon
     public override void normalDown(PlayerMovementScript player)
     {
         //if (AttackDelay <= 0){
+        anim.SetInteger("AttackChain", 1);
         if (CanAttack) { 
             AttackDelay = AttackSpeed * player.attackSpeed;
             CanAttack = false;
             //StartCoroutine(UpdateDelay());
             //SwordAnimator.SetBool("SwingSword",true);
             SwordTrigger.SetActive(true);
-            anim.SetInteger("AttackChain", 1);
+            
             StartCoroutine(AnimationChain());
            
         }
