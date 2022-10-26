@@ -1674,6 +1674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4126932996146625079}
   - component: {fileID: 552894679649683514}
+  - component: {fileID: 1427910051336301858}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -1709,7 +1710,7 @@ Animator:
   m_GameObject: {fileID: 3606854562420891789}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd4c416b709796a45bb1df1903457a7d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9d4aa250b1f4b054b95f1418c6581a9d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8ca32f4b5f6ee96429143b67e1366b2c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1719,6 +1720,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1427910051336301858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606854562420891789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981840b4ddaae604d843cf2a15630672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4283006187556746748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2667,7 +2680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowDist: 500
   Sword: {fileID: 248246019107663476}
-  AttackCoolDown: 2
+  AttackCoolDown: 0
   HealthBar: {fileID: 5168960038303767562}
   MaxHealth: 100
   AttackDistance: 25
@@ -2777,6 +2790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5168960038303767563}
+  text: {fileID: 0}
 --- !u!1 &5168960038468816011
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,6 +3940,10 @@ PrefabInstance:
     - target: {fileID: 1005602180849792463, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
       propertyPath: m_Name
       value: Sowrd
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378093729668171983, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9139287721045311725, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
       propertyPath: m_RootOrder

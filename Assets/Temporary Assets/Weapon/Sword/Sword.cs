@@ -10,6 +10,7 @@ public class Sword : Weapon
     private float AttackSpeed = 2.9f; // delay between attacks. 
                                      // lower value = faster attacks
                                      // modified by Player's attackSpeed
+    public GameObject SwordModel;
     public GameObject SwordTrigger;
     //public Animator SwordAnimator;
     public Animator anim;
@@ -36,7 +37,7 @@ public class Sword : Weapon
         }
         //anim.SetInteger("AttackChain", 0);
         Player.AttackChainCounter = 0;
-        SwordTrigger.SetActive(false);
+        SwordModel.SetActive(false);
         CanAttack = true;
     }
 
@@ -64,7 +65,7 @@ public class Sword : Weapon
             CanAttack = false;
             //StartCoroutine(UpdateDelay());
             //SwordAnimator.SetBool("SwingSword",true);
-            SwordTrigger.SetActive(true);
+            SwordModel.SetActive(true);
             
             StartCoroutine(AnimationChain());
            

@@ -1043,6 +1043,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockDirectionDuringAttack: 0
   lockMovementDuringAttack: 0
+  normalDownCost: 20
+  normalUpCost: 0
+  normalHoldCost: 0
   Projectile: {fileID: 7355547410817782026, guid: 57b8d9c6dd77b7a40a72f628223eae38, type: 3}
   velocityMultiplier: 10
 --- !u!1 &2021404380753895164
@@ -1294,6 +1297,7 @@ MonoBehaviour:
   RockStepclip: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
   Dodgeclip: {fileID: 8300000, guid: f11db4559b3ffff45b62e9327fc5535d, type: 3}
   Deathclip: {fileID: 8300000, guid: f725249b2a246e84cbc094b383e33b8a, type: 3}
+  Attackclip: {fileID: 8300000, guid: 94dcb6b92c437c844841e11dd2038779, type: 3}
   Ground: {fileID: 1155238259084261651}
 --- !u!1 &2021404380813757776
 GameObject:
@@ -1462,6 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2021404380836760764}
+  text: {fileID: 0}
 --- !u!1 &2021404380859629013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,6 +2046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2021404381113369476}
+  text: {fileID: 0}
 --- !u!1 &2021404381240279615
 GameObject:
   m_ObjectHideFlags: 0
@@ -5006,6 +5012,7 @@ MonoBehaviour:
   PlayerModel: {fileID: 2021404380770078002}
   HealthBar: {fileID: 2021404381113369475}
   StaminaBar: {fileID: 2021404380836760765}
+  ManaBar: {fileID: 0}
   iframed: 0
   currentWeapon: {fileID: 6238143559701426538, guid: 666504e60aea9bf42b536d6971bf9d5d, type: 3}
   altWeapon: {fileID: 2021404380746381161}
@@ -5019,6 +5026,7 @@ MonoBehaviour:
   sprintSpeed: 1.5
   MaxHealth: 200
   MaxStamina: 200
+  MaxMana: 200
   AttackChainCounter: 0
   Target: {fileID: 0}
 --- !u!1 &2021404382197990239

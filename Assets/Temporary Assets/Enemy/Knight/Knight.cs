@@ -22,7 +22,8 @@ public class Knight : MonoBehaviour
     private bool EnemyEngaged=false;
     public void DecreaseHealth(float damage)
     {
-
+        //anim.SetBool("Stagger", true);
+        anim.SetInteger("Stagger", Random.Range(0,4));
         Health -= damage;
         HealthBar.SetHealthBar(Health / MaxHealth);
         if (Health < 0.0f)
@@ -40,23 +41,30 @@ public class Knight : MonoBehaviour
         }
     }
 
+
+    private float Speed = 0.0f;
+    private float AngularSpeed = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
         Agent = this.GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
         manager = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GamePlayManager>();
+        Speed = Agent.speed;
+        AngularSpeed = Agent.angularSpeed;
     }
 
     bool Attacking = false;
     IEnumerator FireBallCooldown()
     {
         Attacking = true;
+        Agent.angularSpeed = 10000;//AngularSpeed*;
         Sword.SetActive(true);
         anim.SetBool("Attack", true);
         yield return new WaitForSeconds(1.0f);
         anim.SetBool("Attack", false);
         Sword.SetActive(false);
+        //Agent.angularSpeed = AngularSpeed;
         yield return new WaitForSeconds(AttackCoolDown);
 
         Attacking = false;
@@ -66,12 +74,15 @@ public class Knight : MonoBehaviour
     bool Stopped = false;
     IEnumerator StopNav()
     {
-        anim.SetInteger("MoveState", 0);
-        Stopped = true;
-        Agent.Stop();
+        //   anim.SetInteger("MoveState", 0);
+        //   Stopped = true;
+        //   Agent.Stop();
+        Agent.speed = 0.01f;
+        
         yield return new WaitForSeconds(1);
-        Agent.Resume();
-        Stopped = false;
+        Agent.speed = Speed;
+        //  Agent.Resume();
+        //  Stopped = false;
         //anim.SetInteger("MoveState", 1);
     }
     // Update is called once per frame
@@ -86,19 +97,47 @@ public class Knight : MonoBehaviour
             
             if (Dist2 > AttackDistance)
             {
-                Agent.SetDestination(Player.position);
+                 
+                
+                if (anim.GetInteger("Stagger") != 0)
+                {
+                    Agent.speed = 0.5f;
+                    //Agent.Stop();
+                }
+                else
+                {
+                    Agent.speed = Speed;
+                    //Agent.Resume();
+                    Agent.SetDestination(Player.position);
+                
+                }
+                
                 anim.SetInteger("MoveState", 1);
             }
             else
-            {
-                if (Stopped) { this.transform.LookAt(new Vector3(Player.position.x,this.transform.position.y, Player.position.z), Vector3.up); }
-                else
-                { StartCoroutine(StopNav()); }
+            { //this.transform.rotation * (Vector3.forward);
+                
+                if (!Attacking)
+                 {
+                     Agent.speed = Speed; StartCoroutine(FireBallCooldown()); 
+                 }
+                 else 
+                 { 
+                    Agent.speed = 1.0f;
+                    this.transform.LookAt(new Vector3(Player.position.x, this.transform.position.y, Player.position.z), Vector3.up);
+                    this.transform.rotation = Quaternion.RotateTowards( this.transform.rotation, Quaternion.LookRotation(new Vector3(Player.position.x, 0, Player.position.z)), 500*Time.deltaTime);
+                 }
+                 
+
+                //if (Stopped) { this.transform.LookAt(new Vector3(Player.position.x,this.transform.position.y, Player.position.z), Vector3.up); }
+                //else
+                //{ StartCoroutine(StopNav()); }
+
+
+                
+                
             }
-            if (!Attacking)
-            {
-                StartCoroutine(FireBallCooldown());
-            }
+           
 
         }
         else { }

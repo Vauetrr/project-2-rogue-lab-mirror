@@ -13,9 +13,11 @@ public class FootSteps : MonoBehaviour
     [SerializeField]
     private AudioClip Dodgeclip; 
     [SerializeField]
-    private AudioClip Deathclip;
+    private AudioClip Deathclip;  
+    [SerializeField]
+    private AudioClip Attackclip;
 
-
+    public GameObject Trigger;
     public Transform Ground;
     private AudioSource audioSource;
 
@@ -46,9 +48,18 @@ public class FootSteps : MonoBehaviour
         audioSource.PlayOneShot(Deathclip);
     }
 
+    //private bool Attacking = false;
     public void attack() 
     {
-    
+        Debug.Log("Attack");
+        Debug.Log(Trigger);
+
+       // Attacking = !Attacking;
+        //if (Attacking)
+        //{
+        audioSource.PlayOneShot(Attackclip);
+        Trigger.SetActive(true);
+        //}
     }
     
     /*private AudioClip GetRandomClip()

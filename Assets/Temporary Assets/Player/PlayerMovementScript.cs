@@ -8,6 +8,7 @@ public class PlayerMovementScript : MonoBehaviour
     
 
     public Animator anim;
+    public GameObject Model;
     private Rigidbody Player;
     public Camera PlayerCamera;
     // public GameObject Projectile;
@@ -146,6 +147,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         SetHealthBlur();
 
+        //anim = Model.GetComponent<Animator>();
         //PlayerTransform = this.GetComponent<Transform>();
     }
 
@@ -492,5 +494,23 @@ public class PlayerMovementScript : MonoBehaviour
         // testAlt.SetText(this.altWeapon.attacking().ToString());
 
         movePlayer();
+    }
+    
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (dashing) //can stagger of break boxes
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(0.2f); }
+                else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(0.2f); }
+                else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(0.2f); }
+            }
+            else if (collision.gameObject.tag == "Interactable")
+            {
+                if (collision.gameObject.GetComponent<BreakBox>()) { collision.gameObject.GetComponent<BreakBox>().DecreaseHealth(0.2f); }
+            }
+        }
     }
 }
