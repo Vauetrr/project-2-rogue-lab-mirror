@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Sword : Weapon
 {
     //public new weaponEnum weaponType = weaponEnum.Sword;
     private float AttackDelay = 0;
     //private GameObject Projectile;
-    private float AttackSpeed = 2.9f; // delay between attacks. 
+    private float AttackSpeed = 0.7f; // delay between attacks. 
                                      // lower value = faster attacks
                                      // modified by Player's attackSpeed
     public GameObject SwordModel;
@@ -16,28 +16,22 @@ public class Sword : Weapon
     public Animator anim;
     public PlayerMovementScript Player;
     private bool CanAttack = true;
+    private int currentCombo = 0;
+    private float comboRefresh = 0.5f;
+
+    public TMP_Text text;
+
     IEnumerator AnimationChain()
     {
-        
-        yield return new WaitForSeconds(0.8f);
-        if (Player.AttackChainCounter > 1)
-        {
-            anim.SetInteger("AttackChain", 2);
-            yield return new WaitForSeconds(1.0f);
-            if (Player.AttackChainCounter > 2)
-            {
-                anim.SetInteger("AttackChain", 3);
-                yield return new WaitForSeconds(1.0f);
-                if (Player.AttackChainCounter > 3)
-                {
-                    anim.SetInteger("AttackChain", 4);
-                    yield return new WaitForSeconds(1.0f);
-                }
-            }
+        yield return new WaitForSeconds(AttackDelay);
+
+        if (currentCombo >= 4){
+            currentCombo = 0;
+            anim.SetInteger("AttackChain", currentCombo);
+            text.SetText(this.currentCombo.ToString());
         }
-        anim.SetInteger("AttackChain", 0);
-        Player.AttackChainCounter = 0;
-        SwordModel.SetActive(false);
+
+        SwordTrigger.SetActive(false);
         CanAttack = true;
     }
 
@@ -45,31 +39,47 @@ public class Sword : Weapon
         lockDirectionDuringAttack = true;
         lockMovementDuringAttack = true;
     }
+    
     IEnumerator UpdateDelay()
     {
+        int startingCombo = currentCombo;
         yield return new WaitForSeconds(AttackDelay);
         CanAttack = true;
+        yield return new WaitForSeconds(comboRefresh);
+        if (startingCombo == currentCombo){
+            currentCombo = 0;
+            anim.SetInteger("AttackChain", currentCombo);
+            text.SetText(this.currentCombo.ToString());
+        }
     }
 
    
     public override void updateDelay(){
-        
+
     }
 
     public override void normalDown(PlayerMovementScript player)
     {
-        //if (AttackDelay <= 0){
-        anim.SetInteger("AttackChain", 1);
-        if (CanAttack) { 
-            AttackDelay = AttackSpeed * player.attackSpeed;
-            CanAttack = false;
-            //StartCoroutine(UpdateDelay());
-            //SwordAnimator.SetBool("SwingSword",true);
-            SwordModel.SetActive(true);
-            
-            StartCoroutine(AnimationChain());
-           
+        AttackDelay = AttackSpeed * player.attackSpeed;
+
+        if (!CanAttack){
+            return;
         }
+
+        CanAttack = false;
+        
+        SwordTrigger.SetActive(true);
+
+        currentCombo++;
+        
+        text.SetText(this.currentCombo.ToString());
+        CanAttack = false;
+        anim.SetInteger("AttackChain", currentCombo);
+
+
+        StartCoroutine(UpdateDelay());
+        StartCoroutine(AnimationChain());
+
     }
 
     public override void normalHold(PlayerMovementScript player)
@@ -86,6 +96,10 @@ public class Sword : Weapon
 
     public override bool attacking(){
         return !CanAttack;
+    }
+
+    void update(){
+        text.SetText(this.currentCombo.ToString());
     }
 }
 

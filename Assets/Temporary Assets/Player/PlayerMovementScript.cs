@@ -5,8 +5,7 @@ using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    
-
+    public TMP_Text tutorialText;
     public Animator anim;
     public GameObject Model;
     private Rigidbody Player;
@@ -110,7 +109,7 @@ public class PlayerMovementScript : MonoBehaviour
             Health = 0;
             alive = false;
             restartLevel();
-            anim.SetBool("Dead",true);
+            anim.SetBool("Alive", false);
         }
 
         HealthBar.SetHealthBar(Health, MaxHealth);
@@ -123,8 +122,7 @@ public class PlayerMovementScript : MonoBehaviour
     
     public void DecreaseMana(float value){
         Mana -= value;
-        if (Mana > MaxMana) { 
-            //Health = MaxMana; //?
+        if (Mana >= MaxMana) { 
             Mana = MaxMana; 
         }
         else if (Mana < 0){
@@ -180,145 +178,45 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
-    public int AttackChainCounter = 0;
+    //public int AttackChainCounter = 0;
+
     
-    private int preMove =0;
-    private float[] RollDir = { 0.0f, 0.0f };
-
-    public GameObject Target;
-    private GameObject CurrentTarget;
-    //private Vector2 RollDir = new Vector2(0.0f,0.0f);
-    void PreMove() 
-    {
-        defaultState = (!guarding && !dashing);
-        attacking = currentWeapon.attacking() || altWeapon.attacking();
-        if (dashTime <= 0)
-        {
-            dashing = false;
-            curDash = 0;
-            anim.SetBool("Roll", false);
-
-        }
-
-        switch (preMove) 
-        {
-        case 0:
-
-            break;
-        case 1:
-            if (dashing&&!iframed) 
-            {
-                    // dashTime = 0; //end the dash early
-                    //Debug.Log("Hello");
-                    
-                AttackChainCounter =1;
-                //anim.SetInteger("AttackChain", 1); //anim.SetBool("Roll", false);
-                    currentWeapon.normalDown(this); 
-                    sprinting = false;
-                //preMove = 0;
-                //currentWeapon.normalUp(this);
-                //currentWeapon.normalHold(this);
-
-                //sprinting = false;
-                
-                
-            }
-            break;
-        case 4:
-            if (!attacking) 
-            {
-                dashing = true;
-                anim.SetBool("Roll", true);
-                anim.SetInteger("AttackChain", 0);
-                
-                dashCooldown = dashCooldownDefault;
-                curDash++;
-                runButtonHeld = true;
-                updateStamina(-dashCost);
-                dashHorizontal = RollDir[0]; // no momentum
-                dashVertical = RollDir[1]; // no momentum
-                
-                dashTime = dashTimeDefault;
-                dashStart = false;
-                iframed = true;
-                preMove = 0;
-            }
-            break;
-           
-        
-        }
-        
-    }
     void readInput(){
 
-       /* if (Input.GetKeyDown(KeyCode.Q)) 
-        {
-            GameObject[] EnemyList = GameObject.FindGameObjectsWithTag("EnemyUI");
-            //Vector3 ClosestEnemy = new Vector3(0.0f,0.0f,0.0f);
-            Transform ClosestEnemy = EnemyList[0].GetComponent<Transform>();
-            float EnemyDist = (this.transform.position -ClosestEnemy.position).magnitude;
-            for (int i = 1; i < EnemyList.Length; i++) 
-            {
-                Transform Enemyi = EnemyList[i].GetComponent<Transform>();
-                float EnemyiDist = (this.transform.position - Enemyi.position).magnitude;
-                if (EnemyDist > EnemyiDist) { EnemyDist = EnemyiDist; ClosestEnemy = Enemyi; }
-            }
-            Destroy(CurrentTarget);
-            CurrentTarget = Instantiate(Target, ClosestEnemy.position,Quaternion.identity);
-            CurrentTarget.transform.parent = ClosestEnemy;
-        }*/
+        defaultState = (!guarding && !dashing);
+        attacking = currentWeapon.attacking() || altWeapon.attacking();
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-
-            if (preMove==0 && defaultState) {
-                AttackChainCounter++; 
-            }
-            if (dashing) { preMove =1; }
-        }
+        // if (Input.GetButtonDown("Fire1") && defaultState)
+        // { 
+        //     AttackChainCounter++;
+        // }
 
         if (!attacking)
         {
 
-            anim.SetInteger("AttackChain", 0);
             //left mouse, normal attack
             if (Input.GetButtonDown("Fire1") && defaultState)
             {
-                if (dashing) {preMove = 1;
-                }
-                else
-                {
-                    //anim.SetBool("Roll", false);
-                    currentWeapon.normalDown(this);
-                    sprinting = false;
-                }
-                
+                currentWeapon.normalDown(this);
+                sprinting = false;
             }
 
             if (Input.GetButtonUp("Fire1") && defaultState)
             {
-                if (dashing) { preMove = 1; }
-                else 
-                {
-                    currentWeapon.normalUp(this);
-                    sprinting = false;
-                }
+                currentWeapon.normalUp(this);
+                sprinting = false;
             }
 
             if (Input.GetButton("Fire1") && defaultState)
             {
-                if (dashing) { preMove = 1; }
-                else
-                {
-                    currentWeapon.normalHold(this);
-                    sprinting = false;
-                }
+                currentWeapon.normalHold(this);
+                sprinting = false;
             }
 
             // right mouse, alt fire 
             if (Input.GetButtonDown("Fire2") && defaultState)
             {
-                if (Mana > altWeapon.normalDownCost){
+                if (Mana >= altWeapon.normalDownCost){
                     altWeapon.normalDown(this);
                     DecreaseMana(altWeapon.normalDownCost);
                     sprinting = false;
@@ -333,12 +231,8 @@ public class PlayerMovementScript : MonoBehaviour
 
             if (Input.GetButton("Fire2") && defaultState)
             {
-                if (dashing) { preMove = 2; }
-                else
-                {
-                    altWeapon.normalHold(this);
-                    sprinting = false;
-                }
+                altWeapon.normalHold(this);
+                sprinting = false;
             }
         }
 
@@ -353,23 +247,13 @@ public class PlayerMovementScript : MonoBehaviour
 
         //spacebar, dash; hold post-dash to run until spacebar let go
         if (Input.GetButtonDown("Jump") && curDash < dashLimit && dashCooldown <= 0 && dashCost <= Stamina){
-            if (attacking) 
-            {
-              
-                preMove = 4;
-                RollDir[0] = Input.GetAxisRaw("Horizontal"); 
-                RollDir[1] = Input.GetAxisRaw("Vertical");
-            }
-            else
-            {
-                dashing = true;
-                anim.SetBool("Roll", true);
-                dashStart = true;
-                dashCooldown = dashCooldownDefault;
-                curDash++;
-                runButtonHeld = true;
-                updateStamina(-dashCost);
-            }
+            dashing = true;
+            //anim.SetBool("Roll", true);
+            dashStart = true;
+            dashCooldown = dashCooldownDefault;
+            curDash++;
+            runButtonHeld = true;
+            updateStamina(-dashCost);
         }
 
         if (Input.GetButton("Jump")){
@@ -380,6 +264,10 @@ public class PlayerMovementScript : MonoBehaviour
         else {
             runButtonHeld = false;
             sprinting = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)){
+            tutorialText.enabled = !tutorialText.enabled;
         }
     }
 
@@ -417,12 +305,13 @@ public class PlayerMovementScript : MonoBehaviour
             if (runButtonHeld){
                 sprinting = true;
                 dashTime = 0; //end the dash early
-                anim.SetBool("Roll", false);
-                preMove = 0;
             }
         }
 
-        
+        if (dashTime <= 0){
+            dashing = false;
+            curDash = 0;
+        }
     }
 
     void movePlayer() {
@@ -430,8 +319,8 @@ public class PlayerMovementScript : MonoBehaviour
             dashPlayer();
             return;
         }
-        Vector2 Left = new Vector3(1.0f, -1.0f);
-        Vector2 Forward = new Vector3(1.0f, 1.0f);
+        Vector2 Left = new Vector3( 1.0f, -1.0f );
+        Vector2 Forward = new Vector3( 1.0f, 1.0f );
         // Player.AddForce( Input.GetAxis("Horizontal")*Left +  Input.GetAxis("Vertical")*Forward);
 
         // Vector3 dir = new Vector2(0.0f,Player.velocity.y,0.0f)+ Input.GetAxisRaw("Horizontal") * Left + Input.GetAxisRaw("Vertical") * Forward;
@@ -456,26 +345,37 @@ public class PlayerMovementScript : MonoBehaviour
         //testSpeed.SetText(slowV.ToString());
         Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV);
 
+        if (dir.sqrMagnitude > 0.1f) { if (sprinting) { anim.SetInteger("MoveSpeed", 2); } else { anim.SetInteger("MoveSpeed", 1); } }
+        else { anim.SetInteger("MoveSpeed", 0); }
         //Debug
         // if (!((currentWeapon.attacking() && currentWeapon.lockMovementDuringAttack)
         //       || (altWeapon.attacking() && altWeapon.lockMovementDuringAttack)))
         // { Player.velocity = new Vector3(dir.x * moveSpeed * slowV, Player.velocity.y, dir.y * moveSpeed * slowV); }
         // else { Player.velocity = new Vector3(0.0f, Player.velocity.y, 0.0f); }
-        
-        
-        if (dir.sqrMagnitude > 0.1f) { if (sprinting) { anim.SetInteger("MoveSpeed", 2); } else { anim.SetInteger("MoveSpeed", 1); } }
-        else { anim.SetInteger("MoveSpeed", 0); }
-        if (Player.velocity.y < -5.0f) { anim.SetBool("Falling", true); } else { anim.SetBool("Falling", false); }
     }
+
+    void updateAnim(){
+        anim.SetBool("Falling", (Player.velocity.y < -5.0f));
+        anim.SetBool("Rolling", dashing);
+        if (dashing){ // remove animation glitch from roll cancelling attacks
+            anim.SetInteger("AttackChain", 0); 
+        }
+        anim.SetBool("Sprinting", sprinting);
+        anim.SetBool("Alive", alive);
+        anim.SetBool("Guarding", guarding);
+        anim.SetBool("Default", defaultState);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-
-        PreMove();
+        if (!alive){
+            return;
+        }
+        
         readInput();
         updateDelay();
-        
 
         Ray ShootLocation = PlayerCamera.ScreenPointToRay(Input.mousePosition);
         float al = ShootLocation.direction.y;//Vector3.Dot(ShootLocation.direction, new Vector3(0.0f,1.0f,0.0f));
@@ -490,11 +390,12 @@ public class PlayerMovementScript : MonoBehaviour
             Head.LookAt(LookLoc, new Vector3(0.0f,1.0f,0.0f));
         }
 
-        // testAtt.SetText(this.attacking.ToString());
+        //testAtt.SetText(this.AttackChainCounter.ToString());
         // testCur.SetText(this.currentWeapon.attacking().ToString());
         // testAlt.SetText(this.altWeapon.attacking().ToString());
 
         movePlayer();
+        updateAnim();
     }
     
     
