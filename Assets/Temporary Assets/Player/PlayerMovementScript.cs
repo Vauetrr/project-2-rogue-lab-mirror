@@ -5,6 +5,7 @@ using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    public TMP_Text tutorialText;
     public Animator anim;
     public GameObject Model;
     private Rigidbody Player;
@@ -108,7 +109,7 @@ public class PlayerMovementScript : MonoBehaviour
             Health = 0;
             alive = false;
             restartLevel();
-            //anim.SetBool("Dead",true);
+            anim.SetBool("Alive", false);
         }
 
         HealthBar.SetHealthBar(Health, MaxHealth);
@@ -263,6 +264,10 @@ public class PlayerMovementScript : MonoBehaviour
         else {
             runButtonHeld = false;
             sprinting = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)){
+            tutorialText.enabled = !tutorialText.enabled;
         }
     }
 
