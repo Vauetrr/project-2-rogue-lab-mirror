@@ -30,6 +30,9 @@ public class GunProjectile : MonoBehaviour
             if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(damage); }
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(damage); }
+            else if (collision.gameObject.GetComponent<Boss>()) { collision.gameObject.GetComponent<Boss>().DecreaseHealth(damage); }
+            
+            
             GameObject o = Instantiate(Explosion, this.transform.position, Quaternion.identity);
             o.SetActive(true);
             Destroy(gameObject, 0);

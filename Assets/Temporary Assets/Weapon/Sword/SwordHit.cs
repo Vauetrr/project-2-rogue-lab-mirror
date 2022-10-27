@@ -13,18 +13,18 @@ public class SwordHit : MonoBehaviour
     // Start is called before the first frame update
 
     // didn't align with hitbox, so commented out for now
-    // void OnEnable()
-    // {
-    //     //PlayAnimation();
-    //     StartCoroutine(Swing());
-    // }
+     //void OnEnable()
+     //{
+         //PlayAnimation();
+         //StartCoroutine(Swing());
+     //}
 
-    // IEnumerator Swing()
-    // { 
-    //     yield return new WaitForSeconds(0.2f);
-    //     this.gameObject.SetActive(false);
-
-    // }
+     //IEnumerator Swing()
+     //{ 
+     //    yield return new WaitForSeconds(0.5f);
+     //    this.gameObject.SetActive(false);
+     //
+     //}
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -40,6 +40,7 @@ public class SwordHit : MonoBehaviour
             if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage); }
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage); }
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage); }
+            else if (collision.gameObject.GetComponent<Boss>()) { collision.gameObject.GetComponent<Boss>().DecreaseHealth(Damage); }
 
             // collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage);
             //Destroy(gameObject, 0);

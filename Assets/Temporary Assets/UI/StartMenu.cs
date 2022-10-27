@@ -8,7 +8,8 @@ public class StartMenu : MonoBehaviour
     [SerializeField] List<GameObject> subMenus;
     public void OnClickPlay()
     {
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("tutorial");
+        //SceneManager.LoadScene("Test");
         // other way:
         // SceneManager.LoadScene(1); // file ->buildscene to see numbers; but numbers suck dont do this
 

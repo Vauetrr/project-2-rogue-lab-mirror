@@ -8,11 +8,13 @@ public class BreakBox : MonoBehaviour
     public GameObject Debris;
     public GameObject PickUp;
     public float health = 1;
+    private bool alive = true;
     public void DecreaseHealth(float damage) 
     {
         health -= damage;
-        if (health <= 0) 
+        if (health <= 0 && alive) 
         {
+            alive = false;
             Instantiate(Debris, this.transform.position, this.transform.rotation);
             if (PickUp != null) { Instantiate(PickUp, this.transform.position, this.transform.rotation);} 
             Destroy(gameObject); 

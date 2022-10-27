@@ -28,7 +28,7 @@ public class Sword : Weapon
         if (currentCombo >= 4){
             currentCombo = 0;
             anim.SetInteger("AttackChain", currentCombo);
-            text.SetText(this.currentCombo.ToString());
+            //text.SetText(this.currentCombo.ToString());
         }
 
         SwordTrigger.SetActive(false);
@@ -49,7 +49,7 @@ public class Sword : Weapon
         if (startingCombo == currentCombo){
             currentCombo = 0;
             anim.SetInteger("AttackChain", currentCombo);
-            text.SetText(this.currentCombo.ToString());
+            //text.SetText(this.currentCombo.ToString());
         }
     }
 
@@ -72,7 +72,7 @@ public class Sword : Weapon
 
         currentCombo++;
         
-        text.SetText(this.currentCombo.ToString());
+        //text.SetText(this.currentCombo.ToString());
         CanAttack = false;
         anim.SetInteger("AttackChain", currentCombo);
 
@@ -99,7 +99,7 @@ public class Sword : Weapon
     }
 
     void update(){
-        text.SetText(this.currentCombo.ToString());
+        //text.SetText(this.currentCombo.ToString());
     }
 }
 

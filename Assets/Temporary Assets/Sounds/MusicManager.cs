@@ -15,15 +15,16 @@ public class MusicManager : MonoBehaviour
         //Track1 = gameObject.AddComponent<AudioSource>();
         //Track2 = gameObject.AddComponent<AudioSource>();
 
-        Track1.clip = StartClip;
+        Track1.clip = StartClip;// StartClip;
         Track2.clip = Clip[1];
-        
+
         //Track2.Stop();
-        Track1.volume = Volume;
+        Track1.volume = 0.0f;//Volume;
         Track2.volume = 0.0f;
         
         Track1.Play();
         Track2.Play();
+        FadeTrack(0,20.0f);
     }
 
     public void SwitchTrack(int ClipNumber) 
