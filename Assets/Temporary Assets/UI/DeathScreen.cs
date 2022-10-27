@@ -10,7 +10,7 @@ public class DeathScreen : MonoBehaviour
 
     public void activate()
     {
-        Debug.Log("yea");
-        text.enabled = true;
+        SceneManager.LoadScene("Test");
+        
     }
 }

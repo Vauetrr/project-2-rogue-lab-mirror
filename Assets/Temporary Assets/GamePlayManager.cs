@@ -10,6 +10,20 @@ public class GamePlayManager : MonoBehaviour
     //public int E = 0;
     public MusicManager musicManager;
     // Start is called before the first frame update
+
+    private static GamePlayManager gamePlayManager;
+    void Awake(){
+        if (gamePlayManager == null) {
+            gamePlayManager = this;
+            DontDestroyOnLoad(gamePlayManager);
+        }
+        else {
+            gamePlayManager.Start();
+            gamePlayManager.musicManager.FadeTrack(0, 5.0f); 
+            Destroy(this.gameObject); // there already exists a GPManager
+        }
+    }
+
     public void EnemyEngaged()
     { 
         EnemiesEngaged = EnemiesEngaged+1;
@@ -21,8 +35,7 @@ public class GamePlayManager : MonoBehaviour
         EnemiesEngaged = EnemiesEngaged-1;
         if (EnemiesEngaged == 0) { musicManager.FadeTrack(0, 5.0f); }
     }
-    void Start()
-    {
+    void Start() {
         EnemiesKilled = 0;
         EnemiesEngaged = 0;
     }

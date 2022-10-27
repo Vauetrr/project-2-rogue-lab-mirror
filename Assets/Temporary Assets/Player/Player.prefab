@@ -7706,6 +7706,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3186917534800484682}
   - {fileID: 5859466635746917418}
   - {fileID: 4772421917086672892}
   - {fileID: 5342797181946987955}
@@ -7759,6 +7760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 5493787141009823875}
+  deathScreen: {fileID: 3137822792426897079}
   anim: {fileID: 5858944389366975080}
   Model: {fileID: 7927934050093921239}
   PlayerCamera: {fileID: 6155255854705664476}
@@ -7784,3 +7786,84 @@ MonoBehaviour:
   MaxHealth: 200
   MaxStamina: 200
   MaxMana: 200
+--- !u!1001 &913265676470412133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 7333966991244877737}
+    m_Modifications:
+    - target: {fileID: 1839750737672254552, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821324293280488914, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_Name
+      value: DeathScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821324293280488914, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2964886049758213884, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+--- !u!1 &3137822792426897079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2821324293280488914, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+  m_PrefabInstance: {fileID: 913265676470412133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3186917534800484682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2348247700780907055, guid: ab15a9e7dbfbd414fa741669af01beb4, type: 3}
+  m_PrefabInstance: {fileID: 913265676470412133}
+  m_PrefabAsset: {fileID: 0}
