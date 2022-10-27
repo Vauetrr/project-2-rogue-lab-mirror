@@ -6,6 +6,7 @@ using TMPro;
 public class PlayerMovementScript : MonoBehaviour
 {
     public TMP_Text tutorialText;
+    [SerializeField] private GameObject deathScreen;
     public Animator anim;
     public GameObject Model;
     private Rigidbody Player;
@@ -88,8 +89,9 @@ public class PlayerMovementScript : MonoBehaviour
     }
     
     public void restartLevel(){
-
-        //restart the scene
+        tutorialText.enabled = false;
+        deathScreen.SetActive(true);
+        deathScreen.GetComponent<DeathScreen>().activate();
     }
 
     public void DecreaseHealth(float damage) 
@@ -104,12 +106,14 @@ public class PlayerMovementScript : MonoBehaviour
         if (Health > MaxHealth) { 
             Health = MaxHealth; 
         }
-        else if (Health < 0) {
+        else if (Health <= 0) {
             // Debug.Log("Implement Dying here");
             Health = 0;
             alive = false;
-            restartLevel();
             anim.SetBool("Alive", false);
+            HealthBar.SetHealthBar(Health, MaxHealth);
+            SetHealthBlur();
+            restartLevel();
         }
 
         HealthBar.SetHealthBar(Health, MaxHealth);
