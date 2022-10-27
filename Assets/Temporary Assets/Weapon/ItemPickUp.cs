@@ -29,6 +29,7 @@ public class ItemPickUp : MonoBehaviour
                 sword.Player = player;
                 sword.anim = player.anim;
                 player.Model.GetComponent<FootSteps>().Trigger = sword.SwordTrigger;
+                sword.SwordTrigger.GetComponent<SwordHit>().Player = player;
                 sword.SwordTrigger.SetActive(false);
                 //weapon.GetComponentInChildren<GameObject>().SetActive(false);
                 

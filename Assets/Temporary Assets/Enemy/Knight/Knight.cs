@@ -110,13 +110,11 @@ public class Knight : MonoBehaviour
                     //Agent.Resume();
                     Agent.SetDestination(Player.position);
                 
-                }
-                
+                }                
                 anim.SetInteger("MoveState", 1);
             }
             else
-            { //this.transform.rotation * (Vector3.forward);
-                
+            { 
                 if (!Attacking)
                  {
                      Agent.speed = Speed; StartCoroutine(FireBallCooldown()); 
@@ -126,16 +124,7 @@ public class Knight : MonoBehaviour
                     Agent.speed = 1.0f;
                     this.transform.LookAt(new Vector3(Player.position.x, this.transform.position.y, Player.position.z), Vector3.up);
                     this.transform.rotation = Quaternion.RotateTowards( this.transform.rotation, Quaternion.LookRotation(new Vector3(Player.position.x, 0, Player.position.z)), 500*Time.deltaTime);
-                 }
-                 
-
-                //if (Stopped) { this.transform.LookAt(new Vector3(Player.position.x,this.transform.position.y, Player.position.z), Vector3.up); }
-                //else
-                //{ StartCoroutine(StopNav()); }
-
-
-                
-                
+                 }                                      
             }
            
 
