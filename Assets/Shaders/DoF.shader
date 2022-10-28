@@ -3,11 +3,11 @@ Shader "Custom/DepthOfField"
     Properties 
     {
         [HideInInspector]_MainTex ("Texture", 2D) = "white" {}
-        _BlurSize ("Blur Size", Range(0, 0.5)) = 0
-        [KeywordEnum(Low, Medium, High)] _Samples ("Sample Amount", Float) = 0
+        _BlurSize ("Blur Size", Range(0, 0.5)) = 0.01
+        [KeywordEnum(Low, Medium, High)] _Samples ("Sample Amount", Float) = 2
         [PowerSlider(3)] _StdDeviation ("Standard Deviation", Range(0.00, 0.3)) = 0.02
-        _FocDis ("Focus Distance", Range(0.1, 100)) = 10.0
-        _FocRng ("Focus Range", Range(0.1, 1000)) = 3.0
+        _FocDis ("Focus Distance", Range(0.1, 100)) = 42.0
+        _FocRng ("Focus Range", Range(0.1, 1000)) = 26.0
     }
     SubShader 
     {
