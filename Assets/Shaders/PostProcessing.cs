@@ -5,6 +5,7 @@ using UnityEngine;
 public class PostProcessing : MonoBehaviour
 {
     [SerializeField] private Material lowHealth;
+    [SerializeField] private Material depthOfField;
     [SerializeField] private Texture2D ditherTex;
     [SerializeField] private float ditherAlpha = 0.1f;
     [SerializeField] private float ditherCatchRadius = 1.0f;
@@ -50,11 +51,23 @@ public class PostProcessing : MonoBehaviour
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        var tempText = RenderTexture.GetTemporary(source.width, source.height);
-        Graphics.Blit(source, tempText, lowHealth, 0);
-        Graphics.Blit(tempText, source, lowHealth, 1);
-        Graphics.Blit(source, destination, lowHealth, 2);
-        RenderTexture.ReleaseTemporary(tempText);
+        // temp texts
+        var healthEffect = RenderTexture.GetTemporary(source.width, source.height);
+        var coc = RenderTexture.GetTemporary(
+            source.width, source.height, 0, RenderTextureFormat.RFloat, RenderTextureReadWrite.Linear
+        );
+        depthOfField.SetTexture("_CoCTex", coc);
+
+        // blit low health shader
+        Graphics.Blit(source, healthEffect, lowHealth, 0);
+
+        // blit dof
+        Graphics.Blit(healthEffect, coc, depthOfField, 0);
+        Graphics.Blit(healthEffect, source, depthOfField, 1);
+        Graphics.Blit(source, destination, depthOfField, 2);
+
+        RenderTexture.ReleaseTemporary(healthEffect);
+        RenderTexture.ReleaseTemporary(coc);
     }
 
     IEnumerator Fade(Material mat) {

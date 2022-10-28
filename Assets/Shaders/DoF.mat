@@ -7,14 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LowHealth
-  m_Shader: {fileID: 4800000, guid: 93f9d76cb960aed4f898627b1e5a0977, type: 3}
+  m_Name: DoF
+  m_Shader: {fileID: 4800000, guid: f8cfc02d78b43ae42a0249fdc0a199ba, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _BLURSAMPLES_LOW
+  m_ValidKeywords:
   - _SAMPLES_HIGH
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -41,10 +40,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DitherPattern:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,35 +62,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.5
-    - _BlurSamples: 0
-    - _BlurSize: 0
+    - _BlurSize: 0.01
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Feather: 2.44
+    - _FocDis: 42
+    - _FocRng: 25.7
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Greyscale: 0
-    - _MaxDis: 100
     - _Metallic: 0
-    - _MinDis: 20
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Radius: 2
     - _Samples: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StdDeviation: 0.014
+    - _StdDeviation: 0.02
     - _UVSec: 0
-    - _VignetteRadius: 0.83
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColour: {r: 0.6509434, g: 0.046495933, b: 0.046495933, a: 1}
   m_BuildTextureStacks: []
