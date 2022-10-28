@@ -85,6 +85,23 @@ public class PlayerMovementScript : MonoBehaviour
         float visualHealth = (Health / MaxHealth) > 0.5f? 1: (Health/MaxHealth)*2;
         LowHealth.SetFloat("_Greyscale", (1.0f-visualHealth) );
         LowHealth.SetFloat("_Radius", 2.0f*visualHealth);
+        StartCoroutine(DoubleVision(1.0f - visualHealth));
+    }
+
+    IEnumerator DoubleVision(float amount)
+    {
+        var frequency = 1.0f;
+        while (amount > 0)
+        {
+            var smoothAmount = Mathf.Pow(amount, 0.5f);
+            var offset = Mathf.PerlinNoise(0, Time.time * frequency) * 0.05f * smoothAmount;
+            LowHealth.SetFloat("_LeftVis", offset);
+            LowHealth.SetFloat("_RightVis", offset);
+            amount -= Time.deltaTime;
+            yield return null;
+        }
+        LowHealth.SetFloat("_LeftVis", 0.0f);
+        LowHealth.SetFloat("_RightVis", 0.0f);
     }
     
     public void restartLevel(){
@@ -139,6 +156,8 @@ public class PlayerMovementScript : MonoBehaviour
         //sHealth = MaxHealth;
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
+        LowHealth.SetFloat("_LeftVis", 0.0f);
+        LowHealth.SetFloat("_RightVis", 0.0f);
 
         Stamina = MaxStamina;
         Player = this.GetComponent<Rigidbody>();
