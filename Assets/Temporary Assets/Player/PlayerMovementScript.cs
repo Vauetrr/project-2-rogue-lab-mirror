@@ -7,6 +7,7 @@ public class PlayerMovementScript : MonoBehaviour
 {
     public TMP_Text tutorialText;
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] LoadingFade loadingFade;
     public Animator anim;
     public GameObject Model;
     private Rigidbody Player;
@@ -107,13 +108,13 @@ public class PlayerMovementScript : MonoBehaviour
     public void restartLevel(){
         tutorialText.enabled = false;
         deathScreen.SetActive(true);
-        deathScreen.GetComponent<DeathScreen>().activate();
+        StartCoroutine(deathScreen.GetComponent<DeathScreen>().activate());
     }
 
     public void DecreaseHealth(float damage) 
     {
         //Debug.Log("e");
-        if (iframed){
+        if (iframed || !alive) {
             return;
         }
 
@@ -154,6 +155,8 @@ public class PlayerMovementScript : MonoBehaviour
     void Start()
     {
         //sHealth = MaxHealth;
+        StartCoroutine(loadingFade.StartFade(false, 0.0f));
+
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
         LowHealth.SetFloat("_LeftVis", 0.0f);

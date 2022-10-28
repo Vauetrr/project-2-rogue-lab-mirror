@@ -6,14 +6,19 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] List<GameObject> subMenus;
+    [SerializeField] LoadingFade loadingFade;
+    [SerializeField] GameObject loadScreen;
+
+    
     public void OnClickPlay()
     {
-        SceneManager.LoadScene("tutorial");
-        //SceneManager.LoadScene("Test");
-        // other way:
-        // SceneManager.LoadScene(1); // file ->buildscene to see numbers; but numbers suck dont do this
+        StartCoroutine(StartLoad());
+    }
 
-        // menuname.ssetActive(true/false);    
+    IEnumerator StartLoad(){
+        yield return StartCoroutine(loadingFade.StartFade(true, 0.5f));
+        ActivateSubmenu(loadScreen);
+        SceneManager.LoadScene("tutorial");
     }
 
     public void ActivateSubmenu(GameObject subMenu){ //can also do it 100% in unity, this is an alt. way

@@ -28,6 +28,7 @@ public class LavaDeath : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
+            collider.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(9999.0f);
             cam = GameObject.FindGameObjectWithTag("MainCamera");
             cam.transform.parent = null;
             Instantiate(fire, collider.transform.position, Quaternion.identity);

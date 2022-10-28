@@ -7,10 +7,24 @@ public class DeathScreen : MonoBehaviour
 {
 
     [SerializeField] private TMP_Text text;
+    [SerializeField] LoadingFade loadingFade;
+    [SerializeField] GameObject loadScreen;
+    [SerializeField] List<GameObject> subMenus;
 
-    public void activate()
+
+    public IEnumerator activate()
     {
+        yield return StartCoroutine(loadingFade.StartFade(true, 3.0f));
+        ActivateSubmenu(loadScreen);
         SceneManager.LoadScene("Test");
-        
     }
+
+    public void ActivateSubmenu(GameObject subMenu){ 
+        Debug.Assert(subMenus.Contains(subMenu));
+
+        foreach (var sub in subMenus){
+            sub.SetActive(sub == subMenu);
+        }
+    }
+
 }

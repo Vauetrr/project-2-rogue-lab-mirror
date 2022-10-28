@@ -16,7 +16,7 @@ public class ItemPickUp : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 PlayerMovementScript player = other.GetComponent<PlayerMovementScript>();
 
