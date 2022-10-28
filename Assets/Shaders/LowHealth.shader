@@ -7,6 +7,8 @@ Shader "Custom/LowHealth"
         _Feather ("Vignette Feather", Range(0, 10)) = 1
         _TintColour ("Vignette Colour", Color) = (0.55, 0.01, 0.01, 1)
         _Greyscale ("Greyscale Amount", Range(0, 1)) = 0
+        _LeftVis ("Left vision offset", Range(0, 0.2)) = 0
+        _RightVis ("Right vision offset", Range(0, 0.2)) = 0
     }
     SubShader
     {
@@ -29,6 +31,9 @@ Shader "Custom/LowHealth"
         float4 _TintColour;
         float _Greyscale;
 
+        // double vision vars
+        float _LeftVis, _RightVis;
+
         struct vertIn
         {
             float4 vertex : POSITION;
@@ -39,6 +44,8 @@ Shader "Custom/LowHealth"
         {
             float4 position : SV_POSITION;
             float2 uv : TEXCOORD0;
+            float2 leftUv : TEXCOORD1;
+            float2 rightUv : TEXCOORD2;
         };
 
         ENDCG
@@ -54,6 +61,8 @@ Shader "Custom/LowHealth"
                 vertOut o;
                 o.position = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
+                o.leftUv = v.uv - float2(_LeftVis, 0);
+                o.rightUv = v.uv + float2(_RightVis, 0);
                 return o;
             }
 
@@ -62,13 +71,17 @@ Shader "Custom/LowHealth"
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 
+                // calculate vignette mask
                 float2 newUV = i.uv * 2 - 1;
                 float circle = length(newUV);
                 float invMask = smoothstep(_Radius, _Radius + _Feather, circle);
                 float mask = 1 - invMask;
 
-                float3 normalColour = col.rgb * mask;
+                // add greyscale and double vision to the normal colour
+                float3 normalColour = lerp(tex2D(_MainTex, i.leftUv), tex2D(_MainTex, i.rightUv), 0.5).rgb * mask;
                 normalColour = lerp(normalColour, dot(normalColour, float3(0.3, 0.59, 0.11)), _Greyscale);
+
+                // blend vignette and normal colour together
                 float3 vignetteColour = (1 - col.rgb) * invMask * _TintColour;
                 return fixed4(normalColour + vignetteColour, 1);
             }
