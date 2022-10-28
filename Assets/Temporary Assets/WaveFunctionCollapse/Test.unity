@@ -965,7 +965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165488798}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 10800, y: 10, z: 390}
+  m_LocalPosition: {x: 10790, y: 10, z: 390}
   m_LocalScale: {x: 20000, y: 800, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1107,6 +1107,25 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b080ce71a5243e84cb6e6b1817003a78, type: 3}
+--- !u!1 &173836020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4488392120771338206, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+  m_PrefabInstance: {fileID: 5858944389753490227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &173836022
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173836020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.5001859
+  m_Direction: 1
+  m_Center: {x: 9.331543e-10, y: 0.08044747, z: 0.0000000044482036}
 --- !u!1 &174297548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,7 +1361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256088497}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -10000, y: 10, z: 0}
+  m_LocalPosition: {x: -10010, y: 10, z: 0}
   m_LocalScale: {x: 20000, y: 40000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1568,7 +1587,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295906495}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 400, y: 9.9, z: 390}
+  m_LocalPosition: {x: 390, y: 9.9, z: 390}
   m_LocalScale: {x: 800, y: 800, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2753,7 +2772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663681738}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 10000, y: 10, z: 10790}
+  m_LocalPosition: {x: 9990, y: 10, z: 10790}
   m_LocalScale: {x: 20000, y: 20000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3930,9 +3949,9 @@ MonoBehaviour:
   - {fileID: 1982064057234030237, guid: c1eba12ae896c6f43933083c848d957d, type: 3}
   - {fileID: 8110847992099819029, guid: 1d2a8f2ed9927754faa0d72321333a1b, type: 3}
   - {fileID: 9140434832704416317, guid: f96db358e21f3b6449b1db21af667837, type: 3}
-  SizeX: 40
-  SizeY: 10
-  SizeZ: 40
+  SizeX: 20
+  SizeY: 7
+  SizeZ: 20
   surface: {fileID: 1021127529}
   Error: {fileID: 1315043380}
   walk: {fileID: 7398538573864090014, guid: 02432cffc72df614d9df06c010e22d04, type: 3}
@@ -5541,7 +5560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469988166}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 10000, y: 10, z: -10010}
+  m_LocalPosition: {x: 9990, y: 10, z: -10010}
   m_LocalScale: {x: 20000, y: 20000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8712,6 +8731,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 152922063549503824, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+      propertyPath: depthOfField
+      value: 
+      objectReference: {fileID: 2100000, guid: d899c0492f3739242b4f335ec14f37f9, type: 2}
     - target: {fileID: 1403096353604799247, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8720,6 +8743,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3521469375050371703, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+      propertyPath: m_CapsuleColliders.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3521469375050371703, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+      propertyPath: m_CapsuleColliders.Array.data[7]
+      value: 
+      objectReference: {fileID: 173836022}
     - target: {fileID: 3746628215247295088, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

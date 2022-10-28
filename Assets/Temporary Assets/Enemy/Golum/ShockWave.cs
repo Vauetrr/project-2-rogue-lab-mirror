@@ -27,9 +27,9 @@ public class ShockWave : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            //if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage); }
-            //else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage); }
-            //else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage); }
+            if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage*5); }
+            else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage*5); }
+            else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage*5); }
         }
         else if (collision.gameObject.tag == "Interactable")
         {

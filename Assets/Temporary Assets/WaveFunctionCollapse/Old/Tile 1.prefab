@@ -372,9 +372,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2115003751185078203}
     m_Modifications:
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: tel
+      value: 
+      objectReference: {fileID: 6885402053712898427, guid: b5974ddddf99ba24885380d5d9c92312, type: 3}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Data
       value: 
       objectReference: {fileID: 4999118814487444077}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: bossTel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.size
       value: 5

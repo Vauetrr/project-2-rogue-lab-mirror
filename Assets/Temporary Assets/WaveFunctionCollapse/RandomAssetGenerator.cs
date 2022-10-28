@@ -11,10 +11,21 @@ public class RandomAssetGenerator : MonoBehaviour
     public int MaxWalkDistance = 40;
     public SocketData Data;
 
+    public bool bossTel= false;
+    public GameObject tel;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (bossTel) 
+        { 
+          // Debug.Log(Data.WalkDistance);
+          
+           GameObject o = Instantiate(tel, this.transform.position, Quaternion.identity);
+          // Debug.Log(o);
+           o.GetComponentInChildren<Teleport>().Dist = Data.WalkDistance;
+           
+        }
         int i = 1;
         Weights[0] += DifficultyMultiplier[0] * Data.WalkDistance / MaxWalkDistance;
         for (;i<Weights.Length;i++) 

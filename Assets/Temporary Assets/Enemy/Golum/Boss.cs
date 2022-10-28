@@ -48,12 +48,13 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Health = MaxHealth;
         HealthBar.SetHealthBar(Health / MaxHealth);
         Agent = this.GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
         Speed = Agent.speed;
         manager = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GamePlayManager>();
-
+        
     }
     
     private bool Attacking = false;
@@ -157,8 +158,8 @@ public class Boss : MonoBehaviour
                 if (!Attacking)
                 {
                     //Agent.speed = Speed;
-                    int p = Random.Range(0,4);
-                    if (p > 2)
+                    int p = Random.Range(0,6);
+                    if (p > 1)
                     {
                         StartCoroutine(RSwing());
                     }
