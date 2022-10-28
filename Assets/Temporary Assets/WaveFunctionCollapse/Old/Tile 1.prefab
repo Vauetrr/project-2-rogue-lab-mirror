@@ -245,6 +245,7 @@ MonoBehaviour:
   SymmetricSouth: 1
   SymmetricWest: 1
   Weight: 300
+  WalkDistance: 0
 --- !u!1 &6827633569592115878
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,12 +372,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 2115003751185078203}
     m_Modifications:
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 4999118814487444077}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Weights.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[0]
@@ -389,19 +394,19 @@ PrefabInstance:
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[2]
       value: 
-      objectReference: {fileID: 5168960037890019138, guid: 4fcf4911dc66dfb4496e33fc733eadd4, type: 3}
+      objectReference: {fileID: 7620365827665116231, guid: bbd0a1b4a4c863b45bd8e742b90c9754, type: 3}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[3]
       value: 
-      objectReference: {fileID: 7620365827665116231, guid: bbd0a1b4a4c863b45bd8e742b90c9754, type: 3}
+      objectReference: {fileID: 8034899656329068700, guid: b080ce71a5243e84cb6e6b1817003a78, type: 3}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[4]
       value: 
-      objectReference: {fileID: 8034899656329068700, guid: b080ce71a5243e84cb6e6b1817003a78, type: 3}
+      objectReference: {fileID: 7630928486176984817, guid: 4a577972a1e5e424194e233f5a6f1f34, type: 3}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[5]
       value: 
-      objectReference: {fileID: 7630928486176984817, guid: 4a577972a1e5e424194e233f5a6f1f34, type: 3}
+      objectReference: {fileID: 5168960037890019138, guid: 4fcf4911dc66dfb4496e33fc733eadd4, type: 3}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Weights.Array.data[0]
       value: 2
@@ -412,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Weights.Array.data[2]
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Weights.Array.data[3]
@@ -420,11 +425,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Weights.Array.data[4]
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Weights.Array.data[5]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: DifficultyMultiplier.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: DifficultyMultiplier.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: DifficultyMultiplier.Array.data[5]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119435, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: m_RootOrder

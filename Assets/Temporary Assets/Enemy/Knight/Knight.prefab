@@ -3941,6 +3941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sowrd
       objectReference: {fileID: 0}
+    - target: {fileID: 1005602180849792463, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7378093729668171983, guid: 10f9ed6f21a6719418fa47c68d14f68d, type: 3}
       propertyPath: m_IsActive
       value: 0

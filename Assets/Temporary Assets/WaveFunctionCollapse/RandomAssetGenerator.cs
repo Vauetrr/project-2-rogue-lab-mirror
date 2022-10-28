@@ -8,14 +8,18 @@ public class RandomAssetGenerator : MonoBehaviour
     public int[] Weights;
     public int[] DifficultyMultiplier;
     public bool UseRotation = false;
+    public int MaxWalkDistance = 40;
+    public SocketData Data;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         int i = 1;
+        Weights[0] += DifficultyMultiplier[0] * Data.WalkDistance / MaxWalkDistance;
         for (;i<Weights.Length;i++) 
         {
-            Weights[i] += Weights[i - 1];
+            Weights[i] += Weights[i - 1]+ DifficultyMultiplier[i] * Data.WalkDistance / MaxWalkDistance;
         }
         //Random.Range(0, Tiles.Length);
         int P=Random.Range(0, Weights[Weights.Length-1]);

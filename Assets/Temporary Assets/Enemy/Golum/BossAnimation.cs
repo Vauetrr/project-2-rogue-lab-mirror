@@ -41,7 +41,7 @@ public class BossAnimation : MonoBehaviour
     public void Land() {
         audioSource.PlayOneShot(SmashClip);
         //Destroy(Instantiate(ShockWave, ArmTrigger.transform.position, Quaternion.identity),5.0f);
-        Destroy(Instantiate(ShockWave, this.transform.position, Quaternion.identity),5.0f);
+        Destroy(Instantiate(ShockWave, this.transform.position, Quaternion.identity),2.5f);
     
     }
 

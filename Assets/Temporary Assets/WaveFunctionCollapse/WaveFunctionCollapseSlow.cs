@@ -16,14 +16,14 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
     public Walkable walk;
 
     int[] RotationSocketOffset = { 0, 100000, 200000, 300000 };
- 
+
     int[] TileWeights;
     int[,] Sockets;
     int[,,] TileMap;
     int[,,] Entropy;
     int[,,,] AvailableTiles;
     int TotalTiles;
-    int UsedTiles =0;
+    int UsedTiles = 0;
 
     int[,,] CheckedTiles;
 
@@ -31,7 +31,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
     Stack<int[]> TempStack = new Stack<int[]>();
     void BFS_WalkTile(int X, int Y, int Z, int Searched)
     {
-        if ((X <= SizeX) && (X >= 0) && (Y < SizeY) && (Y >= 0) && (Z <= SizeZ) && (Z >= 0) && CheckedTiles[X, Y, Z] == 0)
+        if ((X < SizeX) && (X >= 0) && (Y < SizeY) && (Y >= 0) && (Z < SizeZ) && (Z >= 0) && CheckedTiles[X, Y, Z] == 0)
         {
 
             //Debug.Log(X +", "+ Y + "," + Z);
@@ -59,9 +59,9 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             { if (walk.ID_Other[i] == Tile && walk.WalkableOther[i]) { WalkStack.Push(new int[] { X - 1, Y, Z }); } }
 
         }
-       
+
     }
-    int[] BFS() 
+    int[] BFS()
     {
 
         int[] pos = null;
@@ -82,10 +82,8 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
         return pos;
     }
 
-  
-    void UpdateTile(int X, int Y, int Z, int I) 
-    {
-        
+    void UpdateTileR(int X, int Y, int Z, int I)
+    { 
         for (int Index = 0; Index < TotalTiles; Index++)
         {
             if ((X + 1 < SizeX) && (AvailableTiles[X + 1, Y, Z, Index] != 0))
@@ -93,20 +91,21 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                 if (Sockets[4, I] == Sockets[5, Index])
                 {
                     bool found = false;
-                    for (int i =0;i< TotalTiles; i++) 
-                    {
-                        if ((AvailableTiles[X, Y, Z, i] != 0)&&(Sockets[4, i] == Sockets[5, Index]))
+                    for (int i = 0; i < TotalTiles; i++)
+                    {                       
+                     
+                        if ((AvailableTiles[X, Y, Z, i] != 0) && (Sockets[4, i] == Sockets[5, Index]))
                         {
                             found = true; break;
                         }
                     }
-                    if (found == false) 
+                    if (found == false)
                     {
-                        AvailableTiles[X + 1, Y, Z, Index] = 0; 
+                        AvailableTiles[X + 1, Y, Z, Index] = 0;
                         Entropy[X + 1, Y, Z]--;
-                        UpdateTile(X + 1,Y,Z,Index); 
+                        UpdateTileR(X + 1, Y, Z, Index);
                     }
-                    
+
                 }
             }
             if ((X > 0) && (AvailableTiles[X - 1, Y, Z, Index] != 0))
@@ -123,7 +122,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                     }
                     if (found == false)
                     {
-                        AvailableTiles[X - 1, Y, Z, Index] = 0; 
+                        AvailableTiles[X - 1, Y, Z, Index] = 0;
                         Entropy[X - 1, Y, Z]--;
                         UpdateTile(X - 1, Y, Z, Index); ;
                     }
@@ -144,9 +143,9 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                     }
                     if (found == false)
                     {
-                        AvailableTiles[X, Y+1, Z, Index] = 0;
-                        Entropy[X, Y+1, Z]--;
-                        UpdateTile(X, Y+1, Z, Index);
+                        AvailableTiles[X, Y + 1, Z, Index] = 0;
+                        Entropy[X, Y + 1, Z]--;
+                        UpdateTile(X, Y + 1, Z, Index);
                     }
 
                 }
@@ -165,9 +164,9 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                     }
                     if (found == false)
                     {
-                        AvailableTiles[X, Y-1, Z, Index] = 0; 
-                        Entropy[X, Y-1, Z]--;
-                        UpdateTile(X, Y-1, Z, Index);
+                        AvailableTiles[X, Y - 1, Z, Index] = 0;
+                        Entropy[X, Y - 1, Z]--;
+                        UpdateTile(X, Y - 1, Z, Index);
                     }
 
                 }
@@ -186,9 +185,9 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                     }
                     if (found == false)
                     {
-                        AvailableTiles[X, Y, Z+1, Index] = 0; 
-                        Entropy[X, Y, Z+1]--;
-                        UpdateTile(X, Y, Z+1, Index);
+                        AvailableTiles[X, Y, Z + 1, Index] = 0;
+                        Entropy[X, Y, Z + 1]--;
+                        UpdateTile(X, Y, Z + 1, Index);
                     }
 
                 }
@@ -207,23 +206,159 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                     }
                     if (found == false)
                     {
-                        AvailableTiles[X, Y, Z-1, Index] = 0;
-                        Entropy[X, Y, Z-1]--;
-                        UpdateTile(X, Y, Z-1, Index); 
+                        AvailableTiles[X, Y, Z - 1, Index] = 0;
+                        Entropy[X, Y, Z - 1]--;
+                        UpdateTile(X, Y, Z - 1, Index);
                     }
                 }
             }
         }
     }
-    void SetTile(int X, int Y, int Z, int I) 
+    void UpdateTile(int X, int Y, int Z, int I)
     {
+        for (int Index = 0; Index < TotalTiles; Index++)
+        {
+            if ((X + 1 < SizeX) && (AvailableTiles[X + 1, Y, Z, Index] != 0))
+            {
+                if (Sockets[4, I] == Sockets[5, Index])
+                {
+                    bool found = false;
+                    for (int i = 0; i < TotalTiles; i++)
+                    {
+                        if ((AvailableTiles[X, Y, Z, i] != 0) && (Sockets[4, i] == Sockets[5, Index]))
+                        {
+                            found = true; break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        AvailableTiles[X + 1, Y, Z, Index] = 0;
+                        Entropy[X + 1, Y, Z]--;
+                        UpdateTile(X + 1, Y, Z, Index);
+                    }
 
+                }
+            }
+            if ((X > 0) && (AvailableTiles[X - 1, Y, Z, Index] != 0))
+            {
+                if (Sockets[5, I] == Sockets[4, Index])
+                {
+                    bool found = false;
+                    for (int i = 0; i < TotalTiles; i++)
+                    {
+                 
+                        if ((AvailableTiles[X, Y, Z, i] != 0 && I != i) && (Sockets[5, i] == Sockets[4, Index]))
+                        {
+                            found = true; break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        AvailableTiles[X - 1, Y, Z, Index] = 0;
+                        Entropy[X - 1, Y, Z]--;
+                        UpdateTile(X - 1, Y, Z, Index); ;
+                    }
+
+                }
+            }
+            if ((Y + 1 < SizeY) && (AvailableTiles[X, Y + 1, Z, Index] != 0))
+            {
+                if (Sockets[0, I] == Sockets[1, Index])
+                {
+                    bool found = false;
+                    for (int i = 0; i < TotalTiles; i++)
+                    {
+                    
+                        if ((AvailableTiles[X, Y, Z, i] != 0 && I != i) && (Sockets[0, i] == Sockets[1, Index]))
+                        {
+                            found = true; break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        AvailableTiles[X, Y + 1, Z, Index] = 0;
+                        Entropy[X, Y + 1, Z]--;
+                        UpdateTile(X, Y + 1, Z, Index);
+                    }
+
+                }
+            }
+            if ((Y > 0) && (AvailableTiles[X, Y - 1, Z, Index] != 0))
+            {
+                if (Sockets[1, I] == Sockets[0, Index])
+                {
+                    bool found = false;
+                    for (int i = 0; i < TotalTiles; i++)
+                    {
+                       
+                        if ((AvailableTiles[X, Y, Z, i] != 0 && I != i) && (Sockets[1, i] == Sockets[0, Index]))
+                        {
+                            found = true; break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        AvailableTiles[X, Y - 1, Z, Index] = 0;
+                        Entropy[X, Y - 1, Z]--;
+                        UpdateTile(X, Y - 1, Z, Index);
+                    }
+
+                }
+            }
+            if ((Z + 1 < SizeZ) && (AvailableTiles[X, Y, Z + 1, Index] != 0))
+            {
+                if (Sockets[2, I] == Sockets[3, Index])
+                {
+                    bool found = false;
+                    for (int i = 0; i < TotalTiles; i++)
+                    {
+                       
+                        if ((AvailableTiles[X, Y, Z, i] != 0 && I != i) && (Sockets[2, i] == Sockets[3, Index]))
+                        {
+                            found = true; break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        AvailableTiles[X, Y, Z + 1, Index] = 0;
+                        Entropy[X, Y, Z + 1]--;
+                        UpdateTile(X, Y, Z + 1, Index);
+                    }
+
+                }
+            }
+            if ((Z > 0) && (AvailableTiles[X, Y, Z - 1, Index] != 0))
+            {
+                if (Sockets[3, I] == Sockets[2, Index])
+                {
+                    bool found = false;
+                    for (int i = 0; i < TotalTiles; i++)
+                    {
+                        if ((AvailableTiles[X, Y, Z, i] != 0 && I != i) && (Sockets[3, i] == Sockets[2, Index]))
+                        {
+                            found = true; break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        AvailableTiles[X, Y, Z - 1, Index] = 0;
+                        Entropy[X, Y, Z - 1]--;
+                        UpdateTile(X, Y, Z - 1, Index);
+                    }
+                }
+            }
+        }
+    }
+    void SetTile(int X, int Y, int Z, int I)
+    {
+        //Instantiate(Error, this.transform.position + new Vector3(X * 20.0f, Y * 20.0f, Z * 20.0f), Quaternion.identity);
+    
         UsedTiles++;
         TileMap[X, Y, Z] = I;
         Entropy[X, Y, Z] = 1000000000;
         //int I = TileMap[X, Y, Z];
-        for (int Index = 0; Index < TotalTiles; Index++) {AvailableTiles[X,Y,Z, Index] = 0;}
-
+        for (int Index = 0; Index < TotalTiles; Index++) { AvailableTiles[X, Y, Z, Index] = 0; }
+        //AvailableTiles[X, Y, Z, I] = 1;
         for (int Index = 0; Index < TotalTiles; Index++)
         {
             //AvailableTiles[X, Y, Z, Index] = 0;
@@ -231,7 +366,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 if (Sockets[4, I] != Sockets[5, Index])
                 {
-                    AvailableTiles[X + 1, Y, Z, Index] = 0; 
+                    AvailableTiles[X + 1, Y, Z, Index] = 0;
                     Entropy[X + 1, Y, Z]--;
                     UpdateTile(X + 1, Y, Z, Index);
                 }
@@ -240,7 +375,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 if (Sockets[5, I] != Sockets[4, Index])
                 {
-                    AvailableTiles[X - 1, Y, Z, Index] = 0; 
+                    AvailableTiles[X - 1, Y, Z, Index] = 0;
                     Entropy[X - 1, Y, Z]--;
                     UpdateTile(X - 1, Y, Z, Index);
                 }
@@ -249,7 +384,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 if (Sockets[0, I] != Sockets[1, Index])
                 {
-                    AvailableTiles[X, Y + 1, Z, Index] = 0; 
+                    AvailableTiles[X, Y + 1, Z, Index] = 0;
                     Entropy[X, Y + 1, Z]--;
                     UpdateTile(X, Y + 1, Z, Index);
                 }
@@ -258,7 +393,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 if (Sockets[1, I] != Sockets[0, Index])
                 {
-                    AvailableTiles[X, Y - 1, Z, Index] = 0; 
+                    AvailableTiles[X, Y - 1, Z, Index] = 0;
                     Entropy[X, Y - 1, Z]--;
                     UpdateTile(X, Y - 1, Z, Index);
                 }
@@ -267,7 +402,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 if (Sockets[2, I] != Sockets[3, Index])
                 {
-                    AvailableTiles[X, Y, Z + 1, Index] = 0; 
+                    AvailableTiles[X, Y, Z + 1, Index] = 0;
                     Entropy[X, Y, Z + 1]--;
                     UpdateTile(X, Y, Z + 1, Index);
                 }
@@ -276,7 +411,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 if (Sockets[3, I] != Sockets[2, Index])
                 {
-                    AvailableTiles[X, Y, Z - 1, Index] = 0; 
+                    AvailableTiles[X, Y, Z - 1, Index] = 0;
                     Entropy[X, Y, Z - 1]--;
                     UpdateTile(X, Y, Z - 1, Index);
                 }
@@ -284,7 +419,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
         }
     }
 
-    void Remove3x3(int x, int y, int z) 
+    void Remove3x3x3(int x, int y, int z)
     {
         for (int X = x - 1; X <= x + 1; X++)
         {
@@ -292,7 +427,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 for (int Z = z - 1; Z <= z + 1; Z++)
                 {
-                    TileMap[X,Y,Z]=Tiles.Length * 4;
+                    TileMap[X, Y, Z] = Tiles.Length * 4;
                     Entropy[X, Y, Z] = TotalTiles;
                     for (int Tile = 0; Tile < TotalTiles; Tile++)
                     {
@@ -303,21 +438,134 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
         }
     }
 
+
+    void CalculateEntropy( int x, int z) 
+    {
+        for (int Y = 0; Y < SizeY; Y++)
+        {
+            for (int Z = Mathf.Clamp((z - 1), 0, SizeZ - 1); Z <= Mathf.Clamp((z + 1), 0, SizeZ - 1); Z++)
+            {
+
+                if (x - 2 > 0 && x + 2 < SizeX)
+                {
+                    SetTile(x - 2, Y, Z, TileMap[x - 2, Y, Z]);
+                    SetTile(x + 2, Y, Z, TileMap[x + 2, Y, Z]);
+                }
+
+
+            }
+            for (int X = Mathf.Clamp((x - 1), 0, SizeX - 1); X <= Mathf.Clamp((x - 1), 0, SizeX - 1); X++)
+            {
+                if (z - 2 > 0 && z + 2 < SizeZ)
+                {
+                    SetTile(X, Y, z - 2, TileMap[X, Y, z - 2]);
+                    SetTile(X, Y, z + 2, TileMap[X, Y, z + 2]);
+                }
+            }
+
+            /*for (int Z = Mathf.Clamp((z - 2),0,SizeZ-1); Z <= Mathf.Clamp((z + 2), 0, SizeZ-1); Z++)
+            {
+
+                if (x - 2 > 0 && x + 2 < SizeX)
+                {
+                    SetTile(x - 2, Y, Z, TileMap[x - 2, Y, Z]);
+                    SetTile(x + 2, Y, Z, TileMap[x + 2, Y, Z]);
+                    //UpdateTile(x - 2, Y, Z, TileMap[x - 2, Y, Z]);
+                    //UpdateTile(x + 2, Y, Z, TileMap[x + 2, Y, Z]);
+                }
+                
+                
+            }
+            for (int X = Mathf.Clamp((x - 1), 0, SizeX-1); X <= Mathf.Clamp((x - 1), 0, SizeX-1); X++)
+            {
+                if (z - 2 > 0 && z + 2 < SizeZ)
+                {
+                    SetTile(X, Y, z - 2, TileMap[X, Y, z - 2]);
+                    SetTile(X, Y, z + 2, TileMap[X, Y, z + 2]);
+                    
+                    //UpdateTile(X, Y, z - 2, TileMap[X, Y, z - 2]);
+                    //UpdateTile(X, Y, z + 2, TileMap[X, Y, z + 2]);
+                }
+            }*/
+        }
+        
+        
+        /*for (int X = x - 2; X <= x + 2; X++)
+        {
+            
+        }*/
+    } 
+    void Remove3x3(int x, int z)
+    {
+        for (int X = x - 1; X <= x + 1; X++)
+        {
+            for (int Y = 0; Y < SizeY; Y++)
+            {
+                for (int Z = z - 1; Z <= z + 1; Z++)
+                {
+                    TileMap[X, Y, Z] = Tiles.Length * 4;
+                    Entropy[X, Y, Z] = TotalTiles;
+                    CheckedTiles[X, Y, Z] = 0;
+                    for (int Tile = 0; Tile < TotalTiles; Tile++)
+                    {
+                        AvailableTiles[X, Y, Z, Tile] = 1;
+                    }
+                }
+            }
+        }
+    }
+    void RemoveAllTiles() 
+    {
+        for (int X = 0; X <SizeX; X++)
+        {
+            for (int Y = 0; Y <SizeY; Y++)
+            {
+                for (int Z = 0; Z <SizeZ; Z++)
+                {
+                    //TileMap[X, Y, Z] = Tiles.Length * 4;
+                    Entropy[X, Y, Z] = TotalTiles;
+                    CheckedTiles[X, Y, Z] = 0;
+                    for (int Tile = 0; Tile < TotalTiles; Tile++)
+                    {
+                        AvailableTiles[X, Y, Z, Tile] = 1;
+                    }
+                }
+            }
+        }
+    }
     private int StartI = 5, StartX = 10, StartY = 4, StartZ = 10;
     void PresetTiles() 
     {
         SetTile(0, 0, 0, 1);
         SetTile(1, 0, 0, 1);
+        //for (int x = 5; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
+        //for (int x = 0; x < SizeX; x++) { SetTile(x, 0, SizeZ - 1, 1); }
+        //for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
+        //for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
+        SetTile(3, 4, 0, 2);
+
+
+
+        SetTile(SizeX-1, 0, SizeZ-1, 1);
+        SetTile(SizeX-2, 0, SizeZ-1, 1);
+        SetTile(SizeX-4, 4, SizeZ-1, 2+ Tiles.Length * 2);
         for (int x = 5; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
-        for (int x = 0; x < SizeX; x++) { SetTile(x, 0, SizeZ - 1, 1); }
+        for (int x = 0; x < SizeX-6; x++) { SetTile(x, 0, SizeZ - 1, 1); }
         for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
         for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
-        SetTile(3, 4, 0, 2);
+
+        for (int y = 1; y < SizeY; y++)
+        {
+            for (int x = 5; x < SizeX; x++) { SetTile(x, y, 0, Tiles.Length * 4); }
+            for (int x = 0; x < SizeX - 6; x++) { SetTile(x, y, SizeZ - 1, Tiles.Length * 4); }
+            for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, y, z, Tiles.Length * 4); }
+            for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, y, z, Tiles.Length * 4); }
+        }
     }
-    bool SetTiles() 
+    bool SetTiles(int Count) 
     {
-        for (int TileIndex = 0; TileIndex < SizeX * SizeY * SizeZ - UsedTiles; TileIndex++)
-        //for (int TileIndex = 0; TileIndex < 20; TileIndex++)
+        // SizeX * SizeY * SizeZ - UsedTiles
+        for (int TileIndex = 0; TileIndex < Count; TileIndex++)
         {
             int lowest = 100000000;
             int X = 0, Y = 0, Z = 0;
@@ -368,7 +616,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             if (index == 0) { return true; }
             //Debug.Log("Find Tile (" + X + ", " + Y + ", " + Z + " ) Entropy[x,y,z] = " + Entropy[X, Y, Z]);
 
-           // if (index == 0 & Error0 == false)
+            //if (index == 0 & Error0 == false)
            // { Error0 = true; Debug.LogError("Unable To Find Tile (" + X + ", " + Y + ", " + Z + " ) Entropy[x,y,z] = " + Entropy[X, Y, Z]); Instantiate(Error, this.transform.position + new Vector3(X * 20.0f, Y * 20.0f, Z * 20.0f), Quaternion.identity); }
             /*
             
@@ -386,72 +634,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             while (TryWeights[I1]<=P) { I1++; }
             if (index != 1) { Debug.Log(TryWeights[index - 1] + " index " + index + " I1 " +I1+" P "+P +" TryTile "+ TryTile[I1]); }
             */
-
-            TileMap[X, Y, Z] = TryTile[Random.Range(0, index)];
-
-            //TileMap[X, Y, Z] = TryTile[I1];
-            //Debug.Log(I1);
-
-            Entropy[X, Y, Z] = 1000000000;
-            int I = TileMap[X, Y, Z];
-
-            for (int Index = 0; Index < TotalTiles; Index++)
-            {
-                if ((X + 1 < SizeX) && (AvailableTiles[X + 1, Y, Z, Index] != 0))
-                {
-                    if (Sockets[4, I] != Sockets[5, Index])
-                    {
-                        AvailableTiles[X + 1, Y, Z, Index] = 0;
-                        Entropy[X + 1, Y, Z]--;
-                        UpdateTile(X + 1, Y, Z, Index);
-                    }
-                }
-                if ((X > 0) && (AvailableTiles[X - 1, Y, Z, Index] != 0))
-                {
-                    if (Sockets[5, I] != Sockets[4, Index])
-                    {
-                        AvailableTiles[X - 1, Y, Z, Index] = 0;
-                        Entropy[X - 1, Y, Z]--;
-                        UpdateTile(X - 1, Y, Z, Index);
-                    }
-                }
-                if ((Y + 1 < SizeY) && (AvailableTiles[X, Y + 1, Z, Index] != 0))
-                {
-                    if (Sockets[0, I] != Sockets[1, Index])
-                    {
-                        AvailableTiles[X, Y + 1, Z, Index] = 0;
-                        Entropy[X, Y + 1, Z]--;
-                        UpdateTile(X, Y + 1, Z, Index);
-                    }
-                }
-                if ((Y > 0) && (AvailableTiles[X, Y - 1, Z, Index] != 0))
-                {
-                    if (Sockets[1, I] != Sockets[0, Index])
-                    {
-                        AvailableTiles[X, Y - 1, Z, Index] = 0;
-                        Entropy[X, Y - 1, Z]--;
-                        UpdateTile(X, Y - 1, Z, Index);
-                    }
-                }
-                if ((Z + 1 < SizeZ) && (AvailableTiles[X, Y, Z + 1, Index] != 0))
-                {
-                    if (Sockets[2, I] != Sockets[3, Index])
-                    {
-                        AvailableTiles[X, Y, Z + 1, Index] = 0;
-                        Entropy[X, Y, Z + 1]--;
-                        UpdateTile(X, Y, Z + 1, Index);
-                    }
-                }
-                if ((Z > 0) && (AvailableTiles[X, Y, Z - 1, Index] != 0))
-                {
-                    if (Sockets[3, I] != Sockets[2, Index])
-                    {
-                        AvailableTiles[X, Y, Z - 1, Index] = 0;
-                        Entropy[X, Y, Z - 1]--;
-                        UpdateTile(X, Y, Z - 1, Index);
-                    }
-                }
-            }
+            SetTile(X,Y,Z, TryTile[Random.Range(0, index)]);
         }
         return false;
     }
@@ -599,6 +782,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             {
                 for (int z = 0; z < SizeZ; z++)
                 {
+                    TileMap[x, y, z] = Tiles.Length * 4;
                     Entropy[x, y, z] = TotalTiles;
                     for (int Tile = 0; Tile < TotalTiles; Tile++)
                     {
@@ -607,14 +791,8 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                 }
             }
         }
-        
-        PresetTiles();
-        // while (SetTiles()) { }
-        SetTiles();
 
-
-
-        CheckedTiles = new int[SizeX,SizeY,SizeZ];
+        CheckedTiles = new int[SizeX, SizeY, SizeZ];
         for (int x = 0; x < SizeX; x++)
         {
             for (int y = 0; y < SizeY; y++)
@@ -625,10 +803,81 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                 }
             }
         }
-        
-        BFS_WalkTile(3, 4, 0, 1);
-        BFS();
 
+        PresetTiles();
+        while (SetTiles(SizeX * SizeY * SizeZ - UsedTiles)) { /*Debug.Log("Here");*/ RemoveAllTiles(); UsedTiles=0; PresetTiles();}
+
+        int[] p = new int[] { 3, 4, 0 };
+        BFS_WalkTile(p[0], p[1], p[2], 1);
+        p = BFS();
+
+        while (CheckedTiles[p[0],p[1],p[2]]<25) 
+        {
+            //Debug.Log("Low WalkAblility");
+            RemoveAllTiles(); 
+            UsedTiles = 0;
+            PresetTiles();
+            while (SetTiles(SizeX * SizeY * SizeZ - UsedTiles)) {/* Debug.Log("Here");*/ RemoveAllTiles(); UsedTiles = 0; PresetTiles(); }
+
+            p = new int[] { 3, 4, 0 };
+            BFS_WalkTile(p[0], p[1], p[2], 1);
+            p = BFS();
+            
+        }
+
+
+
+         /* CheckedTiles = new int[SizeX,SizeY,SizeZ];
+          for (int x = 0; x < SizeX; x++)
+          {
+              for (int y = 0; y < SizeY; y++)
+              {
+                  for (int z = 0; z < SizeZ; z++)
+                  {
+                      CheckedTiles[x, y, z] = 0;
+                  }
+              }
+          }*/
+
+          //int[] p = new int[] {3,4,0};
+          //BFS_WalkTile(p[0], p[1], p[2], 1);
+          //p = BFS();
+
+          //Instantiate(Error, this.transform.position + new Vector3(p[0] * 20.0f, p[1] * 20.0f + 15.0f, p[2] * 20.0f), Quaternion.identity);
+      
+
+          /*Remove3x3(p[0], p[2]);
+          CalculateEntropy(p[0], p[2]);
+          SetTiles(3 * 3 * SizeY);*/
+
+
+
+        //if (SetTiles(3 * 3 * SizeY)) { Debug.Log("Error"); }
+        //while (SetTiles(3 * 3 * SizeY)) {
+        //    Remove3x3(p[0], p[2]);
+        //    CalculateEntropy(p[0], p[2]);
+        //}
+
+
+        /*while (CheckedTiles[SizeX - 4, 3, SizeZ - 1] == 0) 
+        {
+           Debug.Log(CheckedTiles[p[0], p[1], p[2]]);
+           
+          
+           Remove3x3(p[0], p[2]);
+           CalculateEntropy(p[0],p[2]);
+           SetTiles(3 * 3 * SizeY);
+           
+           if (CheckedTiles[p[0] - 1, p[1], p[2]] > 0) { p[0]--; }
+           else if (CheckedTiles[p[0] + 1, p[1], p[2]] > 0) { p[0]++; }
+           else if (CheckedTiles[p[0], p[1], p[2] - 1] > 0) { p[2]--; }
+           else if (CheckedTiles[p[0], p[1], p[2] + 1] > 0) { p[2]++; }
+
+           BFS_WalkTile(p[0], p[1], p[2], 1);
+           p = BFS();
+        } */
+
+        //Remove3x3(p[0], p[2]);
 
 
         for (int x = 0; x < SizeX; x++)
@@ -638,8 +887,8 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                 for (int z = 0; z < SizeZ; z++)
                 {
 
-                    if (CheckedTiles[x, y, z]!=0) {
-                        Instantiate(Error, this.transform.position + new Vector3(x * 20.0f, y * 20.0f+15.0f+ CheckedTiles[x, y, z], z * 20.0f), Quaternion.identity); }
+                    //if (CheckedTiles[x, y, z]!=0) {
+                    //    Instantiate(Error, this.transform.position + new Vector3(x * 20.0f, y * 20.0f+15.0f+ CheckedTiles[x, y, z], z * 20.0f), Quaternion.identity); }
                     if (TileMap[x, y, z]< TotalTiles-2)
                     {
                         SocketData data;
@@ -656,7 +905,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
                             data = Instantiate(Tiles[TileMap[x, y, z] - 3 * Tiles.Length], this.transform.position + new Vector3(x * 20.0f, y * 20.0f, z * 20.0f), Quaternion.AngleAxis(270, new Vector3(0, 1, 0))).GetComponent<SocketData>();
                         }
 
-
+                        data.WalkDistance = CheckedTiles[x, y, z];
                         //Optional
                         //data.UpAjacentType = Sockets[0, TileMap[x, y, z]];
                         //data.DownAjacentType = Sockets[1, TileMap[x, y, z]];

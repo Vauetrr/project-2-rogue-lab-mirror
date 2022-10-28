@@ -32,7 +32,7 @@ public class SocketData : MonoBehaviour
     public bool SymmetricWest;
 
     public int Weight=1;
-
+    public int WalkDistance=0;
    /* public bool WalkableUp;
     public bool WalkableDown;
     public bool WalkableNorth;

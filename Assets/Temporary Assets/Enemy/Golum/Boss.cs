@@ -134,7 +134,7 @@ public class Boss : MonoBehaviour
 
                 if (!Attacking)
                 {
-                    this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.LookRotation(new Vector3(Player.position.x, 0, Player.position.z)), 5000 * Time.deltaTime);
+                    this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.LookRotation(new Vector3(Player.position.x-this.transform.position.x, 0,Player.position.z -this.transform.position.z)), 1000 * Time.deltaTime);
                     int p = Random.Range(0, 30);
                     if (p ==0)
                     { 
@@ -170,7 +170,7 @@ public class Boss : MonoBehaviour
                 {
                     //Agent.speed = 1.0f;
                     //this.transform.LookAt(new Vector3(Player.position.x, this.transform.position.y, Player.position.z), Vector3.up);
-                    this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.LookRotation(new Vector3(Player.position.x, 0, Player.position.z)), 5000 * Time.deltaTime);
+                    this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.LookRotation(new Vector3(Player.position.x-this.transform.position.x, 0, Player.position.z-this.transform.position.z)), 5000 * Time.deltaTime);
                 }
             }
         }
