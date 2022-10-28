@@ -83,7 +83,6 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void SetHealthBlur(){
         float visualHealth = (Health / MaxHealth) > 0.5f? 1: (Health/MaxHealth)*2;
-        LowHealth.SetFloat("_BlurSize", Mathf.Pow(1.0f - visualHealth,100));
         LowHealth.SetFloat("_Greyscale", (1.0f-visualHealth) );
         LowHealth.SetFloat("_Radius", 2.0f*visualHealth);
     }
@@ -138,7 +137,6 @@ public class PlayerMovementScript : MonoBehaviour
     void Start()
     {
         //sHealth = MaxHealth;
-        LowHealth.SetFloat("_BlurSize", 0.0f);
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
 
