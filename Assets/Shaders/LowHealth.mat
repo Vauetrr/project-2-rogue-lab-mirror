@@ -79,6 +79,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Greyscale: 0
+    - _LeftVis: 0
     - _MaxDis: 100
     - _Metallic: 0
     - _MinDis: 20
@@ -86,6 +87,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Radius: 2
+    - _RightVis: 0
     - _Samples: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
