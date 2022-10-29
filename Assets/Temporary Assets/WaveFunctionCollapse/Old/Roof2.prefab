@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 6325619008703845633}
   - component: {fileID: 8980521386949886556}
   - component: {fileID: 8523683474851120280}
+  - component: {fileID: 4695751541241037209}
   m_Layer: 8
   m_Name: Vertical_Wall
   m_TagString: Untagged
@@ -166,6 +167,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4695751541241037209
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3516134797338958425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.999996, y: 10.159807, z: 0.4}
+  m_Center: {x: -59.843307, y: 5.2799034, z: 0}
 --- !u!1 &4530220832821926444
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +561,7 @@ GameObject:
   - component: {fileID: 7834688546642245829}
   - component: {fileID: 603960540407241891}
   - component: {fileID: 2566808781856082674}
+  - component: {fileID: 7753440048801887898}
   m_Layer: 8
   m_Name: Vertical_Wood
   m_TagString: Untagged
@@ -619,6 +634,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7753440048801887898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7908120592546567599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.201393, y: 4.7621956, z: 2.622958}
+  m_Center: {x: -58.524624, y: 6.2071657, z: 1.2701641}
 --- !u!1 &8624214179651169712
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +712,7 @@ MonoBehaviour:
   SymmetricSouth: 1
   SymmetricWest: 0
   Weight: 200
+  WalkDistance: 0
 --- !u!1001 &6499842640314890203
 PrefabInstance:
   m_ObjectHideFlags: 0

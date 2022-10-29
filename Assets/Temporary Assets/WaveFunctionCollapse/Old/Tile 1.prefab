@@ -108,7 +108,8 @@ GameObject:
   - component: {fileID: 454027363221737466}
   - component: {fileID: 6421958001802154474}
   - component: {fileID: 8703900332524234347}
-  m_Layer: 0
+  - component: {fileID: 742951657787967173}
+  m_Layer: 8
   m_Name: Horizontal_Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &742951657787967173
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456363402748495392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 0.4, z: 20}
+  m_Center: {x: -10, y: 0.2, z: -10}
 --- !u!1 &4429303998183042780
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +305,8 @@ GameObject:
   - component: {fileID: 3305824991984543068}
   - component: {fileID: 9198412076268851170}
   - component: {fileID: 960465275849817966}
-  m_Layer: 0
+  - component: {fileID: 4854426567558810033}
+  m_Layer: 8
   m_Name: Horizontal_Marble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,6 +378,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4854426567558810033
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796687615605780314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 0.4, z: 20}
+  m_Center: {x: -10, y: 0.2, z: -10}
 --- !u!1001 &7013147575642641202
 PrefabInstance:
   m_ObjectHideFlags: 0

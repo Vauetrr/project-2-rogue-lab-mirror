@@ -8102,7 +8102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152922063549503824, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
       propertyPath: ditherFeather
-      value: 40.4
+      value: 8.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 152922063549503824, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
+      propertyPath: ditherCatchRadius
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1403096353604799247, guid: 7d7bbf74b086f5548856d01ccac8c47e, type: 3}
       propertyPath: m_AnchorMax.x

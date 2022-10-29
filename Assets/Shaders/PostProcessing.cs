@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+struct Occluder
+{
+    public Shader shader;
+    public IEnumerator fader; 
+}
+
 public class PostProcessing : MonoBehaviour
 {
     [SerializeField] private Material lowHealth;
@@ -10,14 +16,14 @@ public class PostProcessing : MonoBehaviour
     [SerializeField] private float ditherRadius = 1.0f;
     [SerializeField] private float ditherFeather = 1.0f;
     [SerializeField] private float ditherCatchRadius = 1.0f;
-    private Dictionary<Transform, Shader> occluders = new Dictionary<Transform, Shader>();
+    private Dictionary<Transform, Occluder> occluders = new Dictionary<Transform, Occluder>();
 
     void Update()
     {
         int layerMask = (1 << 6) | (1 << 8); // only check for collisions with "walkable" or "dither"
-        var dir = (transform.parent.position + new Vector3(0, 5.0f, 0)) - transform.position;
+        var dir = (transform.parent.position + new Vector3(-ditherCatchRadius, 5.0f, -ditherCatchRadius)) - transform.position;
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, ditherCatchRadius, dir, dir.magnitude, layerMask);
-        Dictionary<Transform, Shader> newOccluders = new Dictionary<Transform, Shader>();
+        Dictionary<Transform, Occluder> newOccluders = new Dictionary<Transform, Occluder>();
 
         // fade out each occluder
         foreach (RaycastHit hit in hits)
@@ -33,18 +39,25 @@ public class PostProcessing : MonoBehaviour
                 Renderer rend = hit.transform.GetComponent<Renderer>();
                 if (rend)
                 {
+                    // update material shader
                     var mat = rend.material;
-                    newOccluders.Add(hit.transform, mat.shader);
                     mat.shader = Shader.Find("Custom/Dither");
                     mat.SetTexture("_DitherPattern", ditherTex);
-                    StartCoroutine(Fade(mat));
+
+                    // add occluder
+                    var value = new Occluder();
+                    value.shader = mat.shader;
+                    value.fader = Fade(mat);
+                    newOccluders.Add(hit.transform, value);
+                    StartCoroutine(value.fader);
                 }
             }
         }
 
         // un-fade old occluders
-        foreach (KeyValuePair<Transform, Shader> occluder in occluders)
+        foreach (KeyValuePair<Transform, Occluder> occluder in occluders)
         {
+            StopCoroutine(occluder.Value.fader);
             StartCoroutine(Unfade(occluder));
         }
         occluders = newOccluders;
@@ -87,7 +100,7 @@ public class PostProcessing : MonoBehaviour
         }
     }
 
-    IEnumerator Unfade(KeyValuePair<Transform, Shader> occluder)
+    IEnumerator Unfade(KeyValuePair<Transform, Occluder> occluder)
     {
         var rend = occluder.Key.GetComponent<Renderer>();
         if (rend)
@@ -105,7 +118,7 @@ public class PostProcessing : MonoBehaviour
                 feather -= 2 * Time.deltaTime;
                 yield return null;
             }
-            mat.shader = occluder.Value;
+            mat.shader = occluder.Value.shader;
         }
     }
 }

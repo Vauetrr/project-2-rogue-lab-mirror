@@ -448,6 +448,7 @@ MonoBehaviour:
   SymmetricSouth: 1
   SymmetricWest: 1
   Weight: 1
+  WalkDistance: 0
 --- !u!1 &7315006926425681663
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +543,7 @@ GameObject:
   - component: {fileID: 906260545679876562}
   - component: {fileID: 2881049552608130703}
   - component: {fileID: 3247243931383853131}
+  - component: {fileID: 2419885222944051712}
   m_Layer: 8
   m_Name: Vertical_Wall
   m_TagString: Untagged
@@ -614,6 +616,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2419885222944051712
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751084372328214154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8650627850042402245, guid: dce25aa1549e72042abe4b24804c621a, type: 3}
 --- !u!1 &9044419681852104681
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6321039168444260899}
   - component: {fileID: 432102567208585373}
   - component: {fileID: 8578288457272244241}
+  - component: {fileID: 1654412386692226154}
   m_Layer: 8
   m_Name: Horizontal_Marble
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1654412386692226154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21512172746647589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.999996, y: 0.39999962, z: 10}
+  m_Center: {x: -59.843307, y: 10, z: -4.8}
 --- !u!1 &1269913001305029424
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +164,7 @@ MonoBehaviour:
   SymmetricSouth: 1
   SymmetricWest: 0
   Weight: 200
+  WalkDistance: 0
 --- !u!1 &1801037228035137059
 GameObject:
   m_ObjectHideFlags: 0
