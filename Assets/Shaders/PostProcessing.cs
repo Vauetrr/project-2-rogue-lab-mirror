@@ -20,7 +20,7 @@ public class PostProcessing : MonoBehaviour
 
     void Update()
     {
-        int layerMask = (1 << 6) | (1 << 8); // only check for collisions with "walkable" or "dither"
+        int layerMask = (1 << 6) | (1 << 8) | (1 <<9); // only check for collisions with "walkable" or "dither"
         var dir = (transform.parent.position + new Vector3(-ditherCatchRadius, 5.0f, -ditherCatchRadius)) - transform.position;
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, ditherCatchRadius, dir, dir.magnitude, layerMask);
         Dictionary<Transform, Occluder> newOccluders = new Dictionary<Transform, Occluder>();

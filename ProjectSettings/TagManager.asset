@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Walkable
   - Interactable
+  - EnemyUI
+  - WoodFloor
+  - tel
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - Walkable
   - Invisible
   - Dither
-  - 
+  - Wall
   - 
   - 
   - 

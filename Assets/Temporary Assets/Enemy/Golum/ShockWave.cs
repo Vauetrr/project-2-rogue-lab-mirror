@@ -21,15 +21,20 @@ public class ShockWave : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(Damage);
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage*5); }
-            else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage*5); }
-            else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage*5); }
+            Debug.Log("Enemy");
+            
+            
+            
+            if (collision.gameObject.GetComponent<Sorcerer>()) { collision.gameObject.GetComponent<Sorcerer>().DecreaseHealth(Damage*2); }
+            else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage*2); }
+            else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage*2); }
         }
         else if (collision.gameObject.tag == "Interactable")
         {
