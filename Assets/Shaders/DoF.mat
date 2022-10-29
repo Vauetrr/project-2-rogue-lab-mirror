@@ -62,13 +62,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlurSize: 0.01
+    - _BlurSize: 0.015
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FocDis: 42
-    - _FocRng: 612
+    - _FocRng: 100
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -80,7 +80,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StdDeviation: 0.02
+    - _StdDeviation: 0.006
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

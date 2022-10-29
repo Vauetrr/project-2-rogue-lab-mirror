@@ -7,7 +7,8 @@ public class PostProcessing : MonoBehaviour
     [SerializeField] private Material lowHealth;
     [SerializeField] private Material depthOfField;
     [SerializeField] private Texture2D ditherTex;
-    [SerializeField] private float ditherAlpha = 0.1f;
+    [SerializeField] private float ditherRadius = 1.0f;
+    [SerializeField] private float ditherFeather = 1.0f;
     [SerializeField] private float ditherCatchRadius = 1.0f;
     private Dictionary<Transform, Shader> occluders = new Dictionary<Transform, Shader>();
 
@@ -70,11 +71,18 @@ public class PostProcessing : MonoBehaviour
         RenderTexture.ReleaseTemporary(coc);
     }
 
-    IEnumerator Fade(Material mat) {
-        var alpha = mat.GetFloat("_Alpha");
-        for (float a = alpha; a >= ditherAlpha; a -= Time.deltaTime)
+    IEnumerator Fade(Material mat) 
+    {
+        var radius = 0.0f;
+        var feather = 0.0f;
+        while (radius < ditherRadius || feather < ditherFeather)
         {
-            mat.SetFloat("_Alpha", a);
+            if (radius > ditherRadius) radius = ditherRadius;
+            if (feather > ditherFeather) feather = ditherFeather;
+            mat.SetFloat("_Radius", radius);
+            mat.SetFloat("_Feather", feather);
+            radius += Time.deltaTime;
+            feather += 2 * Time.deltaTime;
             yield return null;
         }
     }
@@ -85,10 +93,16 @@ public class PostProcessing : MonoBehaviour
         if (rend)
         {
             var mat = rend.material;
-            var alpha = mat.GetFloat("_Alpha");
-            for (float a = alpha; a < 1.0; a += Time.deltaTime)
+            var radius = mat.GetFloat("_Radius");
+            var feather = mat.GetFloat("_Feather");
+            while (radius > 0 || feather > 0)
             {
-                mat.SetFloat("_Alpha", a);
+                if (radius < 0) radius = 0;
+                if (feather < 0) feather = 0;
+                mat.SetFloat("_Radius", radius);
+                mat.SetFloat("_Feather", feather);
+                radius -= Time.deltaTime;
+                feather -= 2 * Time.deltaTime;
                 yield return null;
             }
             mat.shader = occluder.Value;
