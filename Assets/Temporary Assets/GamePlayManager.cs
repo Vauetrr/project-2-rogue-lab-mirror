@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GamePlayManager : MonoBehaviour
     //public int damageIncrease = 0;
     public int staminaIncrease = 0;
     public bool wasInTutorial = true;
+    public bool levelUp = false;
     //public int E = 0;
     public MusicManager musicManager;
     // Start is called before the first frame update
@@ -57,7 +59,7 @@ public class GamePlayManager : MonoBehaviour
             level += 1;
             levelValue.SetText(level.ToString());
             sp += 1;
-
+            levelUp = true;
             spText.enabled = true;
         }
         expBar.SetHealthBar((float)exp/(level*3));
@@ -125,14 +127,18 @@ public class GamePlayManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Z) && Input.GetKeyDown(KeyCode.V)){
+        if (Input.GetKey(KeyCode.Z) && Input.GetKeyDown(KeyCode.J)){
             hpIncrease += 10;
             mpIncrease += 10;
             staminaIncrease += 10;
             exp = 0;
             level = 30;
             levelValue.SetText(level.ToString());
+            levelUp = true;
         }
 
+        if (Input.GetKey(KeyCode.Z) && Input.GetKeyDown(KeyCode.L)){
+            SceneManager.LoadScene("Boss");
+        }
     }
 }

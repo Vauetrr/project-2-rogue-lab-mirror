@@ -166,6 +166,13 @@ public class PlayerMovementScript : MonoBehaviour
         HealthBar.SetHealthBar(Health, MaxHealth);
         ManaBar.SetHealthBar(Mana, MaxMana);
         StaminaBar.SetHealthBar(Stamina/MaxStamina);
+
+        if (GamePlayManager.manager.levelUp){ // stat restored fully at player level increase
+            Health = MaxHealth;
+            Mana = MaxMana;
+            Stamina = MaxStamina;
+            GamePlayManager.manager.levelUp = false;
+        }
     }
 
     void Start()
