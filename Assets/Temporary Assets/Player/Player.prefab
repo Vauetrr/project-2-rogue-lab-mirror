@@ -693,7 +693,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -58.4029, y: 0, z: -58.402832, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7458,7 +7458,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -58.402893, y: 0, z: -58.402832, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8164,6 +8164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8810d65fbd5a624b93016928fbdf253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MiniMap: {fileID: 0}
   deathScreen: {fileID: 3137822792426897079}
   loadingFade: {fileID: 8952893748763384513}
   anim: {fileID: 5858944389366975080}
@@ -8178,6 +8179,7 @@ MonoBehaviour:
   StaminaBar: {fileID: 1067460727531613327}
   ManaBar: {fileID: 6574350117924117671}
   iframed: 0
+  inTutorial: 0
   currentWeapon: {fileID: 6238143559701426538, guid: 666504e60aea9bf42b536d6971bf9d5d, type: 3}
   altWeapon: {fileID: 6238143559701426538, guid: 666504e60aea9bf42b536d6971bf9d5d, type: 3}
   moveSpeed: 7

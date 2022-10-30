@@ -125,5 +125,14 @@ public class GamePlayManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.Z) && Input.GetKeyDown(KeyCode.V)){
+            hpIncrease += 10;
+            mpIncrease += 10;
+            staminaIncrease += 10;
+            exp = 0;
+            level = 30;
+            levelValue.SetText(level.ToString());
+        }
+
     }
 }
