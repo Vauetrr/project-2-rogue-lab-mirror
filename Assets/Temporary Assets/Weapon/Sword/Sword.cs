@@ -25,7 +25,7 @@ public class Sword : Weapon
     {
         yield return new WaitForSeconds(AttackDelay);
 
-        if (currentCombo >= 4){
+        if (currentCombo >= 3){
             currentCombo = 0;
             anim.SetInteger("AttackChain", currentCombo);
             //text.SetText(this.currentCombo.ToString());

@@ -67,8 +67,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FocDis: 45
-    - _FocRng: 76
+    - _FocDis: 42
+    - _FocRng: 90
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -80,7 +80,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StdDeviation: 0.3
+    - _StdDeviation: 0.006
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

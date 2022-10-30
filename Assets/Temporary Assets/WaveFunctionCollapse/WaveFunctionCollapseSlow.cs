@@ -561,6 +561,12 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, y, z, Tiles.Length * 4); }
             for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, y, z, Tiles.Length * 4); }
         }
+
+        //for (int x = 4; x < SizeX - 4; x++) {
+        //    for (int z = 4; z < SizeZ - 4; z++) { SetTile(x, 0, z, Tiles.Length * 4 + 1); }
+        //}
+       
+
     }
     bool SetTiles(int Count) 
     {

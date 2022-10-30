@@ -3949,9 +3949,9 @@ MonoBehaviour:
   - {fileID: 1982064057234030237, guid: c1eba12ae896c6f43933083c848d957d, type: 3}
   - {fileID: 8110847992099819029, guid: 1d2a8f2ed9927754faa0d72321333a1b, type: 3}
   - {fileID: 9140434832704416317, guid: f96db358e21f3b6449b1db21af667837, type: 3}
-  SizeX: 20
-  SizeY: 7
-  SizeZ: 20
+  SizeX: 25
+  SizeY: 10
+  SizeZ: 25
   surface: {fileID: 1021127529}
   Error: {fileID: 1315043380}
   walk: {fileID: 7398538573864090014, guid: 02432cffc72df614d9df06c010e22d04, type: 3}
