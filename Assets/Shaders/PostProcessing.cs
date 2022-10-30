@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 struct Occluder
 {
@@ -17,6 +18,42 @@ public class PostProcessing : MonoBehaviour
     [SerializeField] private float ditherFeather = 1.0f;
     [SerializeField] private float ditherCatchRadius = 1.0f;
     private Dictionary<Transform, Occluder> occluders = new Dictionary<Transform, Occluder>();
+
+    void OnEnable()
+    {
+        Debug.Log("Enable postprocessing");
+        Scene scene = SceneManager.GetActiveScene();
+        switch (scene.name)
+        {
+            case "tutorial":
+                depthOfField.SetFloat("_BlurSize", 0.015f);
+                depthOfField.SetFloat("_Samples", 2f);
+                depthOfField.SetFloat("_StdDeviation", 0.3f);
+                depthOfField.SetFloat("_FocDis", 45f);
+                depthOfField.SetFloat("_FocRng", 76f);
+                break;
+            case "Test":
+                depthOfField.SetFloat("_BlurSize", 0.015f);
+                depthOfField.SetFloat("_Samples", 2f);
+                depthOfField.SetFloat("_StdDeviation", 0.006f);
+                depthOfField.SetFloat("_FocDis", 42f);
+                depthOfField.SetFloat("_FocRng", 100f);
+                break;
+            default:
+                depthOfField.SetFloat("_BlurSize", 0.01f);
+                depthOfField.SetFloat("_Samples", 2f);
+                depthOfField.SetFloat("_StdDeviation", 0.02f);
+                depthOfField.SetFloat("_FocDis", 42f);
+                depthOfField.SetFloat("_FocRng", 26f);
+                break;
+        }
+    }
+
+    void Start()
+    {
+        Camera cam = GetComponent<Camera>();
+        cam.depthTextureMode = cam.depthTextureMode | DepthTextureMode.Depth;
+    }
 
     void Update()
     {
