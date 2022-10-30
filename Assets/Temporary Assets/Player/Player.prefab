@@ -3511,7 +3511,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 375
+    m_Bits: 887
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3546,7 +3546,8 @@ MonoBehaviour:
   lowHealth: {fileID: 2100000, guid: 297e54ffda7f19f4c931a517ae426c3c, type: 2}
   depthOfField: {fileID: 2100000, guid: d899c0492f3739242b4f335ec14f37f9, type: 2}
   ditherTex: {fileID: 2800000, guid: 934dd367c3cd59b44b9edb6f8790af17, type: 3}
-  ditherAlpha: 0.1
+  ditherRadius: 1
+  ditherFeather: 1
   ditherCatchRadius: 2.26
 --- !u!1 &4854128538842685705
 GameObject:
