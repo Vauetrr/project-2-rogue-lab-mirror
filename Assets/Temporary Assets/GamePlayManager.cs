@@ -19,7 +19,7 @@ public class GamePlayManager : MonoBehaviour
     public int mpIncrease = 0;
     //public int damageIncrease = 0;
     public int staminaIncrease = 0;
-    private int Temp = 0;
+    public bool wasInTutorial = true;
     //public int E = 0;
     public MusicManager musicManager;
     // Start is called before the first frame update
@@ -30,9 +30,14 @@ public class GamePlayManager : MonoBehaviour
             manager = this;
             DontDestroyOnLoad(manager);
             expBar.SetHealthBar(exp/(level*3)==0?1:(level*3));
+            tutorialText.enabled = false;
             spText.enabled = false;
         }
         else if (manager != this){
+            if (manager.wasInTutorial) {
+                manager.wasInTutorial = false;
+                manager.tutorialText.enabled = true;
+            }
             manager.Start();
             manager.musicManager.FadeTrack(0, 5.0f); 
             Destroy(this.gameObject); // there already exists a GPManager

@@ -6,7 +6,6 @@ using TMPro;
 public class PlayerMovementScript : MonoBehaviour
 {
     public GameObject MiniMap;
-    private int MiniMapState = 1;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] LoadingFade loadingFade;
     public Animator anim;
@@ -53,6 +52,8 @@ public class PlayerMovementScript : MonoBehaviour
     private bool defaultState = true;
     private bool attacking = false;
     private bool alive = true;
+
+    [SerializeField] bool inTutorial = false;
     // END player state
 
 
@@ -117,6 +118,10 @@ public class PlayerMovementScript : MonoBehaviour
         //Debug.Log("e");
         if (iframed || !alive) {
             return;
+        }
+
+        if (inTutorial && damage > 0){
+            damage = damage * 0.1f;
         }
 
         Health -= damage * ((guarding && damage > 0)? guardDamageDecrease : 1);
@@ -301,14 +306,7 @@ public class PlayerMovementScript : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.M))
         {
-            MiniMapState += 1;
-            MiniMapState %= 2;
-            if (MiniMapState == 1) { MiniMap.SetActive(true); }
-            else
-            {
-                MiniMap.SetActive(false);
-            }
-
+            MiniMap.SetActive(!MiniMap.activeSelf);
         }
 
     }

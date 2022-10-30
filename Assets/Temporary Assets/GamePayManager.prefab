@@ -338,8 +338,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "[W] [A] [S] [D] Move Player\n[Left Click] Sword\n[Right Click] Magic \n[SPACE]
-    Roll\nHold [SPACE] while rolling to Dash\n[SHIFT] Guard\n\n\n[P] Hide Tutorial
-    Text"
+    Roll\nHold [SPACE] while rolling to Dash\n[SHIFT] Guard\n\n[M] Show/Hide Minimap\n[P]
+    Hide Tutorial Text"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 620e20f7237374d29bb469a09dc11c8c, type: 2}
   m_sharedMaterial: {fileID: -13864707281009170, guid: 620e20f7237374d29bb469a09dc11c8c, type: 2}
