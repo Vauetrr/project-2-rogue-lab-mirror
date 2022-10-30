@@ -26,7 +26,7 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
 * [Game Summary](#game-summary)
 * [How To Play](#how-to-play)
 * [Gameplay Design](#gameplay-design)
-* [Graphical Design](#graphical-design)
+* [Asset Design](#asset-design)
 * [Graphics Pipeline and Shaders](#graphics-pipeline-and-shaders)
 * [Procedural Generation](#procedural-generation)
 * [Particle System](#particle-system)
@@ -45,7 +45,11 @@ protagonist has been framed for the murder, and is now trapped in the palace dun
 
 ### Gameplay Design
 
-### Graphical Design
+### Asset Design
+The golum was made in blender with animations imported from mixamo.
+The cloak, the sword and the breakable boxes were also made in blender.
+The tiles and the tutorial scene were created in rhino.
+The textures, sounds, knight and sorcerer models and all the animations were imported assets.
 
 ### Graphics Pipeline and Shaders
 This project uses the Built-in Render Pipeline, which allowed the project to utilise custom vertex/fragment shaders.
@@ -73,7 +77,7 @@ surrounding them.
 
 ### Procedural Generation
 for procedural generation we are using the wavefunction collapse algorithm. (ref 1)
-before the algorithm starts tiles are made then rules for how those tiles can be placed together are given. The tiles are then split into the 4 rotations around the y axis. Tiles are then preselected such as lava being placed around the map. The entropy of each slot is then calculated and the slot with the lowest entropy is chosen and a random tiles that can fit in the slot is selected. This is repeated until every tile is filled in.
+before the algorithm starts tiles are made then rules for how those tiles can be placed together are given. The tiles are then split into the 4 rotations around the y axis. Tiles are then preselected such as lava being placed around the map. The entropy (the number of diffrent tiles that can be placed in a given slot) of each slot is then calculated and the slot with the lowest entropy is chosen and a random tiles that can fit in the slot is selected. This is repeated until every tile is filled in.
 All the tiles have information about which adjacent tiles the player can move to from the tile. Using this a graph can be produced and the breadth first search algorithm is used to calculate which tiles the player can reach and how many tiles the player must walk to reach a given tile this is used to scale the difficult as you go further through the dungeon (loot boxes have a higher chance of spawning an enemy). 
 Sometimes the wavefunction collapse algorithm can fail or the map can have few walkable tiles if this is the case the algorithm is run again. The tile with the furthest walk distance to the start tile is chosen to contain the boss.
 
