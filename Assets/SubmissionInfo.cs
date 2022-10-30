@@ -33,7 +33,8 @@ public static class SubmissionInfo
     public static readonly string GameBlurb = 
 @"The queen is dead. The kingdom is in ruin, and you've been framed for the murder. 
 Try your hand at escaping the palace dungeon in this isometric roguelite game. Get stronger
-each run and gain abilities as you learn from your predecessor's mistakes.";
+each run and gain abilities as you learn from your predecessor's mistakes. Navigate
+procedurally generated dungeons and slay the final boss to escape once and for all.";
     
     // By the gameplay video milestone deadline this should be a direct link
     // to a YouTube video upload containing your video. Ensure "Made for kids"

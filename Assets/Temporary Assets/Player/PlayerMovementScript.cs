@@ -5,9 +5,6 @@ using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    public GameObject MiniMap;
-    private int MiniMapActive=1;
-    public TMP_Text tutorialText;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] LoadingFade loadingFade;
     public Animator anim;
@@ -25,7 +22,7 @@ public class PlayerMovementScript : MonoBehaviour
     public HealthBar StaminaBar;
     public HealthBar ManaBar;
     private float Health = 200.0f;
-    private float Mana = 200.0f;
+    private float Mana = 0.0f;
     private float Stamina = 100.0f;
 
     //public Transform PlayerTransform;
@@ -109,7 +106,6 @@ public class PlayerMovementScript : MonoBehaviour
     }
     
     public void restartLevel(){
-        tutorialText.enabled = false;
         deathScreen.SetActive(true);
         StartCoroutine(deathScreen.GetComponent<DeathScreen>().activate());
     }
@@ -155,22 +151,30 @@ public class PlayerMovementScript : MonoBehaviour
         ManaBar.SetHealthBar(Mana, MaxMana);
     }
 
+    void updateStats(){
+        MaxHealth = 200.0f + (GamePlayManager.manager.hpIncrease * 50f);
+        MaxMana = 200.0f + (GamePlayManager.manager.mpIncrease * 50f);
+        MaxStamina = 200.0f + (GamePlayManager.manager.staminaIncrease * 50f);
+        staminaRegeneration = 30.0f + (GamePlayManager.manager.staminaIncrease * 7.5f);
+        HealthBar.SetHealthBar(Health, MaxHealth);
+        ManaBar.SetHealthBar(Mana, MaxMana);
+        StaminaBar.SetHealthBar(Stamina/MaxStamina);
+    }
+
     void Start()
     {
-        //sHealth = MaxHealth;
         StartCoroutine(loadingFade.StartFade(false, 0.0f));
-
+        updateStats();
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
         LowHealth.SetFloat("_LeftVis", 0.0f);
         LowHealth.SetFloat("_RightVis", 0.0f);
 
+        Health = MaxHealth;
         Stamina = MaxStamina;
-        Player = this.GetComponent<Rigidbody>();
-        HealthBar.SetHealthBar(Health, MaxHealth);
-        ManaBar.SetHealthBar(Mana, MaxMana);
-        StaminaBar.SetHealthBar(Stamina/MaxStamina);
 
+        Player = this.GetComponent<Rigidbody>(); // merge leftover
+        GamePlayManager.manager.gainExp(0); 
         SetHealthBlur(0f);
 
         //anim = Model.GetComponent<Animator>();
@@ -293,20 +297,7 @@ public class PlayerMovementScript : MonoBehaviour
             sprinting = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.P)){
-            tutorialText.enabled = !tutorialText.enabled;
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            MiniMapActive += 1;
-            MiniMapActive %= 2;
-            if (MiniMapActive == 1) { MiniMap.SetActive(true); } 
-            else 
-            {
-                MiniMap.SetActive(false);
-            }
-            
-        }
+
     }
 
     void dashPlayer(){
@@ -434,6 +425,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         movePlayer();
         updateAnim();
+        updateStats();
     }
     
     
