@@ -120,7 +120,7 @@ Hold `[Space]` while Rolling to Dash
 ### Gameplay Design
 
 ### Asset Design
-One of the most important focus of this project is the design of map using procedural generation system. The original system uses a sets of planes with different orientations to procedurally generate the map each time the scene runs by assembling them randomly. In order to match the theme of dungeon and kingdom, this map is further improved by using our original creations of models. To improve the experience of exploration, more visiable/ accessable surfaces are used, horizontally and vertically, giving the sense of volume and allowing the change of levels to provide a more "dungeon-like" spatial experience in graphic perspective. More detailed models are used to replace universal planes as well to have better visual experience such as columns with plates, flooring with decoration, and walls with windows and balconies. With the increase of the complexity of the models, we decided to use another third-party modeling software, "Rhinoceros", to work models as NURB then import them into unity as [meshes](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/WaveFunctionCollapse/Old/Rhino%20Model). Thus, each plane is refined to a more vivid tile with our original models, and provides the final scenes. Modelling process in "Rhinoceros" shows below: [tiles](Gifs\00.jpg), [tiles](Gifs\01.jpg); [dungeon](Gifs\02.jpg); [palace](Gifs\03.jpg).
+One of the most important focus of this project is the design of map using procedural generation system. The original system uses a sets of planes with different orientations to procedurally generate the map each time the scene runs by assembling them randomly. In order to match the theme of dungeon and kingdom, this map is further improved by using our original creations of models. To improve the experience of exploration, more visiable/ accessable surfaces are used, horizontally and vertically, giving the sense of volume and allowing the change of levels to provide a more "dungeon-like" spatial experience in graphic perspective. More detailed models are used to replace universal planes as well to have better visual experience such as columns with plates, flooring with decoration, and walls with windows and balconies. With the increase of the complexity of the models, we decided to use another third-party modeling software, "Rhinoceros", to work models as NURB then import them into unity as [meshes](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/WaveFunctionCollapse/Old/Rhino%20Model). Thus, each plane is refined to a more vivid tile with our original models, and provides the final scenes.
 
 Texture is another focus of the assets design. All [materials](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/Materials) use both main map and normal map to provide better visual experience while keeping the size of the project. To match with the theme, textures are selected based on medieval material reference and adjusted in image editor to have approximate colors, finally work together to provide concordant materials in the same scene.
 
@@ -184,15 +184,23 @@ Project is created with:
 * Rhinoceros version: 7.4
 * Photoshop 2022.4.2
 
-### Using Images
+### Images
 
-You can include images/gifs by adding them to a folder in your repo, currently `Gifs/*`:
+Project Processes:
 
 <p align="center">
-  <img src="Gifs/sample.gif" width="300">
+  <img src="Gifs\00.jpg" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\01.jpg" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\02.jpg" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\03.jpg" width="300">
 </p>
 
-To create a gif from a video you can follow this [link](https://ezgif.com/video-to-gif/ezgif-6-55f4b3b086d4.mov).
 
 ### Code Snippets 
 
