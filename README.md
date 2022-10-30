@@ -29,7 +29,26 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
 * [Code Snipets](#code-snippets)
 
 ### Game Summary
-_Exciting title_ is a first-person shooter (FPS) set in...
+_Downfall_ is an isometric roguelite game, set in a kingdom that has fallen to ruin after the queen has died. The
+protagonist has been framed for the murder, and is now trapped in the palace dungeon which they must escape from.
+
+### How To Play
+
+### Gameplay Design
+
+### Graphical Design
+
+### Graphics Pipeline and Shaders
+
+### Procedural Generation
+
+### Particle System
+
+### Evaluation Techniques
+
+### Feedback Implemented
+
+### References
 
 ### Technologies
 Project is created with:
