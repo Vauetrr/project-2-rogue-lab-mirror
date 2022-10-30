@@ -45,6 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tiles:
-  - {fileID: 1409345976141022707, guid: f853cc8cb0a8c98448c082c24b81d752, type: 3}
+  - {fileID: 4680108200222482663, guid: 365d41484f6c5ca40a00393f883ac0b5, type: 3}
   - {fileID: 593912737359441237, guid: 83d9601133bd512478983e3ed25d31bd, type: 3}
-  Weights: 0600000006000000
+  Weights: 0100000006000000
+  DifficultyMultiplier: 0000000000000000
+  UseRotation: 0
+  MaxWalkDistance: 40
+  Data: {fileID: 0}
+  bossTel: 0
+  tel: {fileID: 0}

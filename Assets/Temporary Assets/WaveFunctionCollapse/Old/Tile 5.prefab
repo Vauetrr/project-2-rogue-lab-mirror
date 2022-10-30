@@ -399,6 +399,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1003584183503135152}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: MaxWalkDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.size
       value: 5
       objectReference: {fileID: 0}

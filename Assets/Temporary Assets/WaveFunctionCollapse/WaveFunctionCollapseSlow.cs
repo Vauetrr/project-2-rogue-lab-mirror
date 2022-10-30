@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
+using UnityEngine.UI;
 public class WaveFunctionCollapseSlow : MonoBehaviour
 {
 
+    [SerializeField] private Camera MiniMapCamera;
+    [SerializeField] private RenderTexture renderTexture;
+    public RawImage MiniMap;
+    
     public GameObject[] Tiles;
     public int SizeX;
     public int SizeY;
@@ -924,5 +929,30 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
             }
         }
         surface.BuildNavMesh();
+
+        StartCoroutine(MakeMiniMap());
+        
+       
+    }
+
+
+   
+    private IEnumerator MakeMiniMap()
+    {
+        yield return new WaitForEndOfFrame();
+
+        
+        RenderTexture.active = renderTexture;
+        MiniMapCamera.targetTexture = renderTexture;
+        MiniMapCamera.Render();
+        
+        var Temp = new Texture2D(256, 256, TextureFormat.ARGB32, false);    
+        Temp.ReadPixels(new Rect(0, 0,256,256), 0, 0);
+        Temp.Apply();
+        MiniMap.texture = Temp;
+        RenderTexture.active = null;
+        //MiniMapCamera.targetTexture = null;
+        Destroy(MiniMapCamera.gameObject);
+
     }
 }

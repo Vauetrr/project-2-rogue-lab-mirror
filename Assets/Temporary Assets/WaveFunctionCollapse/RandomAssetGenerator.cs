@@ -27,6 +27,7 @@ public class RandomAssetGenerator : MonoBehaviour
            
         }
         int i = 1;
+        //Debug.Log(Weights.Length+" "+ DifficultyMultiplier.Length+ " "+ Tiles.Length +" " + Data+ " " + MaxWalkDistance);
         Weights[0] += DifficultyMultiplier[0] * Data.WalkDistance / MaxWalkDistance;
         for (;i<Weights.Length;i++) 
         {

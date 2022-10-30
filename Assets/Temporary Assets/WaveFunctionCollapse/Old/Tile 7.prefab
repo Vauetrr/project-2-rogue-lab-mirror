@@ -76,6 +76,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 3782816663586667931}
     m_Modifications:
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 5612214801441740355}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: MaxWalkDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.data[0]
       value: 
       objectReference: {fileID: 8751799231860374338, guid: 5e3ba9bf161748c4392479f543585ea5, type: 3}
@@ -147,6 +155,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 3782816663586667931}
     m_Modifications:
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 5612214801441740355}
+    - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
+      propertyPath: MaxWalkDistance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2200959201111119434, guid: caa885a8fcc33b34e9abbb1b8b494e48, type: 3}
       propertyPath: Tiles.Array.size
       value: 5

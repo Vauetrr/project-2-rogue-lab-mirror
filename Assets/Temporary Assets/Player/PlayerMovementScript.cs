@@ -5,6 +5,8 @@ using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    public GameObject MiniMap;
+    private int MiniMapActive=1;
     public TMP_Text tutorialText;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] LoadingFade loadingFade;
@@ -293,6 +295,17 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P)){
             tutorialText.enabled = !tutorialText.enabled;
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            MiniMapActive += 1;
+            MiniMapActive %= 2;
+            if (MiniMapActive == 1) { MiniMap.SetActive(true); } 
+            else 
+            {
+                MiniMap.SetActive(false);
+            }
+            
         }
     }
 
