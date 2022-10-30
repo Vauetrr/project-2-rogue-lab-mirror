@@ -5,6 +5,8 @@ using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    public GameObject MiniMap;
+    private int MiniMapState = 1;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] LoadingFade loadingFade;
     public Animator anim;
@@ -296,7 +298,18 @@ public class PlayerMovementScript : MonoBehaviour
             runButtonHeld = false;
             sprinting = false;
         }
+        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            MiniMapState += 1;
+            MiniMapState %= 2;
+            if (MiniMapState == 1) { MiniMap.SetActive(true); }
+            else
+            {
+                MiniMap.SetActive(false);
+            }
 
+        }
 
     }
 

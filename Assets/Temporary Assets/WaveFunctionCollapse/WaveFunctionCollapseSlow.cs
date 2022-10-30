@@ -945,7 +945,7 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
         RenderTexture.active = renderTexture;
         MiniMapCamera.targetTexture = renderTexture;
         MiniMapCamera.Render();
-        
+        //TextureFormat.ARGB32
         var Temp = new Texture2D(256, 256, TextureFormat.ARGB32, false);    
         Temp.ReadPixels(new Rect(0, 0,256,256), 0, 0);
         Temp.Apply();

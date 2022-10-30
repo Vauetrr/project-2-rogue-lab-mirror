@@ -17,6 +17,6 @@ public class PlayerMiniMap : MonoBehaviour
         
         //icon.position = new Vector3(200+Player.position.x,1000+Player.position.z, -1);
         //icon.position = new Vector3(0,0, -1);
-        icon.localPosition = new Vector3(Player.position.x*200/500-80,Player.position.z * 200 / 500 - 95, -1);
+        icon.localPosition = new Vector3(Player.position.x*200/500-75,Player.position.z * 200 / 500 - 95, -1);
     }
 }
