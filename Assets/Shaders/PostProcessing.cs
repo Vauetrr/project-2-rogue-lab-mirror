@@ -37,7 +37,7 @@ public class PostProcessing : MonoBehaviour
                 depthOfField.SetFloat("_Samples", 2f);
                 depthOfField.SetFloat("_StdDeviation", 0.006f);
                 depthOfField.SetFloat("_FocDis", 42f);
-                depthOfField.SetFloat("_FocRng", 100f);
+                depthOfField.SetFloat("_FocRng", 90f);
                 break;
             default:
                 depthOfField.SetFloat("_BlurSize", 0.01f);
