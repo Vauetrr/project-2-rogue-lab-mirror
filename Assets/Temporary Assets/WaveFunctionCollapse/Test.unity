@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11010416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PrisonWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2028,7 +2028,7 @@ GameObject:
   - component: {fileID: 378496651}
   - component: {fileID: 378496650}
   - component: {fileID: 378496649}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2043,7 +2043,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378496647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.9819, y: 7.4322, z: 10.002}
+  m_LocalPosition: {x: -39.04, y: 7.4322, z: 10.002}
   m_LocalScale: {x: 37.96558, y: 22.71644, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2537,7 +2537,7 @@ GameObject:
   - component: {fileID: 581321624}
   - component: {fileID: 581321623}
   - component: {fileID: 581321622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3055,7 +3055,7 @@ GameObject:
   - component: {fileID: 775951633}
   - component: {fileID: 775951632}
   - component: {fileID: 775951631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3364,7 +3364,7 @@ GameObject:
   - component: {fileID: 889655833}
   - component: {fileID: 889655832}
   - component: {fileID: 889655831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3949,9 +3949,9 @@ MonoBehaviour:
   - {fileID: 1982064057234030237, guid: c1eba12ae896c6f43933083c848d957d, type: 3}
   - {fileID: 8110847992099819029, guid: 1d2a8f2ed9927754faa0d72321333a1b, type: 3}
   - {fileID: 9140434832704416317, guid: f96db358e21f3b6449b1db21af667837, type: 3}
-  SizeX: 20
-  SizeY: 7
-  SizeZ: 20
+  SizeX: 25
+  SizeY: 10
+  SizeZ: 25
   surface: {fileID: 1021127529}
   Error: {fileID: 1315043380}
   walk: {fileID: 7398538573864090014, guid: 02432cffc72df614d9df06c010e22d04, type: 3}
@@ -4432,7 +4432,7 @@ GameObject:
   - component: {fileID: 1252185151}
   - component: {fileID: 1252185150}
   - component: {fileID: 1252185149}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5405,6 +5405,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 564b920910a5bc7498da75d6eafde26c, type: 3}
   m_PrefabInstance: {fileID: 1365061330}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1401630493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: f8a4564e423ad3a43801208341d66264, type: 3}
+  m_PrefabInstance: {fileID: 1334051819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1401630496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401630493}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.51, y: 6.000003, z: 0.7500223}
+  m_Center: {x: -0.0000009536743, y: 3, z: -0.0000106990365}
 --- !u!1 &1406522076
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,7 +5914,7 @@ GameObject:
   - component: {fileID: 1613160037}
   - component: {fileID: 1613160036}
   - component: {fileID: 1613160035}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5994,7 +6012,7 @@ GameObject:
   - component: {fileID: 1617261753}
   - component: {fileID: 1617261752}
   - component: {fileID: 1617261751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6158,6 +6176,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 72f601b85cb4ebd41a3a3b156186ad29, type: 3}
       propertyPath: m_Name
       value: Castle Gate 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 72f601b85cb4ebd41a3a3b156186ad29, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 72f601b85cb4ebd41a3a3b156186ad29, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6486,7 +6508,7 @@ GameObject:
   - component: {fileID: 1754584971}
   - component: {fileID: 1754584970}
   - component: {fileID: 1754584969}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7238,6 +7260,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840760113}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1842010174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: f8a4564e423ad3a43801208341d66264, type: 3}
+  m_PrefabInstance: {fileID: 380699395}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1842010177
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842010174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 6.000003, z: 0.7500223}
+  m_Center: {x: -0.0000009536743, y: 3, z: -0.0000106990365}
 --- !u!1 &1870145702
 GameObject:
   m_ObjectHideFlags: 0
@@ -7610,7 +7650,7 @@ GameObject:
   - component: {fileID: 1943053345}
   - component: {fileID: 1943053344}
   - component: {fileID: 1943053343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

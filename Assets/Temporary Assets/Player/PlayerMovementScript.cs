@@ -81,11 +81,12 @@ public class PlayerMovementScript : MonoBehaviour
     public float MaxStamina = 200.0f;
     public float MaxMana = 200.0f;
 
-    public void SetHealthBlur(){
+    public void SetHealthBlur(float damage)
+    {
         float visualHealth = (Health / MaxHealth) > 0.5f? 1: (Health/MaxHealth)*2;
         LowHealth.SetFloat("_Greyscale", (1.0f-visualHealth) );
         LowHealth.SetFloat("_Radius", 2.0f*visualHealth);
-        StartCoroutine(DoubleVision(1.0f - visualHealth));
+        if (damage > 0) StartCoroutine(DoubleVision(1.0f - visualHealth));
     }
 
     IEnumerator DoubleVision(float amount)
@@ -127,12 +128,12 @@ public class PlayerMovementScript : MonoBehaviour
             alive = false;
             anim.SetBool("Alive", false);
             HealthBar.SetHealthBar(Health, MaxHealth);
-            SetHealthBlur();
+            SetHealthBlur(damage);
             restartLevel();
         }
 
         HealthBar.SetHealthBar(Health, MaxHealth);
-        SetHealthBlur();
+        SetHealthBlur(damage);
         //_StdDeviation
         //_Radius
         //_Feather
@@ -172,9 +173,9 @@ public class PlayerMovementScript : MonoBehaviour
         Health = MaxHealth;
         Stamina = MaxStamina;
 
-        Player = this.GetComponent<Rigidbody>();
+        //Player = this.GetComponent<Rigidbody>(); // merge leftover
         GamePlayManager.manager.gainExp(0); 
-        SetHealthBlur();
+        SetHealthBlur(0f);
 
         //anim = Model.GetComponent<Animator>();
         //PlayerTransform = this.GetComponent<Transform>();
