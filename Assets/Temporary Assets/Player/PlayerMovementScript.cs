@@ -151,11 +151,11 @@ public class PlayerMovementScript : MonoBehaviour
         ManaBar.SetHealthBar(Mana, MaxMana);
     }
 
-    void displayStats(){
-        MaxHealth = 200.0f + (GamePlayManager.manager.hpIncrease * 50);
-        MaxMana = 200.0f + (GamePlayManager.manager.mpIncrease * 50);
-        MaxStamina = 200.0f + (GamePlayManager.manager.staminaIncrease * 50);
-
+    void updateStats(){
+        MaxHealth = 200.0f + (GamePlayManager.manager.hpIncrease * 50f);
+        MaxMana = 200.0f + (GamePlayManager.manager.mpIncrease * 50f);
+        MaxStamina = 200.0f + (GamePlayManager.manager.staminaIncrease * 50f);
+        staminaRegeneration = 30.0f + (GamePlayManager.manager.staminaIncrease * 7.5f);
         HealthBar.SetHealthBar(Health, MaxHealth);
         ManaBar.SetHealthBar(Mana, MaxMana);
         StaminaBar.SetHealthBar(Stamina/MaxStamina);
@@ -164,7 +164,7 @@ public class PlayerMovementScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(loadingFade.StartFade(false, 0.0f));
-        displayStats();
+        updateStats();
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
         LowHealth.SetFloat("_LeftVis", 0.0f);
@@ -173,7 +173,7 @@ public class PlayerMovementScript : MonoBehaviour
         Health = MaxHealth;
         Stamina = MaxStamina;
 
-        //Player = this.GetComponent<Rigidbody>(); // merge leftover
+        Player = this.GetComponent<Rigidbody>(); // merge leftover
         GamePlayManager.manager.gainExp(0); 
         SetHealthBlur(0f);
 
@@ -425,7 +425,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         movePlayer();
         updateAnim();
-        displayStats();
+        updateStats();
     }
     
     
