@@ -42,17 +42,90 @@ _Downfall_ is an isometric roguelite game, set in a kingdom that has fallen to r
 protagonist has been framed for the murder, and is now trapped in the palace dungeon which they must escape from.
 
 ### How To Play
+The goal of _Downfall_ is to defeat the final boss, reached by accessing a "warp zone" in the main level.
+The warp zone will be placed somewhere in the procedurally generated map, which the player must find.
+
+Enemies will block the path of the player. Defeating them will grant experience.
+Gain enough experience to increase your level. Each level will provide the player with an option to increase
+Health, Mana or Stamina/Stamina Regeneration.
+
+Reaching a health of 0 ends the current "run", and the player will be brought to the start of a newly generated level.
+Levels, experience, and increases in any stats are carried over in all runs.
+
+
+#### Visual/Modifiable Player Stats
+`Health` Health will be lowered from taking enemy damage, and reaching 0 ends the current run.
+
+  Health can be replenished by picking up HP healing items.
+
+
+`Mana` Mana is consumed from using Magic attacks. A magic weapon must be picked up to use Mana.
+
+  Mana can be replenished by picking up magic weapons, or by successfully attacking with the Sword attack.
+
+
+`Stamina` Stamina is used for Rolling and Dashing. 
+
+  Stamia will gradually recharge when not being consumed.
+
+
+`Level` Level of the player. 
+
+  Each level grants the player a new upgrade, and fully replenishes Health, Mana and Stamina.
+
+
+`Experience` Experience of the player. 
+
+  Reaching max experience increases the player's level, and resets exp to 0.
+  
+
+#### General Movement
+
+`[W]` `[A]` `[S]` `[D]` Move Player
+
+`[Left Click]` Sword Attack (when a Sword is picked up)
+
+`[Right Click]` Magic Attack (when a Magic item is picked up)
+
+`[Space]` Roll
+
+Hold `[Space]` while Rolling to Dash
+
+`[Shift]` Guard
+
+
+#### Upgrades (Available after Levelling up)
+
+`[1]` Increase Health
+
+`[2]` Increase Mana
+
+`[3]` Increase Stamina/Stamina Regeneration
+
+
+#### UI Settings
+
+`[M]` Show/Hide minimap  _(available in the Main level, after the tutorial)_
+
+`[P]` Show/Hide tutorial Text
+
+
+#### Cheat Codes, available after the game has begun
+
+`[Z]+[J]` Gain a huge amount of Health, Mana and Stamina
+
+`[Z]+[L]` Warp to the final boss
+
 
 ### Gameplay Design
 
 ### Asset Design
 This project focuses on many aspects of the assets design, including map design, model design, textures, and animations.
-One of the most important focus of this project is the design of map using procedural generation system. The original system uses a sets of planes with different orientations to procedurally generate the map each time the scene runs by assembling them randomly. In order to match the theme of dungeon and kingdom, this map is further improved by using our original creations of models. To improve the experience of exploration, more visiable/ accessable surfaces are used, horizontally and vertically, giving the sense of volume and allowing the change of levels to provide a more "dungeon-like" spatial experience in graphic perspective. More detailed models are used to replace universal planes as well to have better visual experience such as columns with plates, flooring with decoration, and walls with windows and balconies. With the increase of the complexity of the models, we decided to use another third-party modeling software, "Rhinoceros", to work models as NURB then import them into unity as [meshes](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/WaveFunctionCollapse/Old/Rhino%20Model). Thus, each plane is refined to a more vivid tile with our original models, and provides the final scenes. Modelling process in "Rhinoceros" shows below: [tiles](Gifs\00.jpg), [tiles](Gifs\01.jpg); [dungeon](Gifs\02.jpg); [palace](Gifs\03.jpg).
+One of the most important focus of this project is the design of map using procedural generation system. The original system uses a sets of planes with different orientations to procedurally generate the map each time the scene runs by assembling them randomly. In order to match the theme of dungeon and kingdom, this map is further improved by using our original creations of models. To improve the experience of exploration, more visiable/ accessable surfaces are used, horizontally and vertically, giving the sense of volume and allowing the change of levels to provide a more "dungeon-like" spatial experience in graphic perspective. More detailed models are used to replace universal planes as well to have better visual experience such as columns with plates, flooring with decoration, and walls with windows and balconies. With the increase of the complexity of the models, we decided to use another third-party modeling software, "Rhinoceros", to work models as NURB then import them into unity as [meshes](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/WaveFunctionCollapse/Old/Rhino%20Model). Thus, each plane is refined to a more vivid tile with our original models, and provides the final scenes.
 
 Texture is another focus of the assets design. All [materials](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/Materials) use both main map and normal map to provide better visual experience while keeping the size of the project. To match with the theme, textures are selected based on medieval material reference and adjusted in image editor to have approximate colors, finally work together to provide concordant materials in the same scene.
 
 Animation is implemented according to player's operation including walking, running, rolling and two kinds of attack. Animations are improved by selecting precise frame to implement code, which allows more sensible damage of the attacks instead of keeping damaging during the whole animation. This also helps to implement precise sound effects like footsteps which could change based on the pace, improving the gaming experience both visually and audibly.
-
 The golum was made in blender with animations imported from mixamo.
 The cloak, the sword and the breakable boxes were also made in blender.
 The tiles and the tutorial scene were created in rhino.
@@ -110,8 +183,6 @@ Project is created with:
 * Unity 2022.1.9f1 
 * Ipsum version: 2.33
 * Ament library version: 999
-* Rhinoceros version: 7.4
-* Photoshop 2022.4.2
 
 ### Using Images
 
