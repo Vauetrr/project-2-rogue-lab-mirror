@@ -5,7 +5,6 @@ using TMPro;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    public TMP_Text tutorialText;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] LoadingFade loadingFade;
     public Animator anim;
@@ -23,7 +22,7 @@ public class PlayerMovementScript : MonoBehaviour
     public HealthBar StaminaBar;
     public HealthBar ManaBar;
     private float Health = 200.0f;
-    private float Mana = 200.0f;
+    private float Mana = 0.0f;
     private float Stamina = 100.0f;
 
     //public Transform PlayerTransform;
@@ -106,7 +105,6 @@ public class PlayerMovementScript : MonoBehaviour
     }
     
     public void restartLevel(){
-        tutorialText.enabled = false;
         deathScreen.SetActive(true);
         StartCoroutine(deathScreen.GetComponent<DeathScreen>().activate());
     }
@@ -152,22 +150,30 @@ public class PlayerMovementScript : MonoBehaviour
         ManaBar.SetHealthBar(Mana, MaxMana);
     }
 
+    void displayStats(){
+        MaxHealth = 200.0f + (GamePlayManager.manager.hpIncrease * 50);
+        MaxMana = 200.0f + (GamePlayManager.manager.mpIncrease * 50);
+        MaxStamina = 200.0f + (GamePlayManager.manager.staminaIncrease * 50);
+
+        HealthBar.SetHealthBar(Health, MaxHealth);
+        ManaBar.SetHealthBar(Mana, MaxMana);
+        StaminaBar.SetHealthBar(Stamina/MaxStamina);
+    }
+
     void Start()
     {
-        //sHealth = MaxHealth;
         StartCoroutine(loadingFade.StartFade(false, 0.0f));
-
+        displayStats();
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
         LowHealth.SetFloat("_LeftVis", 0.0f);
         LowHealth.SetFloat("_RightVis", 0.0f);
 
+        Health = MaxHealth;
         Stamina = MaxStamina;
-        Player = this.GetComponent<Rigidbody>();
-        HealthBar.SetHealthBar(Health, MaxHealth);
-        ManaBar.SetHealthBar(Mana, MaxMana);
-        StaminaBar.SetHealthBar(Stamina/MaxStamina);
 
+        Player = this.GetComponent<Rigidbody>();
+        GamePlayManager.manager.gainExp(0); 
         SetHealthBlur();
 
         //anim = Model.GetComponent<Animator>();
@@ -290,9 +296,7 @@ public class PlayerMovementScript : MonoBehaviour
             sprinting = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.P)){
-            tutorialText.enabled = !tutorialText.enabled;
-        }
+
     }
 
     void dashPlayer(){
@@ -420,6 +424,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         movePlayer();
         updateAnim();
+        displayStats();
     }
     
     
