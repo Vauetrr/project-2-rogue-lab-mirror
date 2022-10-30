@@ -677,7 +677,10 @@ MonoBehaviour:
   hpIncrease: 0
   mpIncrease: 0
   staminaIncrease: 0
+  wasInTutorial: 1
+  levelUp: 0
   musicManager: {fileID: 2264040485105083412}
+  levelState: 1
 --- !u!114 &8389454540191633606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +913,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 196479543784577450}
     m_Modifications:
+    - target: {fileID: 195399896190323219, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577699803889040076, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577699803889040076, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1620237577812481726, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -970,9 +985,17 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 2137556489382648463, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3982217452089224328, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649453684587677946, guid: d87c6d420e3d1c543b40d2bcb5f37e5c, type: 3}
+      propertyPath: m_Volume
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
