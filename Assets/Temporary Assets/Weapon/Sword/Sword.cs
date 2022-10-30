@@ -68,7 +68,7 @@ public class Sword : Weapon
 
         CanAttack = false;
         
-        SwordTrigger.SetActive(true);
+        //SwordTrigger.SetActive(true);
 
         currentCombo++;
         

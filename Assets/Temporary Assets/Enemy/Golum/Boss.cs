@@ -33,10 +33,11 @@ public class Boss : MonoBehaviour
         Health -= damage;
         if (Health < 0.0f)
         {
-            finalScreen.winSequence();
-            GamePlayManager.manager.musicManager.lockTrack = false;
-            GamePlayManager.manager.musicManager.FadeTrack(3, 5.0f);
-            GamePlayManager.manager.musicManager.lockTrack = true;
+            if (isBoss) { finalScreen.winSequence();
+                GamePlayManager.manager.musicManager.lockTrack = false;
+                GamePlayManager.manager.musicManager.FadeTrack(3, 5.0f);
+                GamePlayManager.manager.musicManager.lockTrack = true;
+            }
             manager.EnemyKilled();
             Instantiate(EnemyDeath, this.transform.position, this.transform.rotation);
             Destroy(transform.parent.gameObject);

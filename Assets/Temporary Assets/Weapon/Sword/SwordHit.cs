@@ -9,6 +9,9 @@ public class SwordHit : MonoBehaviour
     public float Damage = 20.0f;
     public PlayerMovementScript Player;
     private float manaRecharge = 10.0f;
+
+    //public AudioClip SwordHitClip;
+    //public AudioSource Source;
     // public Animator SwordAnimator;
     // Start is called before the first frame update
 
@@ -31,7 +34,7 @@ public class SwordHit : MonoBehaviour
         //Debug.Log("Coollide");
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(Damage);
+            //collision.gameObject.GetComponent<PlayerMovementScript>().DecreaseHealth(Damage);
             //Destroy(gameObject, 0);
         }
         else if (collision.gameObject.tag == "Enemy")
@@ -41,7 +44,8 @@ public class SwordHit : MonoBehaviour
             else if (collision.gameObject.GetComponent<AiFollow>()) { collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage); }
             else if (collision.gameObject.GetComponent<Knight>()) { collision.gameObject.GetComponent<Knight>().DecreaseHealth(Damage); }
             else if (collision.gameObject.GetComponent<Boss>()) { collision.gameObject.GetComponent<Boss>().DecreaseHealth(Damage); }
-
+            //Source.PlayOneShot(SwordHitClip);
+            //this.enabled = false;
             // collision.gameObject.GetComponent<AiFollow>().DecreaseHealth(Damage);
             //Destroy(gameObject, 0);
         }
