@@ -5,7 +5,7 @@
   <img width="649" alt="image" src="https://user-images.githubusercontent.com/102025260/198919429-9c2618a6-b1d9-401e-835a-92a1ecd48924.png">
 </p>
 
-**Note**: _Downfall_ is best experienced with the aspect ratio 16:9. For the best experiece, please play in Full HD or 16:9 Aspect.
+**Note**: _Downfall_ is best experienced with the aspect ratio 16:9. For the best experience, please play in Full HD or 16:9 Aspect.
 
 ## Teamwork plan/summary
 
@@ -195,20 +195,20 @@ Shader paths:
 
 ### Scene Transitions and UI Design
 
+For a more polished gameplay experience, the screen fades in/out between scene transitions with a loading screen:
 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918507-2ae7e566-0a6d-4aab-8aad-ff8930acea7d.png">
-For a more polished gameplay experience, the screen fades in/out between scene transitions with a loading screen. <br/><br/><br/>
+<p align="center">
+  <img src="Gifs\transition.gif" width="300">
+</p>
 
+A map of the overall level is avaiable on the main level for better traversal through the game. 
+The tutorial text and the map can be enabled and disabled as the user prefers.
 
-<img width="220" alt="image" src="https://user-images.githubusercontent.com/102025260/198918955-5fff7e5b-2992-4190-84c7-c6bc3d42a835.png">
-A map of the overall level is avaiable on the main level for better traversal through the game. <br/><br/><br/>
+<p align="center">
+  <img src="Gifs\ui.gif" width="300">
+</p>
 
-
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918900-e6f306a5-36d7-4ca4-95db-d3f02c1fdd9c.png">
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918931-07d78a80-77f7-4f64-882d-131ca11f2022.png">
-The tutorial text and the map can be enabled and disabled as the user prefers. <br/><br/>
-
-For a more visually appealing UI, TextMeshPro was utilised for the UI text, with custom fonts imported from Google Fonts. (ref 1)
+For a more visually appealing UI, the Unity package 'TextMeshPro' was utilised for the UI text, with custom fonts imported from Google Fonts. (ref 1)
 
 ### Procedural Generation
 for procedural generation we are using the wavefunction collapse algorithm. (ref 2)
@@ -334,6 +334,26 @@ Project is created with:
 
 ### Images
 
+#### Playtester Bugs
+
+<p align="center">
+  <img src="Gifs\lavabug.gif" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\ditherbug.gif" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\golembug.gif" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\bridgebug.gif" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\lowhealthbug.gif" width="300">
+</p>
+
+#### Rhino Models
+
 <p align="center">
   <img src="Gifs\00.jpg" width="300">
 </p>
@@ -346,6 +366,8 @@ Project is created with:
 <p align="center">
   <img src="Gifs\03.jpg" width="300">
 </p>
+
+#### Boss Battle
 
 <p align = "center"><img width="600" alt="image" src="https://user-images.githubusercontent.com/102025260/198920700-4b5c44d2-2340-4e60-aa79-0aa9ba8195ca.png"></p>
 
