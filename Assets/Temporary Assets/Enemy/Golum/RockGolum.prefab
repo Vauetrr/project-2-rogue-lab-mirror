@@ -1919,7 +1919,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4746254250943731843}
   - component: {fileID: 5374419110098633272}
-  - component: {fileID: 2379406658596097213}
   - component: {fileID: 2664326032226869972}
   - component: {fileID: 7376127322821282684}
   m_Layer: 0
@@ -1981,23 +1980,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2379406658596097213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5374419110098633273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2542666284f6a64298b5fb4d2f8c92d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StepClips:
-  - {fileID: 8300000, guid: 56378ef9542847d49b7e07e4cf1fb983, type: 3}
-  - {fileID: 8300000, guid: 9ee2465409fecbb4bab1cef6c58a68c9, type: 3}
-  - {fileID: 8300000, guid: 8bb9b7bee716f044bab332c7f0a80697, type: 3}
-  - {fileID: 8300000, guid: 66f553d38ccfe964eb6f7927cadf08a7, type: 3}
 --- !u!82 &2664326032226869972
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2847,6 +2829,7 @@ MonoBehaviour:
   isBoss: 0
   HealthBar: {fileID: 7620365828714865352}
   MaxHealth: 100
+  finalScreen: {fileID: 0}
   AttackDistance: 50
   AttackCoolDown: 1
   Arm: {fileID: 1256386064867360894}

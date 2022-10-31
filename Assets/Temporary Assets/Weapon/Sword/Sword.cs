@@ -31,7 +31,7 @@ public class Sword : Weapon
             //text.SetText(this.currentCombo.ToString());
         }
 
-        SwordTrigger.SetActive(false);
+        //SwordTrigger.SetActive(false);
         CanAttack = true;
     }
 

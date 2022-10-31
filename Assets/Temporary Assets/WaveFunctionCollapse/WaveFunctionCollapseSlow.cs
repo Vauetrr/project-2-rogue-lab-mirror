@@ -543,29 +543,29 @@ public class WaveFunctionCollapseSlow : MonoBehaviour
     {
         SetTile(0, 0, 0, 1);
         SetTile(1, 0, 0, 1);
-        //for (int x = 5; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
-        //for (int x = 0; x < SizeX; x++) { SetTile(x, 0, SizeZ - 1, 1); }
-        //for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
-        //for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
+        for (int x = 5; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
+        for (int x = 0; x < SizeX; x++) { SetTile(x, 0, SizeZ - 1, 1); }
+        for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
+        for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
         SetTile(3, 4, 0, 2);
 
 
 
-        SetTile(SizeX-1, 0, SizeZ-1, 1);
-        SetTile(SizeX-2, 0, SizeZ-1, 1);
-        SetTile(SizeX-4, 4, SizeZ-1, 2+ Tiles.Length * 2);
-        for (int x = 5; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
-        for (int x = 0; x < SizeX-6; x++) { SetTile(x, 0, SizeZ - 1, 1); }
-        for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
-        for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
+        //SetTile(SizeX-1, 0, SizeZ-1, 1);
+        //SetTile(SizeX-2, 0, SizeZ-1, 1);
+        //SetTile(SizeX-4, 4, SizeZ-1, 2+ Tiles.Length * 2);
+        //for (int x = 5; x < SizeX; x++) { SetTile(x, 0, 0, 1); }
+        //for (int x = 0; x < SizeX-6; x++) { SetTile(x, 0, SizeZ - 1, 1); }
+        //for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, 0, z, 1); }
+        //for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, 0, z, 1); }
 
-        for (int y = 1; y < SizeY; y++)
+        /*for (int y = 1; y < SizeY; y++)
         {
             for (int x = 5; x < SizeX; x++) { SetTile(x, y, 0, Tiles.Length * 4); }
             for (int x = 0; x < SizeX - 6; x++) { SetTile(x, y, SizeZ - 1, Tiles.Length * 4); }
             for (int z = 1; z < SizeZ - 1; z++) { SetTile(0, y, z, Tiles.Length * 4); }
             for (int z = 1; z < SizeZ - 1; z++) { SetTile(SizeX - 1, y, z, Tiles.Length * 4); }
-        }
+        }*/
 
         //for (int x = 4; x < SizeX - 4; x++) {
         //    for (int z = 4; z < SizeZ - 4; z++) { SetTile(x, 0, z, Tiles.Length * 4 + 1); }

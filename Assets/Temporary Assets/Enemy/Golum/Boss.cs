@@ -33,7 +33,7 @@ public class Boss : MonoBehaviour
         Health -= damage;
         if (Health < 0.0f)
         {
-            if (isBoss) { finalScreen.winSequence();
+            if (isBoss && finalScreen!=null) { finalScreen.winSequence();
                 GamePlayManager.manager.musicManager.lockTrack = false;
                 GamePlayManager.manager.musicManager.FadeTrack(3, 5.0f);
                 GamePlayManager.manager.musicManager.lockTrack = true;
