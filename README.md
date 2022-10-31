@@ -340,9 +340,9 @@ https://freesound.org/
 ### Technologies
 _Downfall_ is created using:
 * Unity 2022.1.9f1 
-* Rhinoceros version: 7.4
+* Rhinoceros 7.4
 * Photoshop 2022.4.2
-* Blender
+* Blender 2.93.4
 
 ### Images
 
