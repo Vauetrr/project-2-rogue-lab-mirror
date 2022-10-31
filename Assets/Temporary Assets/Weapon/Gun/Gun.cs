@@ -40,7 +40,7 @@ public class Gun:Weapon{
     }
 
     public override bool attacking(){
-        //return fireDelay > 0;
-        return fireDelay < fireDelay-0.01f;
+        return fireDelay > 0;
+        //return fireDelay < fireDelay-0.01f;
     }
 }

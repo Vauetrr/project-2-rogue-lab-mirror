@@ -1,7 +1,7 @@
-
-
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
+
+<img width="649" alt="image" src="https://user-images.githubusercontent.com/102025260/198919429-9c2618a6-b1d9-401e-835a-92a1ecd48924.png">
 
 ## Teamwork plan/summary
 
@@ -16,36 +16,137 @@ While each of the team members will focus on different aspects of the project, t
 
 ## Final report
 
-Read the specification for details on what needs to be covered in this report... 
-
-Remember that _"this document"_ should be `well written` and formatted **appropriately**. 
-Below are examples of markdown features available on GitHub that might be useful in your report. 
-For more details you can find a guide [here](https://docs.github.com/en/github/writing-on-github).
-
 ### Table of contents
 * [Game Summary](#game-summary)
 * [How To Play](#how-to-play)
 * [Gameplay Design](#gameplay-design)
-* [Graphical Design](#graphical-design)
+* [Asset Design](#asset-design)
 * [Graphics Pipeline and Shaders](#graphics-pipeline-and-shaders)
+* [Scene Transitions and UI Design](#scene-transitions-and-ui-design)
 * [Procedural Generation](#procedural-generation)
 * [Particle System](#particle-system)
 * [Evaluation Techniques](#evaluation-techniques)
 * [Feedback Implemented](#feedback-implemented)
 * [References](#references)
 * [Technologies](#technologies)
-* [Using Images](#using-images)
-* [Code Snipets](#code-snippets)
+* [Images](#images)
 
 ### Game Summary
 _Downfall_ is an isometric roguelite game, set in a kingdom that has fallen to ruin after the queen has died. The
 protagonist has been framed for the murder, and is now trapped in the palace dungeon which they must escape from.
 
 ### How To Play
+The goal of _Downfall_ is to defeat the final boss, reached by accessing a "warp zone" in the main level.
+The warp zone will be placed somewhere in the procedurally generated map, which the player must find.
+
+Enemies will block the path of the player. Defeating them will grant experience.
+Gain enough experience to increase your level. Each level will provide the player with an option to increase
+Health, Mana or Stamina/Stamina Regeneration.
+
+Reaching a health of 0 ends the current "run", and the player will be brought to the start of a newly generated level.
+Levels, experience, and increases in any stats are carried over in all runs.
+
+
+#### Visual/Modifiable Player Stats
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/102025260/198920058-a1488396-64ed-417c-92fb-5946b0baba22.png">
+
+`Health` Red slider bar displays Health. Health will be lowered from taking enemy damage, and reaching 0 ends the current run.
+
+  Health can be replenished by picking up HP healing items.
+
+
+`Mana` Blue slider bar displays Mana. Mana is consumed from using Magic attacks. A magic weapon must be picked up to use Mana.
+
+  Mana can be replenished by picking up magic weapons, or by successfully attacking with the Sword attack.
+
+
+`Stamina` Thin green slider bar displays Stamina. Stamina is used for Rolling and Dashing. 
+
+  Stamia will gradually recharge when not being consumed.
+
+
+`Level` Level of the player. 
+
+  Each level grants the player a new upgrade, and fully replenishes Health, Mana and Stamina.
+
+
+`Experience` Thin transparent yellow bar at the bottom displays the experience of the player. The entire bottom of the gameplay screen denotes the progression of the player's experience
+
+  Reaching max experience increases the player's level, and resets exp to 0.
+  
+
+#### General Movement
+
+`[W]` `[A]` `[S]` `[D]` Move Player
+
+`[Left Click]` Sword Attack (when a Sword is picked up)
+
+`[Right Click]` Magic Attack (when a Magic item is picked up)
+
+`[Space]` Roll
+
+Hold `[Space]` while Rolling to Dash
+
+`[Shift]` Guard
+
+`[E]` Interact (Resulting action varies)
+
+
+#### Upgrades (Available after Levelling up)
+
+`[1]` Increase Health
+
+`[2]` Increase Mana
+
+`[3]` Increase Stamina/Stamina Regeneration
+
+
+#### UI Settings
+
+`[M]` Show/Hide minimap  _(available in the Main level, after the tutorial)_
+
+`[P]` Show/Hide tutorial Text
+
+
+#### Cheat Codes
+
+`[Z]+[J]` Gain a huge amount of Health, Mana and Stamina
+
+`[Z]+[L]` Warp to the final boss
+
 
 ### Gameplay Design
 
-### Graphical Design
+As a nature of Roguelites, _Downfall_ is designed to be very difficult for a new player to complete the game in their first attempt. The player gains experience, and eventually levels that grant the player more Health/Mana/Stamina that will aid the player in progressing further into the game: eventually beating the game. With usage of a `static GamePlayManager` with property `DontDestroyOnLoad`, the main statistics (Ex. Max Health/Mana/Stamina, Level, Exp) of the player carries over between level progressions and game overs. 
+
+**Attacking** (which has a moderate delay) can be animation cancelled by **Rolling**, making the overall combat smoother. Animation of the `Player` mso cancels out appropriately. While **Rolling**, the player is immune to damage; however, this costs a considerable amount of `Stamina`. **Dashing**, which also consumes `Stamina`, is implemented for the player to move across the map quickly.
+
+The player character is modified through a `PlayerMovementScript` controls the state of the player using booleans that describe the state of the player.
+
+```
+    private bool guarding = false;
+    private bool dashing = false;
+    private bool sprinting = false;
+    public bool iframed = false;
+    private bool defaultState = true;
+    private bool attacking = false;
+    private bool alive = true;
+```
+Depending on the state of the player, methods act differently: for example, `DecreaseHealth()` returns without decreasing health if `iframed = true`.
+
+
+### Asset Design
+One of the most important focus of this project is the design of map using procedural generation system. The original system uses a sets of planes with different orientations to procedurally generate the map each time the scene runs by assembling them randomly. In order to match the theme of dungeon and kingdom, this map is further improved by using our original creations of models. To improve the experience of exploration, more visiable/ accessable surfaces are used, horizontally and vertically, giving the sense of volume and allowing the change of levels to provide a more "dungeon-like" spatial experience in graphic perspective. More detailed models are used to replace universal planes as well to have better visual experience such as columns with plates, flooring with decoration, and walls with windows and balconies. With the increase of the complexity of the models, we decided to use another third-party modeling software, "Rhinoceros", to work models as NURB then import them into unity as [meshes](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/WaveFunctionCollapse/Old/Rhino%20Model). Thus, each plane is refined to a more vivid tile with our original models, and provides the final scenes.
+
+Texture is another focus of the assets design. All [materials](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/Materials) use both main map and normal map to provide better visual experience while keeping the size of the project. To match with the theme, textures are selected based on medieval material reference and adjusted in image editor to have approximate colors, finally work together to provide concordant materials in the same scene.
+
+Animation is implemented according to player's operation including walking, running, rolling and two kinds of attack. Animations are improved by selecting precise frame to implement code, which allows more sensible damage of the attacks instead of keeping damaging during the whole animation. This also helps to implement precise sound effects like footsteps which could change based on the pace, improving the gaming experience both visually and audibly.
+
+The golum was made in blender with animations imported from mixamo.
+The cloak, the sword and the breakable boxes were also made in blender.
+The tiles and the tutorial scene were created in rhino.
+The textures, sounds, knight and sorcerer models and all the animations were imported assets.
 
 ### Graphics Pipeline and Shaders
 This project uses the Built-in Render Pipeline, which allowed the project to utilise custom vertex/fragment shaders.
@@ -71,7 +172,27 @@ to indicate how blurry that pixel should be (i.e., how far an offset should be u
 Thus, this creates a depth of field effect, and helps the player in focusing on the player character and the action
 surrounding them.
 
+
+### Scene Transitions and UI Design
+
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918507-2ae7e566-0a6d-4aab-8aad-ff8930acea7d.png">
+For a more polished gameplay experience, the screen fades in/out between scene transitions with a loading screen. <br/><br/><br/>
+
+
+<img width="220" alt="image" src="https://user-images.githubusercontent.com/102025260/198918955-5fff7e5b-2992-4190-84c7-c6bc3d42a835.png">
+A map of the overall level is avaiable on the main level for better traversal through the game. <br/><br/><br/>
+
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918900-e6f306a5-36d7-4ca4-95db-d3f02c1fdd9c.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918931-07d78a80-77f7-4f64-882d-131ca11f2022.png">
+The tutorial text and the map can be enabled and disabled as the user prefers. <br/><br/><br/>
+
 ### Procedural Generation
+for procedural generation we are using the wavefunction collapse algorithm. (ref 1)
+before the algorithm starts tiles are made then rules for how those tiles can be placed together are given. The tiles are then split into the 4 rotations around the y axis. Tiles are then preselected such as lava being placed around the map. The entropy (the number of diffrent tiles that can be placed in a given slot) of each slot is then calculated and the slot with the lowest entropy is chosen and a random tiles that can fit in the slot is selected. This is repeated until every tile is filled in.
+All the tiles have information about which adjacent tiles the player can move to from the tile. Using this a graph can be produced and the breadth first search algorithm is used to calculate which tiles the player can reach and how many tiles the player must walk to reach a given tile this is used to scale the difficult as you go further through the dungeon (loot boxes have a higher chance of spawning an enemy). 
+Sometimes the wavefunction collapse algorithm can fail or the map can have few walkable tiles if this is the case the algorithm is run again. The tile with the furthest walk distance to the start tile is chosen to contain the boss.
 
 ### Particle System
 The particle system created for this project is a [fire particle system](/Assets/Particle%20Systems/Fire.prefab). This
@@ -122,34 +243,28 @@ Participant C's comment on the game being initially too overwhelming prompted th
 level.
 
 ### References
+1 - https://www.youtube.com/watch?v=_1fvJ5sHh6A
 
 ### Technologies
 Project is created with:
 * Unity 2022.1.9f1 
-* Ipsum version: 2.33
-* Ament library version: 999
+* Rhinoceros version: 7.4
+* Photoshop 2022.4.2
 
-### Using Images
-
-You can include images/gifs by adding them to a folder in your repo, currently `Gifs/*`:
+### Images
 
 <p align="center">
-  <img src="Gifs/sample.gif" width="300">
+  <img src="Gifs\00.jpg" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\01.jpg" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\02.jpg" width="300">
+</p>
+<p align="center">
+  <img src="Gifs\03.jpg" width="300">
 </p>
 
-To create a gif from a video you can follow this [link](https://ezgif.com/video-to-gif/ezgif-6-55f4b3b086d4.mov).
+<p align = "center"><img width="600" alt="image" src="https://user-images.githubusercontent.com/102025260/198920700-4b5c44d2-2340-4e60-aa79-0aa9ba8195ca.png"></p>
 
-### Code Snippets 
-
-You may wish to include code snippets, but be sure to explain them properly, and don't go overboard copying
-every line of code in your project!
-
-```c#
-public class CameraController : MonoBehaviour
-{
-    void Start ()
-    {
-        // Do something...
-    }
-}
-```

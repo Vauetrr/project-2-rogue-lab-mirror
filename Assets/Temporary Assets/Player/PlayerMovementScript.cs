@@ -44,6 +44,9 @@ public class PlayerMovementScript : MonoBehaviour
     private float dashCost = 50.0f;
     private bool runButtonHeld = false;
 
+    // used for music track settings
+    public bool lockTrack = false; //used for gameplay musictrack
+    public int startTrack = 0;
     // START player state: altered by input and gameplay
     private bool guarding = false;
     private bool dashing = false;
@@ -108,6 +111,12 @@ public class PlayerMovementScript : MonoBehaviour
         LowHealth.SetFloat("_RightVis", 0.0f);
     }
     
+    public void winSequence(){
+        GamePlayManager.manager.beatTheGame = true;
+        deathScreen.SetActive(true);
+        StartCoroutine(deathScreen.GetComponent<DeathScreen>().winSequence());
+    }
+
     public void restartLevel(){
         deathScreen.SetActive(true);
         StartCoroutine(deathScreen.GetComponent<DeathScreen>().activate());
@@ -166,12 +175,21 @@ public class PlayerMovementScript : MonoBehaviour
         HealthBar.SetHealthBar(Health, MaxHealth);
         ManaBar.SetHealthBar(Mana, MaxMana);
         StaminaBar.SetHealthBar(Stamina/MaxStamina);
+
+        if (GamePlayManager.manager.levelUp){ // stat restored fully at player level increase
+            Health = MaxHealth;
+            Mana = MaxMana;
+            Stamina = MaxStamina;
+            GamePlayManager.manager.levelUp = false;
+        }
     }
 
     void Start()
     {
         StartCoroutine(loadingFade.StartFade(false, 0.0f));
         updateStats();
+        GamePlayManager.manager.musicManager.lockTrack = this.lockTrack;
+        GamePlayManager.manager.musicManager.FirstTrack(this.startTrack);
         LowHealth.SetFloat("_Greyscale", 0.0f);
         LowHealth.SetFloat("_Radius", 2.0f);
         LowHealth.SetFloat("_LeftVis", 0.0f);
@@ -255,8 +273,11 @@ public class PlayerMovementScript : MonoBehaviour
             if (Input.GetButtonDown("Fire2") && defaultState)
             {
                 if (Mana >= altWeapon.normalDownCost){
+                    if (!altWeapon.attacking()){
+                        DecreaseMana(altWeapon.normalDownCost);
+                    }
                     altWeapon.normalDown(this);
-                    DecreaseMana(altWeapon.normalDownCost);
+                    
                     sprinting = false;
                 }
             }

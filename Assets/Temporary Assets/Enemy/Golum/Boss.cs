@@ -23,6 +23,7 @@ public class Boss : MonoBehaviour
     private float Health = 100.0f;
     public float MaxHealth = 200.0f;
 
+    [SerializeField] PlayerMovementScript finalScreen;
     private GamePlayManager manager;
     private bool EnemyEngaged = false;
 
@@ -32,9 +33,17 @@ public class Boss : MonoBehaviour
         Health -= damage;
         if (Health < 0.0f)
         {
+            if (isBoss) { finalScreen.winSequence();
+                GamePlayManager.manager.musicManager.lockTrack = false;
+                GamePlayManager.manager.musicManager.FadeTrack(3, 5.0f);
+                GamePlayManager.manager.musicManager.lockTrack = true;
+            }
             manager.EnemyKilled();
             Instantiate(EnemyDeath, this.transform.position, this.transform.rotation);
             Destroy(transform.parent.gameObject);
+
+            
+
             //Destroy(Enemy);
         }
         else

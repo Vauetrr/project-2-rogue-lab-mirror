@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -19,9 +20,11 @@ public class GamePlayManager : MonoBehaviour
     public int mpIncrease = 0;
     //public int damageIncrease = 0;
     public int staminaIncrease = 0;
-    public bool wasInTutorial = true;
+    public bool beatTheGame = false;
+    public bool levelUp = false;
     //public int E = 0;
     public MusicManager musicManager;
+    public int levelState = 1; // 0 = start, 1 = tutorial/main, 2 = boss
     // Start is called before the first frame update
 
     public static GamePlayManager manager;
@@ -30,14 +33,10 @@ public class GamePlayManager : MonoBehaviour
             manager = this;
             DontDestroyOnLoad(manager);
             expBar.SetHealthBar(exp/(level*3)==0?1:(level*3));
-            tutorialText.enabled = false;
             spText.enabled = false;
         }
         else if (manager != this){
-            if (manager.wasInTutorial) {
-                manager.wasInTutorial = false;
-                manager.tutorialText.enabled = true;
-            }
+            //tutorialText.enabled = true;
             manager.Start();
             manager.musicManager.FadeTrack(0, 5.0f); 
             Destroy(this.gameObject); // there already exists a GPManager
@@ -47,7 +46,9 @@ public class GamePlayManager : MonoBehaviour
     public void EnemyEngaged()
     { 
         EnemiesEngaged = EnemiesEngaged+1;
-        if (EnemiesEngaged == 1) {musicManager.FadeTrack(1, 1.0f); }
+        if (EnemiesEngaged == 1) {
+            musicManager.FadeTrack(1, 1.0f); 
+        }
     }
 
     public void gainExp(int value){
@@ -57,7 +58,7 @@ public class GamePlayManager : MonoBehaviour
             level += 1;
             levelValue.SetText(level.ToString());
             sp += 1;
-
+            levelUp = true;
             spText.enabled = true;
         }
         expBar.SetHealthBar((float)exp/(level*3));
@@ -95,7 +96,9 @@ public class GamePlayManager : MonoBehaviour
         EnemiesKilled += 1;
         gainExp(1);
         EnemiesEngaged = EnemiesEngaged-1;
-        if (EnemiesEngaged == 0) { musicManager.FadeTrack(0, 5.0f); }
+        if (EnemiesEngaged == 0) {
+            musicManager.FadeTrack(0, 5.0f); 
+        }
     }
     void Start() {
         EnemiesKilled = 0;
@@ -125,5 +128,18 @@ public class GamePlayManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.Z) && Input.GetKeyDown(KeyCode.J)){
+            hpIncrease += 10;
+            mpIncrease += 10;
+            staminaIncrease += 10;
+            exp = 0;
+            level = 30;
+            levelValue.SetText(level.ToString());
+            levelUp = true;
+        }
+
+        if (Input.GetKey(KeyCode.Z) && Input.GetKeyDown(KeyCode.L)){
+            SceneManager.LoadScene("Boss");
+        }
     }
 }

@@ -19,6 +19,14 @@ public class DeathScreen : MonoBehaviour
         SceneManager.LoadScene("Test");
     }
 
+    public IEnumerator winSequence(){
+        text.SetText("Victory!");
+        text.color = new Color(144/255f, 238/255f, 144/255f);
+        yield return StartCoroutine(loadingFade.StartFade(true, 5.0f));
+        ActivateSubmenu(loadScreen);
+        SceneManager.LoadScene("StartScene");
+    }
+
     public void ActivateSubmenu(GameObject subMenu){ 
         Debug.Assert(subMenus.Contains(subMenu));
 
