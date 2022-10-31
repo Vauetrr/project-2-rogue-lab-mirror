@@ -79,7 +79,7 @@ MonoBehaviour:
   Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 5168960037890019138, guid: 4fcf4911dc66dfb4496e33fc733eadd4, type: 3}
   Grounded: 1
-  health: 1
+  health: 0.4
 --- !u!1 &5202621338505886598
 GameObject:
   m_ObjectHideFlags: 0

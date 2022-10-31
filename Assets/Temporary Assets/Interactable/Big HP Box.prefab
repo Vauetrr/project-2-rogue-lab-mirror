@@ -161,4 +161,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Debris: {fileID: 4027059939701397425, guid: c345ea7e7289e124f9b69db807b9ea89, type: 3}
   PickUp: {fileID: 7459762153310517218, guid: 4e5f907512c3cae478ff293ff40b87c3, type: 3}
-  health: 1
+  Grounded: 0
+  health: 0.4

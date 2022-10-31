@@ -16,18 +16,18 @@ public class SwordHit : MonoBehaviour
     // Start is called before the first frame update
 
     // didn't align with hitbox, so commented out for now
-     //void OnEnable()
-     //{
+     void OnEnable()
+     {
          //PlayAnimation();
-         //StartCoroutine(Swing());
-     //}
+         StartCoroutine(Swing());
+     }
 
-     //IEnumerator Swing()
-     //{ 
-     //    yield return new WaitForSeconds(0.5f);
-     //    this.gameObject.SetActive(false);
-     //
-     //}
+     IEnumerator Swing()
+     { 
+         yield return new WaitForSeconds(0.4f);
+         this.gameObject.SetActive(false);
+     
+     }
 
     private void OnTriggerEnter(Collider collision)
     {
