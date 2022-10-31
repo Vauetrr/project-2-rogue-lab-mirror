@@ -158,7 +158,7 @@ The cloak, the sword and the breakable boxes were also made in _Blender_.
 
 The tiles and the tutorial scene were created in _Rhinoceros_.
 
-The textures, sounds, knight and sorcerer models and all the animations were imported assets.
+The textures, sounds, knight, sorcerer models and the animations are imported assets.
 
 ### Graphics Pipeline and Shaders
 This project uses the Built-in Render Pipeline, which allowed the project to utilise custom vertex/fragment shaders.
@@ -338,10 +338,12 @@ http://creativecommons.org/licenses/by/3.0/
 https://freesound.org/
 
 ### Technologies
-Project is created with:
+_Downfall_ is created using:
 * Unity 2022.1.9f1 
 * Rhinoceros version: 7.4
 * Photoshop 2022.4.2
+* Mixamo
+* Blender
 
 ### Images
 
