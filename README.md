@@ -164,6 +164,10 @@ vignette area has its colour inverted, then multiplied by a specified tint colou
 lerped between a left and right offset (for double vision), then lerped again between itself and a greyscale version
 of itself. These areas are then combined to create the low health shader effect.
 
+<p align="center">
+  <img src="Gifs\lowhealth.gif" width="300">
+</p>
+
 The "depth of field shader" applies a depth of field post-processing effect in the fragment shader by bluring the screen
 depending on the depth of the object at that point on the screen, and how far away that depth according to a specified
 focal distance/plane and focal range. In practice, each pixel has a "circle of confusion" value calculated, indicating
@@ -171,6 +175,10 @@ how wide an area is used by the camera to capture light for that pixel. When blu
 to indicate how blurry that pixel should be (i.e., how far an offset should be used when applying the gaussian blur).
 Thus, this creates a depth of field effect, and helps the player in focusing on the player character and the action
 surrounding them.
+
+<p align="center">
+  <img src="Gifs\dof.jpg" width="300">
+</p>
 
 Shader paths:
 * Low Health Shader: Assets/Shaders/LowHealth.shader
@@ -209,6 +217,10 @@ to help make the fire look alive and growing. Additionally two other subsystems 
 particle with a large size to simulate a fire's glow, and the other generated many small standard particles as embers. 
 The embers utilised the built-in noise feature to sway the embers' travel paths and make it truly look like they were 
 randomly influenced by the wind.
+
+<p align="center">
+  <img src="Gifs\fire.gif" width="300">
+</p>
 
 Particle system path: Assets/Particle Systems/Fire.prefab
 
