@@ -1,7 +1,9 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
-<img width="649" alt="image" src="https://user-images.githubusercontent.com/102025260/198919429-9c2618a6-b1d9-401e-835a-92a1ecd48924.png">
+<p align="center">
+  <img width="649" alt="image" src="https://user-images.githubusercontent.com/102025260/198919429-9c2618a6-b1d9-401e-835a-92a1ecd48924.png">
+</p>
 
 ## Teamwork plan/summary
 
@@ -49,7 +51,9 @@ Levels, experience, and increases in any stats are carried over in all runs.
 
 #### Visual/Modifiable Player Stats
 
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/102025260/198920058-a1488396-64ed-417c-92fb-5946b0baba22.png">
+<p align="center">
+  <img width="1440" alt="image" src="https://user-images.githubusercontent.com/102025260/198920058-a1488396-64ed-417c-92fb-5946b0baba22.png">
+</p>
 
 `Health` Red slider bar displays Health. Health will be lowered from taking enemy damage, and reaching 0 ends the current run.
 
