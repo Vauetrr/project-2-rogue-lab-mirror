@@ -285,11 +285,41 @@ Beyond this, improvements were made to the game to try and make it a more enjoya
 mini-map, and providing a levelling system to make the player progress and become stronger.
 
 ### References
-1 - https://fonts.google.com/
+## Learning
+1. https://www.youtube.com/watch?v=_1fvJ5sHh6A
 
-2 - https://www.youtube.com/watch?v=_1fvJ5sHh6A
+2. https://docs.unity3d.com/Packages/com.unity.ai.navigation@1.0/manual/index.html
 
-3 - https://docs.unity3d.com/Packages/com.unity.ai.navigation@1.0/manual/index.html 
+3. https://www.ronja-tutorials.com/post/042-dithering/
+
+4. https://www.ronja-tutorials.com/post/023-postprocessing-blur/
+
+5. https://catlikecoding.com/unity/tutorials/advanced-rendering/depth-of-field/
+
+6. https://www.youtube.com/watch?v=GiQ5OvDN8dE
+
+7. https://www.youtube.com/watch?v=5Mw6NpSEb2o
+
+## Graphics
+1. https://fonts.google.com/
+
+## Sound
+1. "All This"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
+
+2. "Constance"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
+
+3. "Killers"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
+
+4. "bensound-epic" - Benjamin Tissot (bensound.com)
 
 ### Technologies
 Project is created with:
