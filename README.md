@@ -123,7 +123,7 @@ Hold `[Space]` while Rolling to Dash
 
 As a nature of Roguelites, _Downfall_ is designed to be very difficult for a new player to complete the game in their first attempt. The player gains experience, and eventually levels that grant the player more Health/Mana/Stamina that will aid the player in progressing further into the game: eventually beating the game. With usage of a `static GamePlayManager` with property `DontDestroyOnLoad`, the main statistics (Ex. Max Health/Mana/Stamina, Level, Exp) of the player carries over between level progressions and game overs. 
 
-**Attacking** (which has a moderate delay) can be animation cancelled by **Rolling**, making the overall combat smoother. Animation of the `Player` model also cancels out appropriately. 
+**Attacking** (which has a moderate delay) can be animation cancelled by **Rolling**, making the overall combat smoother. Animation of the `Player` mso cancels out appropriately. While **Rolling**, the player is immune to damage; however, this costs a considerable amount of `Stamina`. **Dashing**, which also consumes `Stamina`, is implemented for the player to move across the map quickly.
 
 The player character is modified through a `PlayerMovementScript` controls the state of the player using booleans that describe the state of the player.
 
@@ -174,6 +174,22 @@ how wide an area is used by the camera to capture light for that pixel. When blu
 to indicate how blurry that pixel should be (i.e., how far an offset should be used when applying the gaussian blur).
 Thus, this creates a depth of field effect, and helps the player in focusing on the player character and the action
 surrounding them.
+
+
+### Scene Transitions and UI Design
+
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918507-2ae7e566-0a6d-4aab-8aad-ff8930acea7d.png">
+For a more polished gameplay experience, the screen fades in/out between scene transitions with a loading screen. <br/><br/><br/>
+
+
+<img width="220" alt="image" src="https://user-images.githubusercontent.com/102025260/198918955-5fff7e5b-2992-4190-84c7-c6bc3d42a835.png">
+A map of the overall level is avaiable on the main level for better traversal through the game. <br/><br/><br/>
+
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918900-e6f306a5-36d7-4ca4-95db-d3f02c1fdd9c.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918931-07d78a80-77f7-4f64-882d-131ca11f2022.png">
+The tutorial text and the map can be enabled and disabled as the user prefers. <br/><br/><br/>
 
 ### Procedural Generation
 for procedural generation we are using the wavefunction collapse algorithm. (ref 1)
