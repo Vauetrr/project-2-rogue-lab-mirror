@@ -172,6 +172,9 @@ to indicate how blurry that pixel should be (i.e., how far an offset should be u
 Thus, this creates a depth of field effect, and helps the player in focusing on the player character and the action
 surrounding them.
 
+Shader paths:
+* Low Health Shader: Assets/Shaders/LowHealth.shader
+* Depth of Field Shader: Assets/Shaders/DoF.shader
 
 ### Scene Transitions and UI Design
 
@@ -204,6 +207,8 @@ particle with a large size to simulate a fire's glow, and the other generated ma
 The embers utilised the built-in noise feature to sway the embers' travel paths and make it truly look like they were 
 randomly influenced by the wind.
 
+Particle system path: Assets/Particle Systems/Fire.prefab
+
 ### Evaluation Techniques
 For evaluation purposes, 5 participants were selected. Each participant played a section of the game and were asked to 
 particpate in the "think aloud" querying method. Hence, their footage was recorded, and their thoughts the players said
@@ -232,15 +237,33 @@ The participants were:
 5. Participant E - 22 years old, female, familiar with games, 87.5 SUS score
 
 Lots of valuable feedback was gleaned from the participants. High SUS scores and thoughts from the participants 
-showed the game's movement and combat were straightforward, and it wasn't too hard to learn the core gameplay loop.
-However, Participant C, who was unfamiliar with games, found the system's usabililty lacking, stating it was "a bit
-too complex", and found the tutorial text to be overwhelming at the start. Beyond that, the observational methods were
-able to shed light on some significant issues. For example, 
+showed that the game's movement and combat were straightforward, and it wasn't too hard to learn the core gameplay loop.
+However, Participant C, who was unfamiliar with games, found the system's usabililty lacking (shown by the lower SUS score), 
+stating it was "a bit too complex", and found the tutorial text to be overwhelming at the start. Beyond that, the 
+observational methods were able to shed light on some significant issues not found when developing the game:
+* No death zone existed below the level, leading to stuck states
+* Graphical bug in objects occluding when touching them, rather than when they are occluding the player
+* Graphical bug in the golem's melee attack lacking a texture
+* Initial bridge has a collision gap, leading to a stuck state
+* Increasing health from health pickups caused the double vision effect to trigger (from the low health shader)
 
 ### Feedback Implemented
-By utilising the feedback outlined above, substantial changes were made to the game to improve on it. For instance,
-Participant C's comment on the game being initially too overwhelming prompted the integration of a dedicated tutorial
-level.
+By utilising the feedback outlined above, substantial changes were made to the game to improve on it. Participants A, B, 
+and C first played the game. This lead to some improvements, before letting participants D and E provide even more 
+feedback. 
+
+From the initial round of feedback, the following was implemented due to the participants' evaluations:
+* Participant C's comment on the game being initially too overwhelming prompted the integration of a dedicated tutorial level.
+* Making the player die when the fall off the level
+* Improving the object dithering and occluding object detection
+* Fixing the graphical bug relating to the golem's melee attack
+
+After listening to the feedback from participant D and E, the following was fixed:
+* Health pickups only reduce the low health shader effect, and don't trigger any double vision effects
+* Initial bridge doesn't have a collision gap anymore, preventing the stuck state
+
+Beyond this, improvements were made to the game to try and make it a more enjoyable experience, such as introducing a
+mini-map, and providing a levelling system to make the player progress and become stronger.
 
 ### References
 1 - https://www.youtube.com/watch?v=_1fvJ5sHh6A
