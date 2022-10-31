@@ -93,6 +93,8 @@ Hold `[Space]` while Rolling to Dash
 
 `[Shift]` Guard
 
+`[E]` Interact (Resulting action varies)
+
 
 #### Upgrades (Available after Levelling up)
 
@@ -110,7 +112,7 @@ Hold `[Space]` while Rolling to Dash
 `[P]` Show/Hide tutorial Text
 
 
-#### Cheat Codes, available after the game has begun
+#### Cheat Codes
 
 `[Z]+[J]` Gain a huge amount of Health, Mana and Stamina
 
@@ -118,6 +120,24 @@ Hold `[Space]` while Rolling to Dash
 
 
 ### Gameplay Design
+
+As a nature of Roguelites, _Downfall_ is designed to be very difficult for a new player to complete the game in their first attempt. The player gains experience, and eventually levels that grant the player more Health/Mana/Stamina that will aid the player in progressing further into the game: eventually beating the game. With usage of a `static GamePlayManager` with property `DontDestroyOnLoad`, the main statistics (Ex. Max Health/Mana/Stamina, Level, Exp) of the player carries over between level progressions and game overs. 
+
+**Attacking** (which has a moderate delay) can be animation cancelled by **Rolling**, making the overall combat smoother. Animation of the `Player` model also cancels out appropriately. 
+
+The player character is modified through a `PlayerMovementScript` controls the state of the player using booleans that describe the state of the player.
+
+```
+    private bool guarding = false;
+    private bool dashing = false;
+    private bool sprinting = false;
+    public bool iframed = false;
+    private bool defaultState = true;
+    private bool attacking = false;
+    private bool alive = true;
+```
+Depending on the state of the player, methods act differently: for example, `DecreaseHealth()` returns without decreasing health if `iframed = true`.
+
 
 ### Asset Design
 One of the most important focus of this project is the design of map using procedural generation system. The original system uses a sets of planes with different orientations to procedurally generate the map each time the scene runs by assembling them randomly. In order to match the theme of dungeon and kingdom, this map is further improved by using our original creations of models. To improve the experience of exploration, more visiable/ accessable surfaces are used, horizontally and vertically, giving the sense of volume and allowing the change of levels to provide a more "dungeon-like" spatial experience in graphic perspective. More detailed models are used to replace universal planes as well to have better visual experience such as columns with plates, flooring with decoration, and walls with windows and balconies. With the increase of the complexity of the models, we decided to use another third-party modeling software, "Rhinoceros", to work models as NURB then import them into unity as [meshes](https://github.com/COMP30019/project-2-rogue-lab/tree/main/Assets/Temporary%20Assets/WaveFunctionCollapse/Old/Rhino%20Model). Thus, each plane is refined to a more vivid tile with our original models, and provides the final scenes.
