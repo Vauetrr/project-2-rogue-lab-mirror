@@ -308,6 +308,10 @@ mini-map, and providing a levelling system to make the player progress and becom
 #### Graphics
 1. https://fonts.google.com/
 
+2. https://assetstore.unity.com/packages/3d/environments/dungeons/cartoon-castle-building-kit-128637
+
+3. https://www.mixamo.com/#/
+
 #### Sound
 1. "All This"
 Kevin MacLeod (incompetech.com)
