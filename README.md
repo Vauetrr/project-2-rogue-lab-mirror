@@ -22,14 +22,14 @@ While each of the team members will focus on different aspects of the project, t
 * [Gameplay Design](#gameplay-design)
 * [Asset Design](#asset-design)
 * [Graphics Pipeline and Shaders](#graphics-pipeline-and-shaders)
+* [Scene Transitions and UI Design](#scene-transitions-and-ui-design)
 * [Procedural Generation](#procedural-generation)
 * [Particle System](#particle-system)
 * [Evaluation Techniques](#evaluation-techniques)
 * [Feedback Implemented](#feedback-implemented)
 * [References](#references)
 * [Technologies](#technologies)
-* [Using Images](#using-images)
-* [Code Snipets](#code-snippets)
+* [Images](#images)
 
 ### Game Summary
 _Downfall_ is an isometric roguelite game, set in a kingdom that has fallen to ruin after the queen has died. The
