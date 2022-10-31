@@ -270,7 +270,9 @@ mini-map, and providing a levelling system to make the player progress and becom
 
 ### References
 1 - https://fonts.google.com/
+
 2 - https://www.youtube.com/watch?v=_1fvJ5sHh6A
+
 3 - https://docs.unity3d.com/Packages/com.unity.ai.navigation@1.0/manual/index.html 
 
 ### Technologies
