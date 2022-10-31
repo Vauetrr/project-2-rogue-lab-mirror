@@ -152,7 +152,7 @@ Texture is another focus of the assets design. All [materials](https://github.co
 
 Animation is implemented according to player's operation including walking, running, rolling and two kinds of attack. Animations are improved by selecting precise frame to implement code, which allows more sensible damage of the attacks instead of keeping damaging during the whole animation. This also helps to implement precise sound effects like footsteps which could change based on the pace, improving the gaming experience both visually and audibly.
 
-The golum was made in blender with animations imported from _Mixamo_.
+The golum was made in _Blender_ with animations imported from Mixamo (Graphics, ref 3).
 
 The cloak, the sword and the breakable boxes were also made in _Blender_.
 
@@ -342,7 +342,6 @@ _Downfall_ is created using:
 * Unity 2022.1.9f1 
 * Rhinoceros version: 7.4
 * Photoshop 2022.4.2
-* Mixamo
 * Blender
 
 ### Images
