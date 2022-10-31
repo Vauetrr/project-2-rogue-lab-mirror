@@ -189,14 +189,16 @@ A map of the overall level is avaiable on the main level for better traversal th
 
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918900-e6f306a5-36d7-4ca4-95db-d3f02c1fdd9c.png">
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/102025260/198918931-07d78a80-77f7-4f64-882d-131ca11f2022.png">
-The tutorial text and the map can be enabled and disabled as the user prefers. <br/><br/><br/>
+The tutorial text and the map can be enabled and disabled as the user prefers. <br/><br/>
+
+For a more visually appealing UI, TextMeshPro was utilised for the UI text, with custom fonts imported from Google Fonts. (ref 1)
 
 ### Procedural Generation
-for procedural generation we are using the wavefunction collapse algorithm. (ref 1)
+for procedural generation we are using the wavefunction collapse algorithm. (ref 2)
 before the algorithm starts tiles are made then rules for how those tiles can be placed together are given. The tiles are then split into the 4 rotations around the y axis. Tiles are then preselected such as lava being placed around the map. The entropy (the number of diffrent tiles that can be placed in a given slot) of each slot is then calculated and the slot with the lowest entropy is chosen and a random tiles that can fit in the slot is selected. This is repeated until every tile is filled in.
 All the tiles have information about which adjacent tiles the player can move to from the tile. Using this a graph can be produced and the breadth first search algorithm is used to calculate which tiles the player can reach and how many tiles the player must walk to reach a given tile this is used to scale the difficult as you go further through the dungeon (loot boxes have a higher chance of spawning an enemy). 
 Sometimes the wavefunction collapse algorithm can fail or the map can have few walkable tiles if this is the case the algorithm is run again. The tile with the furthest walk distance to the start tile is chosen to contain the boss.
-(Note that we are using an experimental unity package to generate nav meshs at run time ref 2)
+(Note that we are using an experimental unity package to generate nav meshs at run time (ref 3) )
 
 ### Particle System
 The particle system created for this project is a [fire particle system](/Assets/Particle%20Systems/Fire.prefab). This
@@ -267,8 +269,9 @@ Beyond this, improvements were made to the game to try and make it a more enjoya
 mini-map, and providing a levelling system to make the player progress and become stronger.
 
 ### References
-1 - https://www.youtube.com/watch?v=_1fvJ5sHh6A
-2 - https://docs.unity3d.com/Packages/com.unity.ai.navigation@1.0/manual/index.html
+1 - https://fonts.google.com/
+2 - https://www.youtube.com/watch?v=_1fvJ5sHh6A
+3 - https://docs.unity3d.com/Packages/com.unity.ai.navigation@1.0/manual/index.html 
 
 ### Technologies
 Project is created with:
