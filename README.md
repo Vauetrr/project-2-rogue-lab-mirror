@@ -285,7 +285,7 @@ Beyond this, improvements were made to the game to try and make it a more enjoya
 mini-map, and providing a levelling system to make the player progress and become stronger.
 
 ### References
-## Learning
+#### Learning
 1. https://www.youtube.com/watch?v=_1fvJ5sHh6A
 
 2. https://docs.unity3d.com/Packages/com.unity.ai.navigation@1.0/manual/index.html
@@ -300,10 +300,10 @@ mini-map, and providing a levelling system to make the player progress and becom
 
 7. https://www.youtube.com/watch?v=5Mw6NpSEb2o
 
-## Graphics
+#### Graphics
 1. https://fonts.google.com/
 
-## Sound
+#### Sound
 1. "All This"
 Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 3.0
