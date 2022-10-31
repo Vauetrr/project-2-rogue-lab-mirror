@@ -5,6 +5,8 @@
   <img width="649" alt="image" src="https://user-images.githubusercontent.com/102025260/198919429-9c2618a6-b1d9-401e-835a-92a1ecd48924.png">
 </p>
 
+**Note**: _Downfall_ is best experienced with the aspect ratio 16:9. For the best experiece, please play in Full HD or 16:9 Aspect.
+
 ## Teamwork plan/summary
 
 <!-- [[StartTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
@@ -38,6 +40,9 @@ _Downfall_ is an isometric roguelite game, set in a kingdom that has fallen to r
 protagonist has been framed for the murder, and is now trapped in the palace dungeon which they must escape from.
 
 ### How To Play
+
+![image](https://user-images.githubusercontent.com/102025260/198988662-e12e91ab-f821-4911-962c-ce363cf76b2f.png)
+
 The goal of _Downfall_ is to defeat the final boss, reached by accessing a "warp zone" in the main level.
 The warp zone will be placed somewhere in the procedurally generated map, which the player must find.
 
