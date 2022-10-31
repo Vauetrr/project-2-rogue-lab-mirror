@@ -1,7 +1,7 @@
-
-
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
+
+<img width="649" alt="image" src="https://user-images.githubusercontent.com/102025260/198919429-9c2618a6-b1d9-401e-835a-92a1ecd48924.png">
 
 ## Teamwork plan/summary
 
@@ -15,12 +15,6 @@ While each of the team members will focus on different aspects of the project, t
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
 ## Final report
-
-Read the specification for details on what needs to be covered in this report... 
-
-Remember that _"this document"_ should be `well written` and formatted **appropriately**. 
-Below are examples of markdown features available on GitHub that might be useful in your report. 
-For more details you can find a guide [here](https://docs.github.com/en/github/writing-on-github).
 
 ### Table of contents
 * [Game Summary](#game-summary)
@@ -54,17 +48,20 @@ Levels, experience, and increases in any stats are carried over in all runs.
 
 
 #### Visual/Modifiable Player Stats
-`Health` Health will be lowered from taking enemy damage, and reaching 0 ends the current run.
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/102025260/198920058-a1488396-64ed-417c-92fb-5946b0baba22.png">
+
+`Health` Red slider bar displays Health. Health will be lowered from taking enemy damage, and reaching 0 ends the current run.
 
   Health can be replenished by picking up HP healing items.
 
 
-`Mana` Mana is consumed from using Magic attacks. A magic weapon must be picked up to use Mana.
+`Mana` Blue slider bar displays Mana. Mana is consumed from using Magic attacks. A magic weapon must be picked up to use Mana.
 
   Mana can be replenished by picking up magic weapons, or by successfully attacking with the Sword attack.
 
 
-`Stamina` Stamina is used for Rolling and Dashing. 
+`Stamina` Thin green slider bar displays Stamina. Stamina is used for Rolling and Dashing. 
 
   Stamia will gradually recharge when not being consumed.
 
@@ -74,7 +71,7 @@ Levels, experience, and increases in any stats are carried over in all runs.
   Each level grants the player a new upgrade, and fully replenishes Health, Mana and Stamina.
 
 
-`Experience` Experience of the player. 
+`Experience` Thin transparent yellow bar at the bottom displays the experience of the player. The entire bottom of the gameplay screen denotes the progression of the player's experience
 
   Reaching max experience increases the player's level, and resets exp to 0.
   
@@ -222,8 +219,6 @@ Project is created with:
 
 ### Images
 
-Project Processes:
-
 <p align="center">
   <img src="Gifs\00.jpg" width="300">
 </p>
@@ -237,18 +232,5 @@ Project Processes:
   <img src="Gifs\03.jpg" width="300">
 </p>
 
+<p align = "center"><img width="600" alt="image" src="https://user-images.githubusercontent.com/102025260/198920700-4b5c44d2-2340-4e60-aa79-0aa9ba8195ca.png"></p>
 
-### Code Snippets 
-
-You may wish to include code snippets, but be sure to explain them properly, and don't go overboard copying
-every line of code in your project!
-
-```c#
-public class CameraController : MonoBehaviour
-{
-    void Start ()
-    {
-        // Do something...
-    }
-}
-```
