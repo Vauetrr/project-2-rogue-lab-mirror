@@ -49,8 +49,8 @@ protagonist has been framed for the murder, and is now trapped in the palace dun
 
 ### Graphics Pipeline and Shaders
 This project uses the Built-in Render Pipeline, which allowed the project to utilise custom vertex/fragment shaders.
-Two of these shaders, which are the ones to be marked, are the ["low health shader"](Assets\Shaders\LowHealth.shader)
-and the ["depth of field shader"](Assets\Shaders\DoF.shader).
+Two of these shaders, which are the ones to be marked, are the ["low health shader"](/Assets/Shaders/LowHealth.shader)
+and the ["depth of field shader"](/Assets/Shaders/DoF.shader).
 
 The "low health shader" creates multiple post-processing effects in the fragment shader to graphically show the player
 they are hurt and close to dying. It creates an inverted-colour and red-tinted vignette around the screen, 
@@ -74,7 +74,7 @@ surrounding them.
 ### Procedural Generation
 
 ### Particle System
-The particle system created for this project is a [fire particle system](Assets\Particle%20Systems\Fire.prefab). This
+The particle system created for this project is a [fire particle system](/Assets/Particle%20Systems/Fire.prefab). This
 particle system was created by making four abstract "fire" shapes, then generating particles of one of the four shapes
 in an upwards cone with slight randomised rotation. The size, colour, speed, lifetime, and rotation were fine tuned to 
 have one subsystem look like smoke, and one to look like the fire itself. These attributes were also modified over time
@@ -84,8 +84,42 @@ The embers utilised the built-in noise feature to sway the embers' travel paths 
 randomly influenced by the wind.
 
 ### Evaluation Techniques
+For evaluation purposes, 5 participants were selected. Each participant played a section of the game and were asked to 
+particpate in the "think aloud" querying method. Hence, their footage was recorded, and their thoughts the players said
+out loud were transcribed to paper. Afterwards, the participants were asked 10 questions from the System Usability Scale 
+(SUS) which were rated from 1-5, and each of them had a calculated SUS score. To calculate the SUS score, odd-numbered 
+questions had 1 subtracted from their score,and even-numbered questions had their score subtracted from 5, before adding 
+the scores together and multiplying the total by 2.5.
+
+The 10 questions used were:
+1. I think that I would like to play this game frequently.
+2. I found the game unnecessarily complex.
+3. I thought the game was easy to play.
+4. I think that I woul dneed the support of a technical person to be able to play this game.
+5. I found the various functions/systems in the game were well integrated.
+6. I thought there was too much inconsistency in the game.
+7. I would imagine that most people would learn how to play this game very quickly.
+8. I found the game was very cumbersome to use.
+9. I felt very confident in being able to play the game.
+10. I needed to learn a lot of things before I could start playing well in the game.
+
+The participants were:
+1. Participant A - 21 years old, male, familiar with games, 92.5 SUS score
+2. Participant B - 20 years old, male, familiar with games, 82.5 SUS score
+3. Participant C - 20 years old, female, unfamiliar with games, 60 SUS score
+4. Participant D - 21 years old, male, unfamiliar with games, 75 SUS score
+5. Participant E - 22 years old, female, familiar with games, 87.5 SUS score
+
+Lots of valuable feedback was gleaned from the participants. High SUS scores and thoughts from the participants 
+showed the game's movement and combat were straightforward, and it wasn't too hard to learn the core gameplay loop.
+However, Participant C, who was unfamiliar with games, found the system's usabililty lacking, stating it was "a bit
+too complex", and found the tutorial text to be overwhelming at the start. Beyond that, the observational methods were
+able to shed light on some significant issues. For example, 
 
 ### Feedback Implemented
+By utilising the feedback outlined above, substantial changes were made to the game to improve on it. For instance,
+Participant C's comment on the game being initially too overwhelming prompted the integration of a dedicated tutorial
+level.
 
 ### References
 
